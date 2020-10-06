@@ -1,0 +1,13 @@
+import React from 'react'
+
+export const Home = () =>(
+    <div style={{color:"white"}}>
+        This is Home
+        <br></br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum. Maecenas auctor, tortor sit amet lacinia sollicitudin, augue est faucibus diam, a ullamcorper erat tortor quis nibh. Quisque risus eros, ultricies eget orci et, pharetra volutpat eros. Duis mauris tellus, dignissim cursus sodales et, blandit eget ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum lobortis quam, et facilisis massa aliquet vitae. Duis nec sapien vel justo accumsan egestas et quis lorem. Nulla facilisi. In quis consequat risus, eu tristique elit. Morbi vitae porta massa. Proin id sapien dignissim, tristique erat ut, ultrices lacus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
+    </div>
+)
