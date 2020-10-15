@@ -34,16 +34,19 @@ const hr={
 class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { color1: "#5958D4",color2:"white",color3:"white" };
+        this.state = { color1: "#5958D4",color2:"white",color3:"white",color4:"white" };
       }
       home = () => {
-        this.setState({ color1: '#5958D4',color2:'white',color3:'white' });
+        this.setState({ color1: '#5958D4',color2:'white',color3:'white',color4:"white" });
      }
      insights = () => {
-        this.setState({ color1: 'white',color2:'#5958D4',color3:'white' });
+        this.setState({ color1: 'white',color2:'#5958D4',color3:'white',color4:"white" });
      }
      login = () => {
-        this.setState({ color1: 'white',color2:'white',color3:'#5958D4' });
+        this.setState({ color1: 'white',color2:'white',color3:'#5958D4',color4:"white" });
+     }
+     events=()=>{
+         this.setState({color1:'white',color2:'white',color3:'white',color4:'#5958D4'})
      }
      
     render(){
@@ -64,6 +67,11 @@ class NavigationBar extends React.Component{
                 <Nav.Item>
                     <Nav.Link>
                         <Link to="/insights" style={{color:this.state.color2}} onClick={this.insights}>Insights</Link>
+                        </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link>
+                        <Link to="/events" style={{color:this.state.color4}} onClick={this.events}>Events</Link>
                         </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
