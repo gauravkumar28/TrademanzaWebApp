@@ -4,13 +4,14 @@ import './footer.css';
 import { FaPinterestP,FaFacebookF,FaLinkedinIn,FaTwitter } from 'react-icons/fa';
 
 const image={
+    marginLeft:"147px",
     width:"80px",
     height:"100px"
 };
 
 const footercontent={
     margin:"auto",
-    fontSize:"10px"
+    fontSize:"15px"
 };
 const table={
     marginTop:"15px"
@@ -49,6 +50,7 @@ const email={
     color:"white",
     border:"none",
     padding:"5px",
+    height:"37px",
     outline:"none",
 };
 class Footer extends React.Component{
@@ -58,18 +60,19 @@ class Footer extends React.Component{
         <hr style={hr}></hr>
 
             <br></br>
-            <div className="container">
-                <div class="row">
-                    <div className="col-md-1 col-sm-6" style={{padding:"10px"}}>
+            <div className="container-fluid" >
+                <div className="row">
+                    <div className="col-md-2 col-sm-6" style={{padding:"10px"}}>
                         <img src={logo} style={image} alt="logo"></img>
                     </div>
-                    <div className="col-md-3 col-sm-6" style={footercontent}>
+                    <div className="col-md-2 col-sm-6" style={footercontent}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius lacus eros, vitae iaculis justo maximus ut. Aliquam erat volutpat.
                     </div>
-                    <div className="col-md-4 col-sm-6" style={{padding:"10px"}}>
-                        <p style={{fontSize:"12px",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>
+                    <div className="col-md-3 col-sm-6" style={{padding:"10px"}}>
+                        <p style={{fontSize:"12px",fontWeight:"bold",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>
                         
                         <table className="table-borderless" style={table}>
+                            <tbody>
                                 <tr>
                                     <th  style={linkedin}><a href="/" style={sociallink}><FaLinkedinIn style={icon}></FaLinkedinIn></a></th>
                                     <th></th>
@@ -94,12 +97,13 @@ class Footer extends React.Component{
                                     <th></th>
                                     <th style={facebook}><a href="/" style={sociallink}><FaFacebookF style={icon}></FaFacebookF></a></th>
                                 </tr>
+                                </tbody>
                         </table>
                     </div>
                     <div className="col-md-3 col-sm-6" style={{padding:"10px"}}>
-                    <p style={{fontSize:"12px",letterSpacing:"1px"}}>NEWSLETTER</p>
+                    <p style={{fontSize:"12px",fontWeight:"bold",letterSpacing:"1px"}}>NEWSLETTER</p>
                     <br></br>
-                    <input type="text" id="email" placeholder="E-mail"  style={email}></input>
+                    <input type="text" id="useremail" name="useremail" placeholder="E-mail" style={email}  className="newsletter"></input>
                     </div>
 
                 </div>

@@ -1,13 +1,72 @@
-import React from 'react'
+import React, { Component } from 'react'
+import fire from './config/fire';
 
-export const LoginorSignup = () =>(
-    <div  style={{color:"white"}}>
-        This is Login or Sign up
-        <br></br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum. Maecenas auctor, tortor sit amet lacinia sollicitudin, augue est faucibus diam, a ullamcorper erat tortor quis nibh. Quisque risus eros, ultricies eget orci et, pharetra volutpat eros. Duis mauris tellus, dignissim cursus sodales et, blandit eget ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum lobortis quam, et facilisis massa aliquet vitae. Duis nec sapien vel justo accumsan egestas et quis lorem. Nulla facilisi. In quis consequat risus, eu tristique elit. Morbi vitae porta massa. Proin id sapien dignissim, tristique erat ut, ultrices lacus.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ullamcorper mi, a tristique ligula imperdiet quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit, nulla at pharetra suscipit, sapien arcu varius lacus, vitae egestas nunc risus bibendum est. Vestibulum venenatis lacus ac auctor bibendum.
-    </div>
-)
+class  LoginorSignup extends Component{
+    constructor(props){
+        super(props);
+        this.login= this.login.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.signup = this.signup.bind(this);
+        this.state={
+            email:"",
+            password:"",
+            error:""
+        }
+    }
+    login(e){
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
+            console.log(u);
+        }).catch((err)=>{
+            console.log(err);
+            let code=err.code;
+            let res=code.split("/");
+            let msg=res[1].replaceAll("-"," ");
+            msg=msg.charAt(0).toUpperCase() + msg.slice(1);
+            this.setState({error:msg});
+        })
+    }
+    signup(e){
+        e.preventDefault();
+        fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
+            console.log(u);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+    handleChange(e){
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+    render(){
+        return(
+            <div>
+        <form>
+            <p style={{color:"white"}}>{this.state.error}</p>
+            
+            <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email" 
+            onChange={this.handleChange}
+            value={this.state.email} 
+            ></input>
+            <input 
+            type="password" 
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            onChange={this.handleChange}
+            value={this.state.password}
+            ></input>
+            <button onClick={this.login}>Login</button> 
+            <button onClick={this.signup}>Signup</button>           
+        </form>
+            </div>
+        )
+    }
+    
+}
+export default LoginorSignup;

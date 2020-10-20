@@ -1,0 +1,156 @@
+@font-face {font-family: "Gobold"; src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot"); src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff") format("woff"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.svg#Gobold") format("svg"); }
+
+.title {
+    color: white;
+    padding-top: 5px;
+    font-family: "Gobold", sans-serif;
+    font-size: 3.5rem;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.titlex {
+    color:#181B1F;
+    background-color: white;
+    padding-top: 5px;
+    text-align: center;
+    font-family: "Gobold", sans-serif;
+    font-size: 12rem;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+.title2 {
+    background-color: white;
+    background-image: linear-gradient(45deg,   #8d2ce2  , #4c01e0  );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-family: "Gobold", sans-serif;
+    font-size: 3rem;
+    padding-top: 30px;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.title3 {
+    background-color: white;
+    background-image: linear-gradient(45deg,   #8d2ce2  , #4c01e0  );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-family: "Gobold", sans-serif;
+    font-size: 4rem;
+    padding-top: 60px;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+.container {
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 4rem;
+  margin-top: 5rem;
+  min-height: 20vh;
+  padding: 0 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+nav.indicators{
+	left: 0;
+	width: 100%;
+	top: 50%;
+	height: 20px;
+    margin-top:20px;
+    
+    margin-bottom:20px;
+    padding-right: 150px;
+	text-align: center;
+}
+nav.indicators ul{
+	display: inline-block;
+	position: relative;
+}
+nav.indicators ul li.current{
+    display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	margin: 0 10px;
+	background-color: white;
+	cursor: pointer;
+}
+nav.indicators ul li{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	margin: 0 10px;
+	background-color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+}
+
+
+.item1 { grid-area: item1; }
+.item2 { grid-area: item2; }
+.item3 { grid-area: item3; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'item1 item1 item1 item1 item2 item2 item2';
+  grid-gap: 10px;
+  padding: 10px;
+  padding-bottom: 120px;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-areas:
+      'item1 item1 item2 item2 item3 item3';
+    grid-gap: 10px;
+    padding: 10px;
+    padding-top: 60px;
+    padding-bottom: 120px;
+  }
+  
+  .grid-container2 > div {
+    background-color:#FFFFFF;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+  
+
+
+.rectangle {
+    position: absolute;
+    top: 150px;
+    left: 950px;
+    border-radius: 5px;
+    align-items: center;
+    width: 230px;
+    height: 440px ;
+    background-color: #CDD4DF;
+    object-fit: cover;  
+  }
+
+  .rectangle2 {
+    position: absolute;
+    top: 200px;
+    left: 1100px;
+    border-radius: 5px;
+    align-items: center;
+    width: 200px;
+    height: 325px ;
+    opacity: 0.53;
+    background: linear-gradient(90deg, gray 0%, #CDD4DF 100%);
+    object-fit: cover;  
+  }
