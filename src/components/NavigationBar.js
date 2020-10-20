@@ -1,5 +1,5 @@
-import React,{useCallback} from 'react';
-import {Link,useHistory} from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import { Nav, Navbar} from 'react-bootstrap';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import logo from './favicon.png';
@@ -56,7 +56,7 @@ class NavigationBar extends React.Component{
      login = () => {
          if(this.state.logstatus ==='logout'){
              this.logout();
-             this.state.logstatus='LoginorSignup';
+             this.setState({logstatus:'LoginorSignup'});
          }
         this.setState({ color1: 'white',color2:'white',color3:'#5958D4',color4:"white" });
      }
