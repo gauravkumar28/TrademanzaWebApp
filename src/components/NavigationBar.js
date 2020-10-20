@@ -14,33 +14,35 @@ const Styles = styled.div`
     a, .navbar-brand, .navbar-nav .nav-link{
         color:white;
         text-decoration:none;
+        font-family:'Segoe UI',sans-serif;
+        font-style:'normal';
         font-weight:bold;
-        font-size:35px;
+        font-size:25px;
         &:hover{
             color:#5958D4;
         },
     } 
     .nav-link{
         padding-right:50px;
-
     }
       
 `;
 
 const logostyle={
-    marginLeft: "140px",
-    width: "56px",
-    height: "71px",
+    marginLeft: "7vw",
+    width: "37px",
+    height: "45px",
 opacity: "1",
 };
 const hr={
     background:"white",
-    color:"white"
+    color:"white",
+    border:"1px solid #FFFFFF"
 };
 class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { user: {}, logstatus:'LoginorSignup' ,color1: "white",color2:"white",color3:"white",color4:"white" };
+        this.state = { user: {}, logstatus:'Log In/Sign Up' ,color1: "white",color2:"white",color3:"white",color4:"white" };
         console.log(window.location.pathname);
 
     }
@@ -54,9 +56,9 @@ class NavigationBar extends React.Component{
         this.setState({ color1: 'white',color2:'#5958D4',color3:'white',color4:"white" });
      }
      login = () => {
-         if(this.state.logstatus ==='logout'){
+         if(this.state.logstatus ==='Logout'){
              this.logout();
-             this.setState({logstatus:'LoginorSignup'});
+             this.setState({logstatus:'Log In/Sign Up'});
          }
         this.setState({ color1: 'white',color2:'white',color3:'#5958D4',color4:"white" });
      }
@@ -78,14 +80,15 @@ class NavigationBar extends React.Component{
       authListener(){
         fire.auth().onAuthStateChanged((user)=>{
           if(user){
-            // var displayName = user.displayName;
+            var displayName = user.displayName;
             // var email = user.email;
             // var emailVerified = user.emailVerified;
             // var photoURL = user.photoURL;
+            console.log(displayName);
             // var isAnonymous = user.isAnonymous;
             // var uid = user.uid;
             // var providerData = user.providerData;
-            this.setState({user,logstatus:"logout"})
+            this.setState({user,logstatus:"Logout"})
             // this.handleOnClick();
           }
           else{
@@ -95,12 +98,12 @@ class NavigationBar extends React.Component{
       }
     render(){
         return(
-    <Styles>
-        <Navbar expand="lg">
+    <Styles style={{position:"fixed",width:"100%",top:"0",left:"0",background:"#181B1F",zIndex:"1"}}>
+        <Navbar expand="lg" >
             <Navbar.Brand href="/">
                 <img src={logo} style={logostyle} alt="logo"></img>
             </Navbar.Brand>
-            <NavbarToggle aria-controls="basic-navbar-nav" style={{background:"gray"}} />
+            <NavbarToggle aria-controls="basic-navbar-nav" style={{background:"white"}} />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto" style={{marginRight:"144px"}}>
                 <Nav.Item >

@@ -43,7 +43,7 @@ const sociallink={
 const hr={
     background:"white",
     color:"white",
-    height:"0.5px"
+    border:"1px solid white"
   };
 const email={
     background:"gray",
@@ -56,7 +56,7 @@ const email={
 class Footer extends React.Component{
     render(){
     return (
-        <div className="main-footer" style={{color:"white"}}>
+        <div className="footer" style={{color:"white"}}>
         <hr style={hr}></hr>
 
             <br></br>
@@ -69,7 +69,7 @@ class Footer extends React.Component{
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius lacus eros, vitae iaculis justo maximus ut. Aliquam erat volutpat.
                     </div>
                     <div className="col-md-3 col-sm-6" style={{padding:"10px"}}>
-                        <p style={{fontSize:"12px",fontWeight:"bold",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>
+                        <p style={{fontSize:"15px",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>
                         
                         <table className="table-borderless" style={table}>
                             <tbody>
@@ -101,7 +101,7 @@ class Footer extends React.Component{
                         </table>
                     </div>
                     <div className="col-md-3 col-sm-6" style={{padding:"10px"}}>
-                    <p style={{fontSize:"12px",fontWeight:"bold",letterSpacing:"1px"}}>NEWSLETTER</p>
+                    <p style={{fontSize:"15px",letterSpacing:"1px"}}>NEWSLETTER</p>
                     <br></br>
                     <input type="text" id="useremail" name="useremail" placeholder="E-mail" style={email}  className="newsletter"></input>
                     </div>
