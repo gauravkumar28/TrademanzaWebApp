@@ -2,13 +2,13 @@
     color:white;
     opacity: 1;
 }
-.footer{
+/* .footer{
     position: fixed;
     z-index:2;
     bottom:0;
     left:0;
     background: #181B1F;
-}
+} */
 @media(max-width:768px){
     .footer{
         position: relative;

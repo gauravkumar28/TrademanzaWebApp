@@ -95,7 +95,7 @@ class  LoginorSignup extends Component{
         const toggle=this.state.showlogin;
 
         return(
-            <Container style={{paddingTop:"20px"}}>
+            <Container style={{marginTop:"20px"}}>
                 <Row>
                     <Col xl="8">
                     <form >

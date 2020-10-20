@@ -98,7 +98,8 @@ class NavigationBar extends React.Component{
       }
     render(){
         return(
-    <Styles style={{position:"fixed",width:"100%",top:"0",left:"0",background:"#181B1F",zIndex:"1"}}>
+            // style={{position:"fixed",width:"100%",top:"0",left:"0",background:"#181B1F",zIndex:"1"}}
+    <Styles >
         <Navbar expand="lg" >
             <Navbar.Brand href="/">
                 <img src={logo} style={logostyle} alt="logo"></img>
