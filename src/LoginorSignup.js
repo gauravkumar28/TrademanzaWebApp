@@ -87,7 +87,6 @@ class  LoginorSignup extends Component{
         "method": "POST",
         "headers": {
             "x-rapidapi-host": "stgapi.trademanza.com",
-            "x-rapidapi-key": "AIzaSyDDT3s0w-7KtxfQ4mS6c6o981OYALMwju8",
             "content-type": "application/json",
             "accept": "application/json"
         },
@@ -105,7 +104,6 @@ class  LoginorSignup extends Component{
                     "method": "POST",
                     "headers": {
                         "x-rapidapi-host": "stgapi.trademanza.com",
-                        "x-rapidapi-key": "AIzaSyDDT3s0w-7KtxfQ4mS6c6o981OYALMwju8",
                         "content-type": "application/json",
                         "accept": "application/json"
                     },
@@ -136,6 +134,7 @@ class  LoginorSignup extends Component{
     }
     onSignInSubmit = (event) =>{
         // console.log(this.state.mobileno);
+        document.getElementById('loginbtn').disabled=true;
         event.preventDefault();
         this.setUpRecaptcha();
         var phoneNumber = this.state.mobileno;//getPhoneNumberFromUserInput();
@@ -238,7 +237,7 @@ class  LoginorSignup extends Component{
                         ></input>
 
                         <br></br>
-            <button type="submit" style={submit} class="mybtn" >LOG IN</button>
+            <button id="loginbtn" type="submit" style={submit} class="mybtn" >LOG IN</button>
                         </form>
                         </div>):(
                         <div><table>

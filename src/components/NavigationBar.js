@@ -38,7 +38,7 @@ opacity: "1",
 const hr={
     background:"white",
     color:"white",
-    border:"1px solid #FFFFFF"
+    border:"1px solid #FFFFFF",
 };
 class NavigationBar extends React.Component{
     constructor(props) {
