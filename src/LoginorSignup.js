@@ -75,7 +75,7 @@ class  LoginorSignup extends Component{
             'size': 'invisible',
             'callback': function(response) {
               // reCAPTCHA solved, allow signInWithPhoneNumber.
-              console.log("captch resolved");
+            //   console.log("captch resolved");
               this.onSignInSubmit();
             }
           });
@@ -213,7 +213,7 @@ class  LoginorSignup extends Component{
                             <tbody>
                                 <tr>
                                     <td>
-                                    <span className="loginbtn" style={loginbutton} onClick={this.signupform} >LOGIN</span>
+                                    <span className="loginbtn" style={loginbutton} onClick={this.loginform} >LOGIN</span>
                                     </td>
                                     <td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
