@@ -5,6 +5,7 @@ import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import logo from './favicon.png';
 import styled from 'styled-components';
 import './navbar.css';
+import firebase from 'firebase';
 import fire from '../config/fire';
 
 const Styles = styled.div`
@@ -43,11 +44,15 @@ class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = { user: {}, logstatus:'Log In/Sign Up' ,color1: "white",color2:"white",color3:"white",color4:"white" };
-        console.log(window.location.pathname);
+        
 
     }
     logout(){
-        fire.auth().signOut();
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
     }
       home = () => {
         this.setState({ color1: '#5958D4',color2:'white',color3:'white',color4:"white" });
@@ -78,18 +83,33 @@ class NavigationBar extends React.Component{
       }
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
       authListener(){
+          
         fire.auth().onAuthStateChanged((user)=>{
           if(user){
-            var displayName = user.displayName;
-            // var email = user.email;
-            // var emailVerified = user.emailVerified;
-            // var photoURL = user.photoURL;
-            console.log(displayName);
-            // var isAnonymous = user.isAnonymous;
-            // var uid = user.uid;
-            // var providerData = user.providerData;
+                fetch("https://stgapi.trademanza.com/users/signin", {
+                    "method": "POST",
+                    "headers": {
+                        "x-rapidapi-host": "stgapi.trademanza.com",
+                        "x-rapidapi-key": "AIzaSyDDT3s0w-7KtxfQ4mS6c6o981OYALMwju8",
+                        "content-type": "application/json",
+                        "accept": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        uid:user.uid,
+                        phone:user.phoneNumber
+                    })
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+                    // console.log(response)
+                    
+                    })
+                    .catch(err => {
+                    console.log(err);
+                    });
+
             this.setState({user,logstatus:"Logout"})
-            // this.handleOnClick();
+
           }
           else{
             this.setState({user:null})
@@ -119,7 +139,7 @@ class NavigationBar extends React.Component{
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link>
-                        <Link to="/events" style={{color:this.state.color4}} onClick={this.events}>Events</Link>
+                        <Link to="/events"  style={{color:this.state.color4}} onClick={this.events}>Events</Link>
                         </Nav.Link>
                 </Nav.Item>
                   
