@@ -155,9 +155,11 @@ class  LoginorSignup extends Component{
             window.location.href="/";   
             }).catch(function (error) {
                 alert('Entered OTP is invalid');
+                document.getElementById('loginbtn').disabled=false;
             });
             }).catch(function (error) {
                 console.log('SMS not sent');
+                document.getElementById('loginbtn').disabled=false;
             });
     };
     // login(e){
