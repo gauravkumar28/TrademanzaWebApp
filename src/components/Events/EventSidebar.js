@@ -1,13 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './events.css';
-import logo from './favicon.png';
+import './css/events.css';
+import logo from '../images/favicon.png';
 
 class EventSidebar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { color1: "#5958D4",color2:"white",color3:"white",color4:"white"};
-        
+        this.state = { color1: "white",color2:"white",color3:"#5958D4",color4:"white"};
     }
     prizeBreakup = () => {
         this.setState({ color1: '#5958D4',color2:'white',color3:'white',color4:"white" });
@@ -21,14 +20,14 @@ class EventSidebar extends React.Component{
     viewPortfolio =()=>{
         this.setState({color1:'white',color2:'white',color3:'white',color4:'#5958D4' })
     }
-    componentWillUpdate(){
-        if(window.location.pathname==="/events/:eventid/prizebreakup")
+    componentDidMount(){
+        if(window.location.pathname.split('/')[3]==="prizebreakup")
             this.prizeBreakup();
-        if(window.location.pathname==="/events/:eventid/leaderboard")
+        if(window.location.pathname.split('/')[3]==="leaderboard")
             this.leaderBoard();
-        if(window.location.pathname==="/events/:eventid/createportfolio")
+        if(window.location.pathname.split('/')[3]==="createportfolio")
             this.createPortfolio();
-        if(window.location.pathname==="/events/:eventid/viewportfolio")
+        if(window.location.pathname.split('/')[3]==="viewportfolio")
             this.viewPortfolio();
     }
     render(){
@@ -52,7 +51,7 @@ class EventSidebar extends React.Component{
                 </li>
                 <li className="sidebar-item">
                     <Link   style={{color:this.state.color4}} onClick={this.viewPortfolio} to={`/events/${eventid}/viewportfolio`} >
-                    View Portfolio
+                        View Portfolio
                     </Link>
                 </li>
                 <img src={logo} className="logo-design" alt="logo"></img>

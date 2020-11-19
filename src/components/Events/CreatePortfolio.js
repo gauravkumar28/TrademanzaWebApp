@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './portfolio.css';
+import './css/portfolio.css';
 
 
 export default class CreatePortfolio extends Component {

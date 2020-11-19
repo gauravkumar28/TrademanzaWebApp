@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 // import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import './eventshow.css';
+import './css/eventshow.css';
 
-
+import leaderBoardSvg from './leaderBoard.svg';
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props) 
@@ -13,37 +13,9 @@ export default class Leaderboard extends Component {
     
     render() {
         return (
-            <div className="LeaderBoard">
-
-                <table className="PrizeTable">
-                    <tr>
-                        <th >Rank</th>
-                        <th>Name</th>
-                    </tr>
-                    <tr>
-                        <td >Hello </td>
-                        <td>adsgasdg</td>
-                    </tr>
-                    <tr>
-                        <td >Hello </td>
-                        <td>adsgasdg</td>
-                    </tr>
-                    <tr>
-                        <td style={{paddingRight:"10vw"}}>Hello </td>
-                        <td>adsgasdg</td>
-                    </tr>
-                    <tr>
-                        <td style={{paddingRight:"10vw"}} >Hello </td>
-                        <td>adsgasdg</td>
-                    </tr>
-                    <tr>
-                        <td style={{paddingRight:"10vw"}} >Hello </td>
-                        <td>adsgasdg</td>
-                    </tr>
-                </table>
-                <div className="PortfolioView">
-                 {/* View Portfolio  <ArrowForwardIcon/> */}
-                </div>
+            <div>
+                This Is Leaderboard
+                <img src={leaderBoardSvg} width="500px" height="500px" alt="Leaderboard svg"/>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './events.css';
+import './css/events.css';
 
 
 class Sidebar extends React.Component{

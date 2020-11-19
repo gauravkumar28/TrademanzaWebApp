@@ -2,7 +2,7 @@ import React from 'react'
 import {
     Switch, Route
 } from "react-router-dom";
-import './eventshow.css'
+import './css/eventshow.css'
 
 
 import CreatePortfolio from './CreatePortfolio';
@@ -42,7 +42,7 @@ export class Eventshow extends React.Component {
     }
     render() {
         const currevent=this.state.currevent;
-        const eventid=this.state.eventid;
+        const eventid=window.location.pathname.split('/')[2];;
         return (
             <div>
                 <div className="eventheader">

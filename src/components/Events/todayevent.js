@@ -1,5 +1,7 @@
 import React from 'react'
-import './eventlist.css';
+import './css/eventlist.css';
+
+
 const eventsobj={
     name:'game3',
     contest_date:'12-9-16',

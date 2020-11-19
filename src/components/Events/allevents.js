@@ -1,5 +1,5 @@
 import React from 'react'
-import './eventlist.css';
+import './css/eventlist.css';
 import { Link } from "react-router-dom";
 
 
