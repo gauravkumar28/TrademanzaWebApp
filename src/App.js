@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router ,Route, Switch} from 'react-router-dom';
-import Home from './Home';
-import Insights from './Insights';
-import LoginorSignup from './LoginorSignup';
-import Events from './Events.js';
+import Home from './components/Homepage/Home';
+import Insights from './components/Insights/Insights';
+import LoginorSignup from './components/Auth/LoginorSignup';
+import Events from './components/Events/Events.js';
 import {Layout} from './components/Layout';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';

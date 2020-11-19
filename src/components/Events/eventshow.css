@@ -1,0 +1,67 @@
+.eventshow-flex{
+    width: 100vw;
+    display:flex;
+    justify-content: space-around;
+    
+}
+
+.eventheader{
+    color: rgba(89,88,212,1);
+    font-family: Gobold;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 100px 0px 30px 15%;
+}
+
+
+
+
+.LeaderBoard{
+    background-color: rgba(41,45,50,2);
+    width: 25vw;
+    height: 400px;
+    margin-left: 10px;
+    border-radius:20px 20px 0px 0px;
+    text-align: center;
+    
+}
+
+.Prize-Breakup{
+    background-color: rgba(41,45,50,2);
+    width: 30vw;
+    height: 400px;
+    /* margin-left: 10px; */
+    text-align: center;
+    border-radius:20px 20px 0px 0px;
+}
+
+.PortfolioView{
+    background:  rgba(89,88,212,1);
+    position: absolute;
+    bottom: 20px;
+    height: 60px;
+    width: 25vw;
+    font-weight: 700;
+    font-size:2.2em;
+}
+
+.PrizeTable{
+    margin-left: 5%;
+    /* background: red; */
+}
+
+.PrizeTable  tr{
+    /* font-size: 25px; */
+    height: 50px;
+
+}
+.PrizeTable  th {
+    width: 10vw;
+    background: red;
+}
+.PrizeTable  td{
+    width: 10vw;
+    background: green;
+
+}

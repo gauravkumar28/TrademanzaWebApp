@@ -1,0 +1,60 @@
+/* $desktop:1200px  
+$laptop:1024px  
+$tablet : 768px  
+$phone : 480px   */
+.events-page{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+#sidebar{
+
+    color: white;
+    display: flex;
+    margin-left:0;
+    flex-direction: column; 
+    list-style: none;
+    width:10vw;
+    flex-shrink: 2;
+   
+ }
+
+.sidebar-item{
+    font-weight: bold;
+    font-size: 1.5em;
+    padding:7px 0px;
+    flex-shrink:2;
+}
+@media (max-width: 400px) {
+    .sidebar-item{
+        font-size:15px;
+        font-weight: 600;
+    }
+}
+@media (max-width:700px) and (min-width:400px){
+    .sidebar-item{
+        font-size:20px;
+    }
+}
+@media (min-width: 700px) {
+    .sidebar-item{
+        font-size:25px;
+    }
+}
+ 
+a:hover{
+    text-decoration: none;
+}
+
+.events-content{
+  margin-left:2vw;
+}
+
+.logo-design{
+    margin-top: 10px;
+    object-fit: cover;
+    width: 20vw;
+    height: 250px;
+    object-position: 30% 0%;
+    opacity: .2;
+}

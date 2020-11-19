@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Nav, Navbar} from 'react-bootstrap';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
-import logo from './favicon.png';
+import logo from './images/favicon.png';
 import styled from 'styled-components';
 import './navbar.css';
 import firebase from 'firebase';

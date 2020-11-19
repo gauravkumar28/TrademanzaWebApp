@@ -1,0 +1,62 @@
+.eventlist{
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+.portfolio-box{
+    display: flex;
+    margin-top: 10px;
+    margin-left: -5%;
+    width: 70vw;
+    height:500px;
+    font-weight: bold;
+    font-size: 1.2em;   
+}
+.portfolio-details{
+    height: 100%;
+    width: 70%;
+    background:  rgba(41,45,50,1);
+    border-radius:20px 0px 0px 20px;
+}
+
+
+.stocks-list{
+    height: 100%;
+    width: 30%;
+    background: white;
+    color: rgba(41,45,50,1);
+    white-space: nowrap;
+    text-align: center;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: rgba(41,45,50,1);
+}
+@media (max-width:400px){
+    .portfolio-box{
+        width:40vw;
+        font-weight: 600;
+        font-size: 8px;   
+    }
+    .portfolio-details{
+        border-radius:5px 0px 0px 5px;
+    }
+}
+@media (max-width:700px) and (min-width:400px){
+    .portfolio-box{
+        width:50vw;
+        font-weight: 700;
+        font-size: 13px;   
+    }
+    .portfolio-details{
+        border-radius:10px 0px 0px 10px;
+    }
+}
+
+.logo-design{
+    margin-left: -50%;
+}

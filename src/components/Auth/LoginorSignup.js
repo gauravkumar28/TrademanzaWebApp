@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import fire from './config/fire';
+import fire from '../../config/fire';
 import firebase from 'firebase';
 import { Container,Row,Col} from 'react-bootstrap';
-import logo from './favicon.png';
+import logo from '../images/favicon.png';
 import './login.css';
+
 const loginbutton={
     fontFamily: '"Gobold", sans-serif',
     fontStyle: 'normal',
