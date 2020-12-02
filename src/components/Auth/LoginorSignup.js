@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import { Container,Row,Col} from 'react-bootstrap';
 import logo from '../images/favicon.png';
 import './login.css';
-
 const loginbutton={
     fontFamily: '"Gobold", sans-serif',
     fontStyle: 'normal',
@@ -124,7 +123,7 @@ class  LoginorSignup extends Component{
                     }
                     })
                     .catch(err => {
-
+                        
                     });
             }
         })
@@ -147,19 +146,16 @@ class  LoginorSignup extends Component{
             var code = window.prompt("Enter OTP");//getCodeFromUserInput();
             confirmationResult.confirm(code).then(function (result) {
                 console.log('signed in successfully');
-            // firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
-                
-                                        
-            //   }).catch(function(error) {
-            //     // Handle error
-            //   });
-            window.location.href="/";   
+                var user = firebase.auth().currentUser;
+                console.log(user);
+             window.location.href="/";   
+            
             }).catch(function (error) {
                 alert('Entered OTP is invalid');
                 document.getElementById('loginbtn').disabled=false;
             });
             }).catch(function (error) {
-                console.log('SMS not sent');
+                alert("SMS couldn't sent, Try again!");
                 document.getElementById('loginbtn').disabled=false;
             });
     };
