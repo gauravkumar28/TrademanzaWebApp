@@ -6,14 +6,15 @@ import './css/events.css';
 
 import Sidebar from './Sidebar';
 
-import { Spotlight } from './Spotlight';
-import { Upcomingevent } from './Upcomingevent';
-import {Moreevents} from './Moreevents';
-import {Todayevent} from './Todayevent';
-import {Allevents} from './Allevents';
+import { Spotlight } from './spotlight';
+import { Upcomingevent } from './upcomingevent';
+import {Moreevents} from './moreevents';
+import {Todayevent} from './todayevent';
+import {Allevents} from './allevents';
 
 import {Eventshow} from './Eventshow';
 import Contests from './Contests';
+
 
 
  class Events extends React.Component {

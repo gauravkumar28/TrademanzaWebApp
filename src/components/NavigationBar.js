@@ -50,6 +50,12 @@ class NavigationBar extends React.Component{
     logout(){
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem("userName");
+                localStorage.removeItem("id");
+            } else {
+                console.log("Sorry, your browser does not support Web Storage...");
+            }
           }).catch(function(error) {
             // An error happened.
           });
@@ -82,39 +88,50 @@ class NavigationBar extends React.Component{
         this.authListener();
       }
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
-      authListener(){
+    authListener(){
+        if (typeof(Storage) !== "undefined") {
+            // Store
+        console.log(localStorage.getItem("id"));
+            
+            // Retrieve
+        } else {
+            console.log("Sorry, your browser does not support Web Storage...");
+        }
+        
           
         fire.auth().onAuthStateChanged((user)=>{
           if(user){
-                fetch("https://stgapi.trademanza.com/users/signin", {
-                    "method": "POST",
-                    "headers": {
-                        "x-rapidapi-host": "stgapi.trademanza.com",
-                        "x-rapidapi-key": "AIzaSyDDT3s0w-7KtxfQ4mS6c6o981OYALMwju8",
-                        "content-type": "application/json",
-                        "accept": "application/json"
-                    },
-                    "body": JSON.stringify({
-                        uid:user.uid,
-                        phone:user.phoneNumber
-                    })
-                    })
-                    .then(response => response.json())
-                    .then(response => {
-                    // console.log(response)
-                    
-                    })
-                    .catch(err => {
-                    console.log(err);
-                    });
-
+            fetch("https://stgapi.trademanza.com/users/signin", {
+                "method": "POST",
+                "headers": {
+                    "x-rapidapi-host": "stgapi.trademanza.com",
+                    "content-type": "application/json",
+                    "accept": "application/json"
+                },
+                "body": JSON.stringify({
+                    uid:user.uid,
+                    phone:user.phoneNumber
+                })
+                })
+                .then(response => response.json())
+                .then(response => {
+                user=response.data;
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("userName", user.userName);
+                    localStorage.setItem("id",user.id);
+                } else {
+                    console.log("Sorry, your browser does not support Web Storage...");
+                }
+                })
+                .catch(err => {
+                console.log(err);
+                });
             this.setState({user,logstatus:"Logout"})
-
           }
           else{
             this.setState({user:null})
           }
-        })
+        });
       }
     render(){
         return(
