@@ -23,10 +23,11 @@
 }
 
 
+
 .stocks-list{
     height: 100%;
     width: 30%;
-    background: white;
+    background: #fff;
     color: rgba(41,45,50,1);
     white-space: nowrap;
     text-align: center;
@@ -35,7 +36,72 @@
     font-weight: bold;
     font-size: 1.5em;
     color: rgba(41,45,50,1);
+    
 }
+.stock-listing{
+    height: 72%;
+    overflow-y: scroll;
+}
+.stock-listing::-webkit-scrollbar {
+    width: 10px;
+}
+
+.stock-listing::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+.stock-option-heading{
+    font-size: 10px;
+    text-align: left;
+    margin-left: 20px;
+    color:rgba(0,0,0,.3);
+}
+
+.stock-listing::-webkit-scrollbar-thumb {
+  background-color:  rgba(41,45,50,1);
+  outline: 1px solid slategrey;
+}
+
+#stock{
+    height: 40px;
+    border:1px solid white;
+    background-color:rgba(255,255,255,0.1);
+    margin-top: 5px;
+    margin-left: 5%;
+    width: 90%;
+    border-radius: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:4px 4px 3px rgba(0,0,0,.3);
+     /* rgba(255,255,255,0.9); */
+    /* font-size: 10px; */
+}
+#stock-name{
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Arial";
+    
+
+}
+#stock-val{
+    font-size: 10px;
+    color: #0bba57;
+    font-weight: bold;
+}
+#stock-sub{
+    height:20px;
+    background: white;
+    border: none;
+    width: 2px;
+    margin-right: 20px;
+    font-size: 25px;
+    
+}
+
 @media (max-width:400px){
     .portfolio-box{
         width:40vw;

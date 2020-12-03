@@ -1,7 +1,7 @@
 .eventshow-flex{
     width: 100vw;
     display:flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     
 }
 
@@ -15,8 +15,6 @@
 }
 
 
-
-
 .LeaderBoard{
     background-color: rgba(41,45,50,2);
     width: 25vw;
@@ -27,14 +25,6 @@
     
 }
 
-.Prize-Breakup{
-    background-color: rgba(41,45,50,2);
-    width: 30vw;
-    height: 400px;
-    /* margin-left: 10px; */
-    text-align: center;
-    border-radius:20px 20px 0px 0px;
-}
 
 .PortfolioView{
     background:  rgba(89,88,212,1);
@@ -46,22 +36,74 @@
     font-size:2.2em;
 }
 
-.PrizeTable{
-    margin-left: 5%;
+
+.PrizeBreakup ,.leaderboard{
+    width: 60%;
+    height: 70%;
+    /* background: red; */
+    /* display: flex;
+    justify-content:space-between;
+    align-items: flex-start; */
+}
+
+.PrizeBreakupBox ,.leaderboardBox{
+    width: 40%;
+    height: 50%;
+    background-color: #292d32;
+    border-radius:10px 10px 10px 10px;
+    float: left;
+}
+.prizeBreakupData ,.leaderboardData{
+    width: 100%;
+    height: 350px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     /* background: red; */
 }
+.leaderboardData{
+    overflow-y: scroll;
+}
 
-.PrizeTable  tr{
-    /* font-size: 25px; */
+.leaderboardData::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgba(41,45,50,1) ;
+    /* border-radius: 16px; */
+}
+
+.leaderboardData::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(41,45,50,0.4) ;
+}
+
+.leaderboardData::-webkit-scrollbar-thumb {
+    background-color:  rgba(89,88,212,1);
+    border-radius: 5px;
+    /* outline: 1px solid slategrey; */
+  }
+
+.InsideBox{
+    width: 100%;
     height: 50px;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    background-color: #5958d4;
 }
-.PrizeTable  th {
-    width: 10vw;
-    background: red;
-}
-.PrizeTable  td{
-    width: 10vw;
-    background: green;
 
+
+.rankinglist{
+    font-size: 20px;
+    line-height: 20px;
+}
+
+
+.dollarStackSVG,  .leaderBoardSvg{
+    width: 55%;
+    height: 50%;
+    float: right;
 }
