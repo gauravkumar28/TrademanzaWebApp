@@ -13,8 +13,7 @@ import {Todayevent} from './todayevent';
 import {Allevents} from './allevents';
 
 import {Eventshow} from './eventshow';
-import Contests from './contests';
-
+import Contests from './Contests';
 
 
  class Events extends React.Component {
