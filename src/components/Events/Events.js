@@ -12,8 +12,8 @@ import {Moreevents} from './moreevents';
 import {Todayevent} from './todayevent';
 import {Allevents} from './allevents';
 
-import {Eventshow} from './Eventshow';
-import Contests from './Contests';
+import {Eventshow} from './eventshow';
+import Contests from './contests';
 
 
 
