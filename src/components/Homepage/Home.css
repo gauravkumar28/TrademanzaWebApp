@@ -77,7 +77,7 @@ button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
   display: flex;
 	width:370px;
   height:500px;
-  background-color: transparent;
+  background-color:#181B1F;
 }
 .grow2{
   
