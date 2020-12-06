@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router ,Route, Switch} from 'react-router-dom';
 import Home from './components/Homepage/Home';
-import Insights from './components/Insights/Insights';
+import Insights from './components/Insights';
 import LoginorSignup from './components/Auth/LoginorSignup';
 import Events from './components/Events/Events.js';
 import {Layout} from './components/Layout';
