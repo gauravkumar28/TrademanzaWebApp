@@ -29,6 +29,7 @@ button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
   position: relative; 
   padding-bottom: 56.25%; 
   width: 80vw;
+
   height: 610px;
   overflow: hidden;
 }
