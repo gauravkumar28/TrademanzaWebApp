@@ -26,8 +26,6 @@ export class Eventshow extends React.Component {
         this.setState({
             eventid:eventid,
         })
-        console.log(eventid)
-        console.log('gdasgdsa')
         fetch(`https://stgapi.trademanza.com/events/${eventid}`)
         .then(response => response.json())
         .then(data => this.setState({
@@ -42,7 +40,6 @@ export class Eventshow extends React.Component {
     }
     render() {
         const currevent=this.state.currevent;
-        const eventid=window.location.pathname.split('/')[2];;
         return (
             <div>
                 <div className="eventheader">
@@ -54,10 +51,10 @@ export class Eventshow extends React.Component {
                    
                 <EventSidebar/>
                 <Switch>
-                        <Route exact path={`/events/${eventid}/prizebreakup`}  component={PrizeBreakup}/>
-                        <Route exact path={`/events/${eventid}/leaderboard`}  component={Leaderboard} />
-                        <Route exact path={`/events/${eventid}/createportfolio`}  component={CreatePortfolio} />
-                        <Route exact path={`/events/${eventid}/viewportfolio`}   component={ViewPortfolio} />              
+                        <Route exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
+                        <Route exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
+                        <Route exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
+                        <Route exact path="/events/:eventid/:contestid/viewportfolio"   component={ViewPortfolio} />              
                 </Switch>
                 
                 </div>

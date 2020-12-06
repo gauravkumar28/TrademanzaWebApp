@@ -25,7 +25,7 @@
 
 
 .stocks-list{
-    height: 100%;
+    height: 500px;
     width: 30%;
     background: #fff;
     color: rgba(41,45,50,1);
@@ -36,10 +36,18 @@
     font-weight: bold;
     font-size: 1.5em;
     color: rgba(41,45,50,1);
-    
+    display: flex;
+    flex-direction: column;
+
+}
+.stock-option-heading2{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 .stock-listing{
-    height: 72%;
+    height: 9%;
     overflow-y: scroll;
 }
 .stock-listing::-webkit-scrollbar {
@@ -49,7 +57,7 @@
 .stock-listing::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
 }
-.stock-option-heading{
+.stock-option-heading,.stock-option-heading2{
     font-size: 10px;
     text-align: left;
     margin-left: 20px;
@@ -61,12 +69,11 @@
   outline: 1px solid slategrey;
 }
 
-#stock{
+#stock,#Selectedstock{
     height: 40px;
     border:1px solid white;
     background-color:rgba(255,255,255,0.1);
     margin-top: 5px;
-    margin-left: 5%;
     width: 90%;
     border-radius: 20px;
     text-align: left;
@@ -78,7 +85,7 @@
      /* rgba(255,255,255,0.9); */
     /* font-size: 10px; */
 }
-#stock-name{
+#stock-name,#Selectedstock-name{
     margin-left: 15px;
     color: black;
     font-weight: bold;
@@ -87,12 +94,12 @@
     
 
 }
-#stock-val{
+#stock-val,#Selectedstock-val{
     font-size: 10px;
     color: #0bba57;
     font-weight: bold;
 }
-#stock-sub{
+#stock-sub,#Selectedstock-sub{
     height:20px;
     background: white;
     border: none;
@@ -102,6 +109,49 @@
     
 }
 
+button:focus{
+    outline:none;
+    border: none;
+}
+
+#Selectedstock{
+        background:rgba(89,88,212,1);
+       justify-content: flex-start;
+}
+#Selectedstock-name{
+    color: white;
+}
+#Selectedstock-sub{
+    font-size: 15px;
+    width: 50px;
+    /* background: red; */
+}
+.SubmitButton{
+     background:rgba(89,88,212,1);
+     border-radius: 15px;
+     margin: 10px;
+     width: 200px;
+     height: 40px;
+     font-size: 20px;
+     font-weight: 700;
+
+}
+
+.portfolioNameInput{
+    height: 50px;
+    width: 70%;
+    margin-left: 20%;
+    margin-top: 20px;
+    background-color:  rgba(41,45,50,1);
+    border: none;
+    line-height: 40px;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    box-shadow:4px 4px 3px rgba(0,0,0,.3),-4px -4px 3px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    /* color:; */
+}
 @media (max-width:400px){
     .portfolio-box{
         width:40vw;

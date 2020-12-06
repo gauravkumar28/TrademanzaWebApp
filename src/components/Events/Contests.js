@@ -11,7 +11,7 @@ export default class Contests extends Component {
     }
     fetchContests = () =>{
         const eventid=window.location.pathname.split('/')[2];
-        fetch(`https://api.trademanza.com/contests/v2?eventId=${eventid}`)
+        fetch(`https://stgapi.trademanza.com/contests/v2?eventId=${eventid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({
@@ -24,6 +24,7 @@ export default class Contests extends Component {
         this.props.hideSidebar();
     };
     render() {
+        const eventid=window.location.pathname.split('/')[2];
         return (
             <div className="eventlist">
                 {
@@ -37,7 +38,7 @@ export default class Contests extends Component {
                             {contest.details}
                             </div>
                             <div className="event-itemlink">
-                                <Link to={`/events/${contest.id}/createportfolio`}>
+                                <Link to={`/events/${eventid}/${contest.id}/createportfolio`}>
                                         Play
                                 </Link>
                             </div> 

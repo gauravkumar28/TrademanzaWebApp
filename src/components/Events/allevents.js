@@ -12,7 +12,7 @@ export class Allevents extends React.Component{
             this.fetchEvents=this.fetchEvents.bind(this)
         }
         fetchEvents = () =>{
-            fetch('https://api.trademanza.com/v3/events')
+            fetch('https://stgapi.trademanza.com/v3/events')
             .then(response => response.json())
             .then(data => this.setState({
                 eventslist:data.data,

@@ -12,8 +12,8 @@ export default class PrizeBreakup extends Component {
         }
     }
     fetchPrizeList = () => {
-        const eventid=window.location.pathname.split('/')[2];
-        fetch(`https://api.trademanza.com/contests/v2/${eventid}/prizes`)
+        const contestid=window.location.pathname.split('/')[3];
+        fetch(`https://stgapi.trademanza.com/contests/v2/${contestid}/prizes`)
         .then(res => res.json())
         .then(data => {
             this.setState({

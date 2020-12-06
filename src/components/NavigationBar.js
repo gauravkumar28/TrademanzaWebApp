@@ -101,6 +101,9 @@ class NavigationBar extends React.Component{
           
         fire.auth().onAuthStateChanged((user)=>{
           if(user){
+            user.getIdToken().then(function(idToken) {  
+                localStorage.setItem("authToken",idToken);
+            });
             fetch("https://stgapi.trademanza.com/users/signin", {
                 "method": "POST",
                 "headers": {

@@ -11,8 +11,9 @@ export default class Leaderboard extends Component {
         }
     }
     fetchLeaderboard = () => {
-        const eventid=window.location.pathname.split('/')[2];
-        fetch(`https://api.trademanza.com/contests/${eventid}/leaderboard`)
+        const contestid=window.location.pathname.split('/')[3];
+        console.log(window.location.pathname);
+        fetch(`https://stgapi.trademanza.com/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
         .then(res => res.json())
         .then(data => {
             this.setState({
