@@ -9,11 +9,11 @@ class Insights extends Component {
                 <div className="container2">
                     <div >
                         <h1 className="titles2">All Topics</h1>
-                        <h1> Latest </h1>
-                        <h1> Tech </h1>
-                        <h1> Automobile </h1>
-                        <h1> Oil & Gas </h1>
-                        <h1> More </h1>
+//                         <h1> Latest </h1>
+//                         <h1> Tech </h1>
+//                         <h1> Automobile </h1>
+//                         <h1> Oil & Gas </h1>
+//                         <h1> More </h1>
                     </div>
                     <h1 className="titles1"><a href = "http://www.gmail.com">Publish an Insight</a></h1>
                 </div>
