@@ -147,6 +147,7 @@ class  LoginorSignup extends Component{
             confirmationResult.confirm(code).then(function (result) {
                 console.log('signed in successfully');
                 var user = firebase.auth().currentUser;
+                
                 console.log(user);
              window.location.href="/";   
             

@@ -43,9 +43,7 @@ const hr={
 class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { user: {}, logstatus:'Log In/Sign Up' ,color1: "white",color2:"white",color3:"white",color4:"white" };
-        
-
+        this.state = { user: {}, logstatus:'Log In/Sign Up' ,colors: ["white","white","white","white","white"] };
     }
     logout(){
         firebase.auth().signOut().then(function() {
@@ -60,32 +58,30 @@ class NavigationBar extends React.Component{
             // An error happened.
           });
     }
-      home = () => {
-        this.setState({ color1: '#5958D4',color2:'white',color3:'white',color4:"white" });
-     }
-     insights = () => {
-        this.setState({ color1: 'white',color2:'#5958D4',color3:'white',color4:"white" });
-     }
-     login = () => {
-         if(this.state.logstatus ==='Logout'){
-             this.logout();
-             this.setState({logstatus:'Log In/Sign Up'});
-         }
-        this.setState({ color1: 'white',color2:'white',color3:'#5958D4',color4:"white" });
-     }
-     events=()=>{
-         this.setState({color1:'white',color2:'white',color3:'white',color4:'#5958D4'})
+    change_active = (x) => {
+          var  list=["white","white","white","white","white"];
+          list[x]='#5958D4';
+        this.setState({colors:list});
+        if(x===4){
+            if(this.state.logstatus ==='Logout'){
+                this.logout();
+                this.setState({logstatus:'Log In/Sign Up'});
+            }
+        }
      }
      componentDidMount(){
         if(window.location.pathname==="/")
-            this.home();
+            this.change_active(0);
         if(window.location.pathname==="/insights")
-            this.insights();
+            this.change_active(1);
         if(window.location.pathname==="/events")
-            this.events();
+            this.change_active(2);
+        if(window.location.pathname==="/trainings")
+            this.change_active(3);
         if(window.location.pathname==="/loginorsignup")
-            this.login();
+            this.change_active(4);
         this.authListener();
+        
       }
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
     authListener(){
@@ -146,24 +142,27 @@ class NavigationBar extends React.Component{
                 <Nav className="ml-auto" style={{marginRight:"144px"}}>
                 <Nav.Item >
                     <Nav.Link >
-                        <Link exact to="/" style={{color:this.state.color1}} onClick={this.home} >Home</Link>
+                        <Link exact to="/" style={{color:this.state.colors[0]}} onClick={(e) =>this.change_active(0)} >Home</Link>
                         </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link>
-                        <Link to="/insights" style={{color:this.state.color2}} onClick={this.insights}>Insights</Link>
+                        <Link to="/insights" style={{color:this.state.colors[1]}} onClick={(e) =>this.change_active(1)}>Insights</Link>
                         </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link>
-                        <Link to="/events"  style={{color:this.state.color4}} onClick={this.events}>Events</Link>
+                        <Link to="/events"  style={{color:this.state.colors[2]}} onClick={(e) => this.change_active(2)}>Events</Link>
                         </Nav.Link>
                 </Nav.Item>
-                  
                 <Nav.Item>
                 <Nav.Link>
-                    <Link to="/loginorsignup" style={{color:this.state.color3}} onClick={this.login}>{this.state.logstatus}</Link>
-                    
+                    <Link to="/trainings" style={{color:this.state.colors[3]}} onClick={(e) => this.change_active(3)}>Trainings</Link>
+                    </Nav.Link>
+            </Nav.Item>
+                <Nav.Item>
+                <Nav.Link>
+                    <Link to="/loginorsignup" style={{color:this.state.colors[4]}} onClick={(e) => this.change_active(4)}>{this.state.logstatus}</Link>
                     </Nav.Link>
             </Nav.Item>
                 
