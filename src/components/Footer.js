@@ -66,7 +66,7 @@ class Footer extends React.Component{
                         <img src={logo} style={image} alt="logo"></img>
                     </div>
                     <div className="col-md-2 col-sm-6" style={footercontent}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius lacus eros, vitae iaculis justo maximus ut. Aliquam erat volutpat.
+                    Over 1000+ users have already subscribed to our newsletter
                     </div>
                     <div className="col-md-3 col-sm-6" style={{padding:"10px"}}>
                         <p style={{fontSize:"15px",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>

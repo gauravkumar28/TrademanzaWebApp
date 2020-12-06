@@ -12,9 +12,8 @@ import {Moreevents} from './Moreevents';
 import {Todayevent} from './Todayevent';
 import {Allevents} from './Allevents';
 
-import {Eventshow} from './Eventshow';
+import {Eventshow} from './eventshow';
 import Contests from './Contests';
-
 
 
  class Events extends React.Component {
