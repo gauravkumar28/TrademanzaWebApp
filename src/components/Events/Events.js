@@ -12,7 +12,7 @@ import {Moreevents} from './Moreevents';
 import {Todayevent} from './Todayevent';
 import {Allevents} from './Allevents';
 
-import {Eventshow} from './eventshow';
+import {Eventshow} from './Eventshow';
 import Contests from './Contests';
 
 
