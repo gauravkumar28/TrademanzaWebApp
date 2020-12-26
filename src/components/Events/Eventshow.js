@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Switch, Route
+    Switch
 } from "react-router-dom";
 import './css/eventshow.css'
 
