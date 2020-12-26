@@ -113,7 +113,11 @@ button:focus{
     outline:none;
     border: none;
 }
-
+.stock-describe{
+    outline:none;
+    border: none;
+    background-color: white;
+}
 #Selectedstock{
         background:rgba(89,88,212,1);
        justify-content: flex-start;
@@ -175,4 +179,12 @@ button:focus{
 
 .logo-design{
     margin-left: -50%;
+}
+
+
+iframe{
+    border:2px solid blue;
+    border-radius: 5px;
+    margin-top:10px;
+    margin-left: 5px;
 }

@@ -10,7 +10,8 @@ export default class CreatePortfolio extends Component {
              stocksList:undefined,
              selectedStocks:[],
              portfolioName:"portfolio",
-             error:""
+             error:"",
+             currentStock:""
         }
         this.fetchStocks=this.fetchStocks.bind(this)
     }   
@@ -95,6 +96,10 @@ export default class CreatePortfolio extends Component {
             <div className="portfolio-box">
                 <div className="portfolio-details">
                     <input type="text" onChange={this.handlePortfolioNameChange} placeholder="enter your portfolio name"  className="portfolioNameInput" />
+                    {this.state.currentStock ? 
+                    <iframe src={this.state.currentStock.referenceUrl}  title={ this.state.currentStock.name}  width="95%" height="80%"  >sunpharama</iframe>
+                    :null
+                    }
                 </div>
             
                 <div className="stocks-list">
@@ -140,6 +145,12 @@ export default class CreatePortfolio extends Component {
                         this.state.stocksList.map((stock,index)=>{
                             return (
                                 <div key={index} id="stock">
+                                    <button class="stock-describe" onClick={ () => {
+                                        console.log("hello world")
+                                        this.setState({
+                                            currentStock:stock
+                                        })
+                                    }}>
                                     <div style={{'alignSelf':"flex-end"}}>
                                     <span id="stock-name">{stock.name}</span>
                                     <span id="stock-val"> 
@@ -151,6 +162,7 @@ export default class CreatePortfolio extends Component {
                                         {stock.dayTrend>0? stock.dayTrend : -stock.dayTrend}
                                     </span>
                                     </div>
+                                   </button>
                                     <div >
                                         <button id="stock-sub" onClick={() => {
                                             this.selectTheStock(stock)

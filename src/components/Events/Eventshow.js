@@ -10,6 +10,7 @@ import EventSidebar from './EventSidebar';
 import Leaderboard from './Leaderboard';
 import PrizeBreakup from './PrizeBreakup';
 import ViewPortfolio from './ViewPortfolio';
+import PrivateRoute from './helper/PrivateRoutes';
 
 export class Eventshow extends React.Component {
     constructor(props) {
@@ -51,10 +52,11 @@ export class Eventshow extends React.Component {
                    
                 <EventSidebar/>
                 <Switch>
-                        <Route exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
-                        <Route exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
-                        <Route exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
-                        <Route exact path="/events/:eventid/:contestid/viewportfolio"   component={ViewPortfolio} />              
+                        
+                        <PrivateRoute exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
+                        <PrivateRoute exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
+                        <PrivateRoute exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
+                        <PrivateRoute exact path="/events/:eventid/:contestid/viewportfolio"   component={ViewPortfolio} />              
                 </Switch>
                 
                 </div>

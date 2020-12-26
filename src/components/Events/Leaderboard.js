@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import './css/eventshow.css';
 
-import leaderBoardSvg from './leaderBoard.svg';
+import leaderBoardSvg from './images/leaderBoard.svg';
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props) 
