@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './css/portfolio.css';
 import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
+import { API2 } from '../../backend';
 
 
 
@@ -17,7 +18,8 @@ export default class ViewPortfolio extends Component {
         const contestid=window.location.pathname.split('/')[3];
         const userId=localStorage.getItem("id");
         // const userId="5f8c45de46dcee5f2ab11517";
-        fetch(`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestid}`)
+        
+        fetch(`${API2}/portfolios?userId=${userId}&contestId=${contestid}`)
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -31,12 +33,11 @@ export default class ViewPortfolio extends Component {
         this.fetchPortfolio();
     }
     participateInContest = () => {
-        console.log("this func is getting called ","particpate in contest");
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
         const portfolioId=this.state.portfolio[0].id;
         
-         fetch("https://stgapi.trademanza.com/participations/",{
+         fetch(`${API2}/participations/`,{
             method:"POST",
             headers:{
                 Accept:"application/json",

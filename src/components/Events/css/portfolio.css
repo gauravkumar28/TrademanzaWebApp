@@ -25,7 +25,7 @@
 
 
 .stocks-list{
-    height: 500px;
+    height: 100%;
     width: 30%;
     background: #fff;
     color: rgba(41,45,50,1);
@@ -38,17 +38,18 @@
     color: rgba(41,45,50,1);
     display: flex;
     flex-direction: column;
-
+    
 }
 .stock-option-heading2{
-    position: relative;
+    flex:1;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 
 }
 .stock-listing{
-    height: 9%;
-    overflow-y: scroll;
+    overflow-y:scroll;
+    overflow-x:scroll;
 }
 .stock-listing::-webkit-scrollbar {
     width: 10px;
@@ -187,4 +188,24 @@ iframe{
     border-radius: 5px;
     margin-top:10px;
     margin-left: 5px;
+}
+
+.Stock-Search-Icon{
+    /* text-align: left; */
+    /* padding: 10px; */
+}
+.Stock-Search-Box{
+    width: 300px;
+    font-weight: 900;
+    padding: 20px;
+    background: rgba(41,45,50,1);
+    text-align: center;
+    color: #ffffff;
+    border-radius: 20px;
+    height: 35px;
+    font-size: 25px;
+}
+.Stock-Search-Box:focus{
+    outline:none;
+    border: none;   
 }

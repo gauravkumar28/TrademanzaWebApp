@@ -1,6 +1,7 @@
 import React from 'react'
 import './css/eventlist.css';
 import { Link } from "react-router-dom";
+import { API } from '../../backend';
 
 
 export class Allevents extends React.Component{
@@ -12,7 +13,7 @@ export class Allevents extends React.Component{
             this.fetchEvents=this.fetchEvents.bind(this)
         }
         fetchEvents = () =>{
-            fetch('https://stgapi.trademanza.com/v3/events')
+            fetch(`${API}/events`)
             .then(response => response.json())
             .then(data => this.setState({
                 eventslist:data.data,
@@ -33,8 +34,6 @@ export class Allevents extends React.Component{
                                  <div key={index} className="eventbox">
                                  <div className="event-item">
                                     {task.name}
-                                    {task.startTime}
-                                    {task.details}
                                     </div>
                                     <div className="event-itemlink">
                                         <Link to={`/events/${task.id}/contests`}>

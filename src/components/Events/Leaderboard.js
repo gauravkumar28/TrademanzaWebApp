@@ -3,6 +3,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import './css/eventshow.css';
 
 import leaderBoardSvg from './images/leaderBoard.svg';
+import { API2 } from '../../backend';
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props) 
@@ -13,7 +14,7 @@ export default class Leaderboard extends Component {
     fetchLeaderboard = () => {
         const contestid=window.location.pathname.split('/')[3];
         console.log(window.location.pathname);
-        fetch(`https://stgapi.trademanza.com/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
+        fetch(`${API2}/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
         .then(res => res.json())
         .then(data => {
             this.setState({

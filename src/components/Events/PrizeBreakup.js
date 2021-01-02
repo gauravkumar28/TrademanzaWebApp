@@ -3,6 +3,9 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import dollerStack from './images/dollerStack.svg';
 import './css/eventshow.css';
+import { Link } from "react-router-dom";
+import { API2 } from '../../backend';
+
 export default class PrizeBreakup extends Component {
     constructor(props) {
         super(props)
@@ -13,7 +16,7 @@ export default class PrizeBreakup extends Component {
     }
     fetchPrizeList = () => {
         const contestid=window.location.pathname.split('/')[3];
-        fetch(`https://stgapi.trademanza.com/contests/v2/${contestid}/prizes`)
+        fetch(`${API2}/contests/v2/${contestid}/prizes`)
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -51,7 +54,10 @@ export default class PrizeBreakup extends Component {
                             </div>
                         </div>
                         <div className="InsideBox">
-                            Create Portfolio <ArrowForwardIcon  style={{ fontSize: 40 }} />
+                                    
+                            <Link to="/events/:eventid/:contestid/createportfolio" >
+                                    Create Portfolio <ArrowForwardIcon  style={{ fontSize: 40 }} />
+                            </Link>
                         </div>
                     </div>
                     <div>   

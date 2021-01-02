@@ -11,6 +11,7 @@ import Leaderboard from './Leaderboard';
 import PrizeBreakup from './PrizeBreakup';
 import ViewPortfolio from './ViewPortfolio';
 import PrivateRoute from './helper/PrivateRoutes';
+import { API2 } from '../../backend';
 
 export class Eventshow extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export class Eventshow extends React.Component {
         this.setState({
             eventid:eventid,
         })
-        fetch(`https://stgapi.trademanza.com/events/${eventid}`)
+        fetch(`${API2}/events/${eventid}`)
         .then(response => response.json())
         .then(data => this.setState({
             currevent:data.data,

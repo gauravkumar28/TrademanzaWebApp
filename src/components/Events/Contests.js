@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './css/eventlist.css';
 import { Link } from "react-router-dom";
+import { API2 } from '../../backend';
 export default class Contests extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,7 @@ export default class Contests extends Component {
     }
     fetchContests = () =>{
         const eventid=window.location.pathname.split('/')[2];
-        fetch(`https://stgapi.trademanza.com/contests/v2?eventId=${eventid}`)
+        fetch(`${API2}/contests/v2?eventId=${eventid}`)
         .then(response => response.json())
         .then(data => {
             this.setState({

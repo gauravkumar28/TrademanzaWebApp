@@ -41,9 +41,9 @@ import Contests from './Contests';
           {this.state.showSidebar && <Sidebar/>}
           <Switch>
                 <Route exact path="/events/spotlight"  render={ () => (<Spotlight somedata={somedata}/>) }/>
-                <Route exact path="/events/today"  component={Todayevent} />
-                <Route exact path="/events/upcoming"  component={Upcomingevent} />
-                <Route exact path="/events/more"   component={Moreevents} />              
+                <Route exact path="/events/today"  render={ () => (<Todayevent {...this.props} showSidebar={this.showSidebar}/> )} />
+                <Route exact path="/events/upcoming" render={ () => (<Upcomingevent {...this.props} showSidebar={this.showSidebar}/> )} />
+                <Route exact path="/events/more"   render={ () => (<Moreevents {...this.props} showSidebar={this.showSidebar}/> )} />              
                 <Route  exact path="/events" render={ () => (<Allevents {...this.props} showSidebar={this.showSidebar} />) } />
                 <Route exact path="/events/:id/contests"  render={ () => (<Contests {...this.props} hideSidebar={this.hideSidebar} />) } />
                 <Route path="/events/:id"  render={ () => (<Eventshow {...this.props} hideSidebar={this.hideSidebar} />) }  />
@@ -54,3 +54,4 @@ import Contests from './Contests';
 }
 
 export default Events;
+

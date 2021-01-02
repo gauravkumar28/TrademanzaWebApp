@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './css/portfolio.css';
 import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
-
+import { API2 } from '../../backend';
+// import SearchIcon from '@material-ui/icons/Search';
 export default class CreatePortfolio extends Component {
     constructor(props) {
         super(props)
@@ -11,6 +12,7 @@ export default class CreatePortfolio extends Component {
              selectedStocks:[],
              portfolioName:"portfolio",
              error:"",
+             mainStocksList:undefined,
              currentStock:""
         }
         this.fetchStocks=this.fetchStocks.bind(this)
@@ -19,12 +21,13 @@ export default class CreatePortfolio extends Component {
         this.fetchStocks();
     }
     fetchStocks = () => {
-        fetch("https://stgapi.trademanza.com/stocks?type=NiftyFifty")
+        fetch(`${API2}/stocks?type=NiftyFifty`)
         .then(response => response.json())
         .then(data => {
             // console.log(data);
             this.setState({
-                stocksList:data.data
+                stocksList:data.data,
+                mainStocksList:data.data
             })
             // console.log(this.state.stocksList);
         })
@@ -54,6 +57,12 @@ export default class CreatePortfolio extends Component {
             portfolioName:e.target.value
         })
     }
+    handleSearchQueryChange = (e) => {
+        let currlist=this.state.mainStocksList.filter(stock => stock.name.toLowerCase().indexOf(e.target.value.toLowerCase())!==-1);        
+        this.setState({
+            stocksList:currlist
+        })
+    } 
     createAportfolio = () => {
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
@@ -61,7 +70,7 @@ export default class CreatePortfolio extends Component {
         //     ...selectedStocks,
         //     selectedStocks[0]isTrump:true
         // })
-        fetch("https://stgapi.trademanza.com/portfolios/",{
+        fetch(`${API2}/portfolios/`,{
             method:"POST",
             headers: {
                 Accept:"application/json",
@@ -105,6 +114,7 @@ export default class CreatePortfolio extends Component {
                 <div className="stocks-list">
                     <div className="stock-option-heading">
                     SELECTED STOCKS   
+
                     {
                         this.state.selectedStocks ?
                         this.state.selectedStocks.map((stock,index)=>{
@@ -133,8 +143,10 @@ export default class CreatePortfolio extends Component {
                     </div>
                     <div className="stock-option-heading2">
                         <p style={{fontSize:"10px",color:"red"}}>{this.state.error}</p>
-                    AVAILABLE STOCKS
-                    
+                        AVAILABLE STOCKS
+                    <div >
+                        <input className="Stock-Search-Box" type="text" placeholder="Search Stock By Name" onChange= {this.handleSearchQueryChange}/>
+                    </div>
              
                     
                     <div className="stock-listing">
@@ -145,7 +157,7 @@ export default class CreatePortfolio extends Component {
                         this.state.stocksList.map((stock,index)=>{
                             return (
                                 <div key={index} id="stock">
-                                    <button class="stock-describe" onClick={ () => {
+                                    <button className="stock-describe" onClick={ () => {
                                         console.log("hello world")
                                         this.setState({
                                             currentStock:stock
