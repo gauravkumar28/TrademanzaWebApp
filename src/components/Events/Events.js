@@ -11,6 +11,7 @@ import { Upcomingevent } from './Upcomingevent';
 import {Moreevents} from './Moreevents';
 import {Todayevent} from './Todayevent';
 import {Allevents} from './Allevents';
+import { CompletedEvents } from './CompletedEvents';
 
 import {Eventshow} from './Eventshow';
 import Contests from './Contests';
@@ -44,6 +45,8 @@ import Contests from './Contests';
                 <Route exact path="/events/today"  render={ () => (<Todayevent {...this.props} showSidebar={this.showSidebar}/> )} />
                 <Route exact path="/events/upcoming" render={ () => (<Upcomingevent {...this.props} showSidebar={this.showSidebar}/> )} />
                 <Route exact path="/events/more"   render={ () => (<Moreevents {...this.props} showSidebar={this.showSidebar}/> )} />              
+                <Route exact path="/events/completed"   render={ () => (<CompletedEvents {...this.props} showSidebar={this.showSidebar}/> )} />              
+                
                 <Route  exact path="/events" render={ () => (<Allevents {...this.props} showSidebar={this.showSidebar} />) } />
                 <Route exact path="/events/:id/contests"  render={ () => (<Contests {...this.props} hideSidebar={this.hideSidebar} />) } />
                 <Route path="/events/:id"  render={ () => (<Eventshow {...this.props} hideSidebar={this.hideSidebar} />) }  />

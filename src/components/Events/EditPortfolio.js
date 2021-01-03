@@ -5,25 +5,47 @@ import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 // import SearchIcon from '@material-ui/icons/Search';
-export default class CreatePortfolio extends Component {
+export default class EditPortfolio extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
              stocksList:undefined,
              selectedStocks:[],
-             portfolioName:"portfolio",
+             portfolioName:"portfoliox",
              error:"",
              mainStocksList:undefined,
              currentStock:"",
              success:"",
              portfolio:"",
-             currTrump:0
+             currTrump:0,
+             portfolioId:""
         }
         this.fetchStocks=this.fetchStocks.bind(this)
     }   
     componentDidMount(){
+
         this.fetchStocks();
+        this.fetchPortfolio();
+    }
+    fetchPortfolio = () => {
+        const contestId=window.location.pathname.split('/')[3];
+        const userId=localStorage.getItem('id');
+        fetch(`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestId}`)
+        .then(res => res.json())
+        .then(data => {
+            let currTrump=0;
+            let i;
+            for(i=0;i<data.data[0].selectedStocks.length;i++){
+                if(data.data[0].selectedStocks[i].isTrump) currTrump=i;
+            }
+            this.setState({
+                selectedStocks:data.data[0].selectedStocks,
+                portfolioName:data.data[0].name,  
+                currTrump:currTrump,
+                portfolioId:data.data[0].id
+            })
+        })
     }
     fetchStocks = () => {
         fetch(`${API2}/stocks?type=NiftyFifty`)
@@ -77,9 +99,17 @@ export default class CreatePortfolio extends Component {
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
         let selectedStocks=this.state.selectedStocks;
-        selectedStocks[this.state.currTrump].isTrump=true;
-        fetch(`${API2}/portfolios/`,{
-            method:"POST",
+        let currTrump=this.state.currTrump;
+        for(let i=0;i<selectedStocks.length;i++){
+            if(i===currTrump) 
+            selectedStocks[i].isTrump=true;
+            else
+            selectedStocks[i].isTrump=false;
+
+        }
+        console.log(this.state.portfolioName);
+        fetch(`${API2}/portfolios/${this.state.portfolioId}`,{
+            method:"PUT",
             headers: {
                 Accept:"application/json",
                 "authtoken":localStorage.getItem("authToken"),
@@ -104,7 +134,7 @@ export default class CreatePortfolio extends Component {
             }
             else{
                 this.setState({
-                    success:"Portfolio Successfully Created",
+                    success:"Portfolio Successfully Updated",
                     portfolio:data
                 })
             }
@@ -162,7 +192,7 @@ export default class CreatePortfolio extends Component {
                         }) : <div>No stocks avial</div>
                     }
 
-                    {this.state.selectedStocks.length===4 && <button onClick={this.createAportfolio} className="SubmitButton">Create Portfolio</button>}
+                    {this.state.selectedStocks.length===4 && <button onClick={this.createAportfolio} className="SubmitButton">Update Portfolio</button>}
                     </div>
                     <div className="stock-option-heading2">
                         {this.state.error?alert(this.state.error):null}

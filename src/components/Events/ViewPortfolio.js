@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import './css/portfolio.css';
 import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
-
-
+import { Fragment } from 'react';
+import {Link} from "react-router-dom";
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
 
 
 export default class ViewPortfolio extends Component {
@@ -31,6 +33,10 @@ export default class ViewPortfolio extends Component {
     }
     componentDidMount() {
         this.fetchPortfolio();
+        this.checkRegistration();
+    }
+    checkRegistration = () => {
+        
     }
     participateInContest = () => {
         const eventId=window.location.pathname.split('/')[2];
@@ -55,7 +61,12 @@ export default class ViewPortfolio extends Component {
          .then(data => console.log(data))
          .catch(err => console.log("error ",err))
     }
+    roundToNPlaces = (num,n) => {
+        return +(Math.round(num+"e+"+n)+"e-"+n)
+    }
     render() {
+        const eventId=window.location.pathname.split('/')[2];
+        const contestId=window.location.pathname.split('/')[3];
         return (
             <div>
             <div className="portfolio-box">
@@ -74,28 +85,42 @@ export default class ViewPortfolio extends Component {
                                 <div key={index} id="stock">
                                     <div style={{'alignSelf':"flex-end"}}>
                                     <span id="stock-name">{stock.name}</span>
-                                    <span id="stock-val"> 
-                                    {
-                                        stock.dayTrend>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
+                                    <span id="stock-val">
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} />
+                                    {
+                                        stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
+
+                                        :<ArrowDownward style={{ fontSize: 15 }} color="secondary"/>
                                     }
-                                        {stock.dayTrend>0? stock.dayTrend : -stock.dayTrend}
+                                        {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
                                     </span>
                                     </div>
+                                    <span className="TrumpStar">
                                     
+                                    {stock.isTrump?<StarIcon style={{color:"#EDBD46"}}/>:
+                                            <StarBorderIcon style={{color:"#EDBD46"}} />
+                                    }
+                                    </span>  
                                 </div>
                             )
                         }) : <div>No stocks avial</div>
                     }
-                    {this.state.portfolio && this.state.portfolio.length>0  && 
-                    <button   className="SubmitButton" onClick={() => {this.participateInContest();}}>
-                            Participate
-                    </button>
-                    }
+                    
                     </div>
-                   
+                    {this.state.portfolio && this.state.portfolio.length>0  && 
+                       <Fragment>
+                        <button   className="SubmitButton"  onClick={() => {this.participateInContest();}}>
+                            Participate
+                        </button>
+                        <Link className="EditPortfolioButton" to={`/events/${eventId}/${contestId}/createportfolio`}>
+                            Edit Portfolio
+                        </Link>
+                    
+                        </Fragment>
+                    
+                    }
                 </div>
+                    
             </div>
            
             </div>

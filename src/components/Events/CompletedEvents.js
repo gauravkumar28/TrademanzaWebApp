@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { API } from '../../backend';
 
 
-export class Moreevents extends React.Component{
+export class CompletedEvents extends React.Component{
         constructor(props) {
             super(props);
             this.state = {  

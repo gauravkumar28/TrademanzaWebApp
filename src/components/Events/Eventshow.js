@@ -12,6 +12,7 @@ import PrizeBreakup from './PrizeBreakup';
 import ViewPortfolio from './ViewPortfolio';
 import PrivateRoute from './helper/PrivateRoutes';
 import { API2 } from '../../backend';
+import EditPortfolio from './EditPortfolio';
 
 export class Eventshow extends React.Component {
     constructor(props) {
@@ -56,7 +57,10 @@ export class Eventshow extends React.Component {
                         
                         <PrivateRoute exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
                         <PrivateRoute exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
+                        {/* // here also the cheker can be added  */}
                         <PrivateRoute exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
+                        <PrivateRoute exact path="/events/:eventid/:contestid/editportfolio"  component={EditPortfolio} />
+                        
                         <PrivateRoute exact path="/events/:eventid/:contestid/viewportfolio"   component={ViewPortfolio} />              
                 </Switch>
                 

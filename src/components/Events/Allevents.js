@@ -31,16 +31,16 @@ export class Allevents extends React.Component{
                     {
                          events.map((task,index) => {
                              return (
+                                        <Link to={`/events/${task.id}/contests`}>
                                  <div key={index} className="eventbox">
                                  <div className="event-item">
                                     {task.name}
                                     </div>
                                     <div className="event-itemlink">
-                                        <Link to={`/events/${task.id}/contests`}>
                                                 Play
-                                        </Link>
                                     </div> 
                                  </div>
+                                        </Link>
                              )
                          })      
                     }

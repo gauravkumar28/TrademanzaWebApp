@@ -6,16 +6,26 @@ export const isAuthenticated = () => {
         return true;
     }
 }
+// export  const  isPortfolioCreated  = async(contestId ) => {
+//     if(isAuthenticated()){
+//         const userId=localStorage.getItem("id");
+//         console.log("fetching url",`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestId}`);
+//         const res= await fetch(`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestId}`)
+//         const data= await  res.json();
+//         if(data.error) return false;
+//         if(data.data.length>0) {
+//                 return true;
+//         }
+//         return false;
 
+//     }
+// }
 // export const getPortfolio = (contestId) => {
 //     if(typeof window == "undefined"){
 //         return false;
 //     }
 //     if(localStorage.getItem("id")){
-//         // from here we wil get id of the user 
 //         const userId=localStorage.getItem("id");
-//         // const userId="5f8c45de46dcee5f2ab11517";
-//         let portfolioChecker=false;
 //         fetch(`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestId}`)
 //         .then(res => res.json())
 //         .then(data => {

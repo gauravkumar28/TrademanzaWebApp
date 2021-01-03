@@ -4,9 +4,6 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
-a{
-    color: black;
-}
 
 .eventbox{
     display: flex;
@@ -16,12 +13,17 @@ a{
     height:120px;
     font-weight: bold;
     font-size: 1.2em;   
+    color: white;
+    
 }
 .event-item{
     height: 100%;
     width: 80%;
     background:  rgba(41,45,50,1);
     border-radius:15px 0px 0px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -33,7 +35,7 @@ a{
     display: flex;
     align-items:center;
     justify-content: center;
-    flex-direction: center;
+
 }
 @media (max-width:400px){
     .eventbox{
@@ -61,7 +63,7 @@ a{
 .eventbox:hover .event-item {
     background-color: #5958D4;
 }   
-.eventbox:hover .event-itemlink {
-    color: #5958D4;
+.eventbox:hover .event-itemlink  {
+    background: #5958D4;
 } 
 

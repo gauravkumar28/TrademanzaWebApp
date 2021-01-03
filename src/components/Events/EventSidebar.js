@@ -1,64 +1,76 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React,{Fragment,useEffect,useState} from 'react';
+import {Link,withRouter} from 'react-router-dom';
+
 import './css/events.css';
 import logo from '../images/favicon.png';
 
-class EventSidebar extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = { color1: "white",color2:"white",color3:"#5958D4",color4:"white"};
+
+const currentTab = (history, path) => {
+    if (history.location.pathname === path) {
+      return  "#5958D4" ;
+    } else {
+      return "#FFFFFF" ;
     }
-    prizeBreakup = () => {
-        this.setState({ color1: '#5958D4',color2:'white',color3:'white',color4:"white" });
-    }
-    leaderBoard= () => {
-        this.setState({ color1: 'white',color2:'#5958D4',color3:'white',color4:"white" });
-    }
-    createPortfolio = () => {
-        this.setState({ color1: 'white',color2:'white',color3:'#5958D4',color4:"white"  });
-    }
-    viewPortfolio =()=>{
-        this.setState({color1:'white',color2:'white',color3:'white',color4:'#5958D4' })
-    }
-    componentDidMount(){
-        if(window.location.pathname.split('/')[4]==="prizebreakup")
-            this.prizeBreakup();
-        if(window.location.pathname.split('/')[4]==="leaderboard")
-            this.leaderBoard();
-        if(window.location.pathname.split('/')[4]==="createportfolio")
-            this.createPortfolio();
-        if(window.location.pathname.split('/')[4]==="viewportfolio")
-            this.viewPortfolio();
-    }
-    render(){
+};
+
+const EventSidebar = ({history}) => {
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
+        const [portfolio, setPortfolio] = useState([])
+        const checkPortfolio = () => {
+            fetch(`https://stgapi.trademanza.com/portfolios?userId=${localStorage.getItem('id')}&contestId=${contestid}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.error){
+                    setPortfolio([]);
+                    return null;
+                }
+                    setPortfolio(data.data);
+                return data.data;
+            })
+        }
+        useEffect(checkPortfolio,[]);
         return(
             <div id="sidebar" >
                 <li className="sidebar-item">
-                    <Link   style={{color:this.state.color1}} onClick={this.prizeBreakup} to={`/events/${eventid}/${contestid}/prizebreakup`} >
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/prizebreakup`)}}  to={`/events/${eventid}/${contestid}/prizebreakup`} >
                         Prize Breakup
                     </Link>
                 </li>
                 <li className="sidebar-item">
-                    <Link  style={{color:this.state.color2}} onClick={this.leaderBoard} to={`/events/${eventid}/${contestid}/leaderboard`} >
+                    <Link  style={{color:currentTab(history,`/events/${eventid}/${contestid}/leaderboard`)}} to={`/events/${eventid}/${contestid}/leaderboard`} >
                         Leaderboard
                     </Link>
                 </li>
-                <li className="sidebar-item" >
-                    <Link   style={{color:this.state.color3}} onClick={this.createPortfolio} to={`/events/${eventid}/${contestid}/createportfolio`} >
-                        Create Portfolio
+                { portfolio.length>0 ? 
+                    <Fragment>
+                    <li className="sidebar-item" >
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/editportfolio`)}}  to={`/events/${eventid}/${contestid}/editportfolio`} >
+                        {/* the checker will come here  */}
+                        Edit Portfolio
                     </Link>
-                </li>
-                <li className="sidebar-item">
-                    <Link   style={{color:this.state.color4}} onClick={this.viewPortfolio} to={`/events/${eventid}/${contestid}/viewportfolio`} >
+                    </li>
+                    <li className="sidebar-item">
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/viewportfolio`)}}  to={`/events/${eventid}/${contestid}/viewportfolio`} >
                         View Portfolio
                     </Link>
-                </li>
+                    </li>
+                    
+                    </Fragment>
+                    :
+                    <li className="sidebar-item" >
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/createportfolio`)}}  to={`/events/${eventid}/${contestid}/createportfolio`} >
+                        {/* the checker will come here  */}
+                        Create Portfolio
+                    </Link>
+                    </li>
+                }
+
+
                 <img src={logo} className="logo-design" alt="logo"></img>
             </div >
 
     );
-    }
 }
-export default EventSidebar;
+
+export default withRouter(EventSidebar);

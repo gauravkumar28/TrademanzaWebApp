@@ -100,7 +100,7 @@
     color: #0bba57;
     font-weight: bold;
 }
-#stock-sub,#Selectedstock-sub{
+#stock-remove,#stock-sub,#Selectedstock-sub{
     height:20px;
     background: white;
     border: none;
@@ -109,7 +109,17 @@
     font-size: 25px;
     
 }
-
+#stock-remove{
+    background:rgba(89,88,212,1);
+}
+.removeAndTrump{
+    justify-content: center;
+    /* margin-bottom: 2px; */
+}
+.TrumpStar{
+    margin-right: 20px;
+    /* background-color: red; */
+}
 button:focus{
     outline:none;
     border: none;
@@ -121,7 +131,8 @@ button:focus{
 }
 #Selectedstock{
         background:rgba(89,88,212,1);
-       justify-content: flex-start;
+       justify-content: space-between;
+
 }
 #Selectedstock-name{
     color: white;
@@ -131,7 +142,7 @@ button:focus{
     width: 50px;
     /* background: red; */
 }
-.SubmitButton{
+.SubmitButton,.EditPortfolioButton{
      background:rgba(89,88,212,1);
      border-radius: 15px;
      margin: 10px;
@@ -195,7 +206,7 @@ iframe{
     /* padding: 10px; */
 }
 .Stock-Search-Box{
-    width: 300px;
+    width: 90%;
     font-weight: 900;
     padding: 20px;
     background: rgba(41,45,50,1);
@@ -203,7 +214,7 @@ iframe{
     color: #ffffff;
     border-radius: 20px;
     height: 35px;
-    font-size: 25px;
+    font-size: 20px;
 }
 .Stock-Search-Box:focus{
     outline:none;

@@ -32,7 +32,6 @@ export default class Leaderboard extends Component {
                         <div className="leaderboardBox">
                             <div className="leaderboardData">
                                 <div>
-    
                                         <h2 >Rank</h2>
                                         {
                                             this.state.leaderboard && 

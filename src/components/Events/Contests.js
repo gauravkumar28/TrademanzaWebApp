@@ -32,18 +32,16 @@ export default class Contests extends Component {
                     (this.state.contestslist &&  this.state.contestslist.NiftyFifty.length!==0) ? 
                     this.state.contestslist.NiftyFifty.map((contest,index) => {
                         return (
+                                <Link to={`/events/${eventid}/${contest.id}/createportfolio`}>
                             <div key={index} className="eventbox">
                             <div className="event-item">
                             {contest.name}
-                            {contest.startTime}
-                            {contest.details}
                             </div>
                             <div className="event-itemlink">
-                                <Link to={`/events/${eventid}/${contest.id}/createportfolio`}>
                                         Play
-                                </Link>
                             </div> 
                             </div>
+                                </Link>
                         )
                     }) : <div>no contests </div>     
                 }                  
