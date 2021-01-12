@@ -52,7 +52,7 @@ class  LoginorSignup extends Component{
             phone:"",
             email:"",
             fcmToken:"",
-            referredBy:"",
+            referredCode:"",
             mobileno:"",
             emailid:"",
             showlogin:true,
@@ -112,6 +112,7 @@ class  LoginorSignup extends Component{
                         userName: this.state.userName,
                         phone:this.state.phone,
                         email:this.state.email,
+                        referralCode:this.state.referredBy
                     })
                     })
                     .then(response => response.json())
@@ -160,33 +161,7 @@ class  LoginorSignup extends Component{
                 document.getElementById('loginbtn').disabled=false;
             });
     };
-    // login(e){
-    //     e.preventDefault();
-    //     fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
-    //         console.log(u);
-    //         window.location.href="/";
-    //     }).catch((err)=>{
-    //         console.log(err);
-    //         let code=err.code;
-    //         let res=code.split("/");
-    //         let msg=res[1].replaceAll("-"," ");
-    //         msg=msg.charAt(0).toUpperCase() + msg.slice(1);
-    //         alert(msg);
-    //     })
-    // }
-    // signup(e){
-    //     e.preventDefault();
-    //     fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
-    //         console.log(u);
-    //     }).catch((err)=>{
-    //         console.log(err);
-    //         let code=err.code;
-    //         let res=code.split("/");
-    //         let msg=res[1].replaceAll("-"," ");
-    //         msg=msg.charAt(0).toUpperCase() + msg.slice(1);
-    //         alert(msg);
-    //     })
-    // }
+   
     loginform=()=>{
         this.setState({showlogin:true});
     }
@@ -224,7 +199,7 @@ class  LoginorSignup extends Component{
                             </tbody>
                         </table>
                         <form onSubmit={this.onSignInSubmit}>
-                        <div id="recaptcha-container"></div>
+                        <div style={{display:"none"}} id="recaptcha-container"></div>
                         <input
                         type="tel"
                         id="mobileno"
@@ -303,6 +278,16 @@ class  LoginorSignup extends Component{
             className="input"
             onChange={this.handleChange}
             value={this.state.email} 
+            ></input>
+            <input
+            type="text"
+            id="referralCode"
+            name="referralCode"
+            style={input}
+            placeholder="Referral Code" 
+            className="input"
+            onChange={this.handleChange}
+            value={this.state.referralCode} 
             ></input>
             <br></br>
 

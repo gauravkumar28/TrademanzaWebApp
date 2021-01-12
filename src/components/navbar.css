@@ -3,3 +3,37 @@
   color:Black ;
   font-weight:bold;
 }
+
+.link:hover{
+  color:#5958D4
+}
+.useravatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+.item:hover{
+  background-color: #181B1F;
+}
+.dropdown-menu { background-color: #181B1F;
+  border:1px solid white;
+  text-align:left
+ }
+.phone{
+  color: lightgray;
+  font-size:15px;
+}
+.user-info:hover{
+  background-color: transparent;
+  cursor: context-menu;
+}
+.logout-info{
+  font-size: 20px;
+}
+.logout-info:hover{
+  background-color: transparent;
+}
+.displayname{
+  font-size:20px;
+}
+.dropdown-toggle:after { content: none }
