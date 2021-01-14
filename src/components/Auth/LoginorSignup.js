@@ -3,6 +3,7 @@ import fire from '../../config/fire';
 import firebase from 'firebase';
 import { Container,Row,Col} from 'react-bootstrap';
 import logo from '../images/favicon.png';
+import swal from 'sweetalert';
 import './login.css';
 const loginbutton={
     fontFamily: '"Gobold", sans-serif',
@@ -56,6 +57,7 @@ class  LoginorSignup extends Component{
             mobileno:"",
             emailid:"",
             showlogin:true,
+            otp:""
         }
     }
     componentDidMount(){
@@ -70,16 +72,7 @@ class  LoginorSignup extends Component{
             }
         })
     }
-    setUpRecaptcha=()=>{
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-            'size': 'invisible',
-            'callback': function(response) {
-              // reCAPTCHA solved, allow signInWithPhoneNumber.
-            //   console.log("captch resolved");
-              this.onSignInSubmit();
-            }
-          });
-    };
+   
     onSignUpSubmit = (event) =>{
         event.preventDefault();
         
@@ -97,7 +90,7 @@ class  LoginorSignup extends Component{
         .then(response => response.json())
         .then(response => {
             if(response.hasOwnProperty('error')){
-                alert(response.error.errorMsg);
+                swal({text:response.error.errorMsg});
             }
             else{
                 fetch("https://stgapi.trademanza.com/users", {
@@ -118,7 +111,8 @@ class  LoginorSignup extends Component{
                     .then(response => response.json())
                     .then(response => {
                     if(response.hasOwnProperty('error')){
-                        alert(response.error.errorMsg);
+                swal({text:response.error.errorMsg});
+                        
                     }else{
                         this.loginform();
                     }
@@ -133,18 +127,58 @@ class  LoginorSignup extends Component{
         
         
     }
+     getotp=async()=>{
+         var code="";
+        await swal({
+            title:"Enter OTP",
+            content: "input",
+            closeOnClickOutside:false,
+            closeOnEsc: false,
+            buttons: {
+                    confirm: "Submit"
+                }
+            })
+            .then((value) => {
+                code=value;
+            });
+        this.setState({otp:code});
+    }
+    setUpRecaptcha=()=>{
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': function(response) {
+              // reCAPTCHA solved, allow signInWithPhoneNumber.
+            //   console.log("captch resolved");
+              this.onSignInSubmit();
+            }
+          });
+    };
     onSignInSubmit = (event) =>{
-        // console.log(this.state.mobileno);
+        // event.preventDefault();
         document.getElementById('loginbtn').disabled=true;
-        event.preventDefault();
         this.setUpRecaptcha();
         var phoneNumber = this.state.mobileno;//getPhoneNumberFromUserInput();
         var appVerifier = window.recaptchaVerifier;
         firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then(function (confirmationResult) {
+            .then(async function (confirmationResult) {
 
+        var code="";
+        await swal({
+            title:"Enter OTP",
+            content: "input",
+            closeOnClickOutside:false,
+            closeOnEsc: false,
+            buttons: {
+                    confirm: "Submit"
+                }
+            })
+            .then((value) => {
+                code=value;
+            });
+            console.log(code);
             window.confirmationResult = confirmationResult;
-            var code = window.prompt("Enter OTP");//getCodeFromUserInput();
+            
+            // var code = window.prompt("Enter OTP");//getCodeFromUserInput();
             confirmationResult.confirm(code).then(function (result) {
                 console.log('signed in successfully');
                 var user = firebase.auth().currentUser;
@@ -153,11 +187,11 @@ class  LoginorSignup extends Component{
              window.location.href="/";   
             
             }).catch(function (error) {
-                alert('Entered OTP is invalid');
+                swal({text:'Entered OTP is invalid'})
                 document.getElementById('loginbtn').disabled=false;
             });
             }).catch(function (error) {
-                alert("SMS couldn't sent, Try again!");
+                swal({text:error.message});
                 document.getElementById('loginbtn').disabled=false;
             });
     };
@@ -198,7 +232,7 @@ class  LoginorSignup extends Component{
                                 </tr>
                             </tbody>
                         </table>
-                        <form onSubmit={this.onSignInSubmit}>
+                        <div >
                         <div style={{display:"none"}} id="recaptcha-container"></div>
                         <input
                         type="tel"
@@ -212,8 +246,8 @@ class  LoginorSignup extends Component{
                         ></input>
 
                         <br></br>
-            <button id="loginbtn" type="submit" style={submit} class="mybtn" >LOG IN</button>
-                        </form>
+            <button id="loginbtn" onClick={this.onSignInSubmit} type="submit" style={submit} className="mybtn" >LOG IN</button>
+                        </div>
                         </div>):(
                         <div><table>
                             <tbody>
@@ -291,7 +325,7 @@ class  LoginorSignup extends Component{
             ></input>
             <br></br>
 
-            <button type="submit" style={submit} class="mybtn" >Sign Up</button>         
+            <button type="submit" style={submit} className="mybtn" >Sign Up</button>         
             </form>  
 
                         </div>)

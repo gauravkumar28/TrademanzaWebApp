@@ -62,13 +62,13 @@ class Footer extends React.Component{
             <br></br>
             <div className="container-fluid" >
                 <div className="row">
-                    <div className="col-md-6 col-sm-6" style={{padding:"10px"}}>
+                    <div className="col-xl-3 col-md-6 col-sm-6" style={{padding:"10px"}}>
                         <img src={logo} style={image} alt="logo"></img>
                     </div>
-                    <div className="col-md-6 col-sm-6" style={footercontent}>
+                    <div className="col-xl-3 col-md-6 col-sm-6" style={footercontent}>
                     Over 1000+ users have already subscribed to our newsletter
                     </div>
-                    <div className="col-md-6 col-sm-6" style={{padding:"10px"}}>
+                    <div className="col-xl-3 col-md-6 col-sm-6" style={{padding:"10px"}}>
                         <p style={{fontSize:"15px",letterSpacing:"1px",marginLeft:"10px",paddingBottom:"15px"}}>FOLLOW US</p>
                         
                         <table className="table-borderless" style={table}>
@@ -100,7 +100,7 @@ class Footer extends React.Component{
                                 </tbody>
                         </table>
                     </div>
-                    <div className="col-md-6 col-sm-6" style={{padding:"10px"}}>
+                    <div className="col-xl-3 col-md-6 col-sm-6" style={{padding:"10px"}}>
                     <p style={{fontSize:"15px",letterSpacing:"1px"}}>NEWSLETTER</p>
                     <br></br>
                     <input type="text" id="useremail" name="useremail" placeholder="E-mail" style={email}  className="newsletter"></input>
