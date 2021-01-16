@@ -13,7 +13,7 @@ import ViewPortfolio from './ViewPortfolio';
 import PrivateRoute from './helper/PrivateRoutes';
 import { API2 } from '../../backend';
 import EditPortfolio from './EditPortfolio';
-
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 export class Eventshow extends React.Component {
     constructor(props) {
         super(props)
@@ -47,6 +47,7 @@ export class Eventshow extends React.Component {
             <div>
                 <div className="eventheader">
                     <h1>
+                    <ArrowBackIcon style={{fontSize:30}}/>
                     {currevent.name} 
                     </h1> 
                 </div>

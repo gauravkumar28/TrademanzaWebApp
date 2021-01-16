@@ -28,6 +28,9 @@ export default class PrizeBreakup extends Component {
         this.fetchPrizeList();
     }
     render() {
+        const contestid=window.location.pathname.split('/')[3];
+        const eventid=window.location.pathname.split('/')[2];
+        
         return (
             <div className="PrizeBreakup">
                     <div className="PrizeBreakupBox">
@@ -55,7 +58,7 @@ export default class PrizeBreakup extends Component {
                         </div>
                         <div className="InsideBox">
                                     
-                            <Link to="/events/:eventid/:contestid/createportfolio" >
+                            <Link to={`/events/${eventid}/${contestid}/createportfolio`} >
                                     Create Portfolio <ArrowForwardIcon  style={{ fontSize: 40 }} />
                             </Link>
                         </div>

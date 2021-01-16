@@ -19,7 +19,6 @@ export default class ViewPortfolio extends Component {
     fetchPortfolio = () => {
         const contestid=window.location.pathname.split('/')[3];
         const userId=localStorage.getItem("id");
-        // const userId="5f8c45de46dcee5f2ab11517";
         
         fetch(`${API2}/portfolios?userId=${userId}&contestId=${contestid}`)
         .then(res => res.json())
