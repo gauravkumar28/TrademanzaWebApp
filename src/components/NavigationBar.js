@@ -1,12 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Nav, Navbar} from 'react-bootstrap';
+import { Nav, Navbar,NavDropdown} from 'react-bootstrap';
+import { IoIosLogOut } from 'react-icons/io';
+import {FaRegUserCircle} from 'react-icons/fa';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import logo from './images/favicon.png';
 import styled from 'styled-components';
 import './navbar.css';
 import firebase from 'firebase';
 import fire from '../config/fire';
+
+
 
 const Styles = styled.div`
     .navbar{
@@ -43,7 +47,12 @@ const hr={
 class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { user: {}, logstatus:'Log In/Sign Up' ,colors: ["white","white","white","white","white"] };
+        this.state = { user: {}, 
+        logstatus:'Login' ,
+        colors: ["white","white","white","white","white"] ,
+        displayname:'',
+        phonenumber:'',
+        photoURL:null};
     }
     logout(){
         firebase.auth().signOut().then(function() {
@@ -65,7 +74,8 @@ class NavigationBar extends React.Component{
         if(x===4){
             if(this.state.logstatus ==='Logout'){
                 this.logout();
-                this.setState({logstatus:'Log In/Sign Up'});
+                this.setState({logstatus:'Login'});
+                window.location.href="/loginorsignup";
             }
         }
      }
@@ -100,6 +110,7 @@ class NavigationBar extends React.Component{
             user.getIdToken().then(function(idToken) {  
                 localStorage.setItem("authToken",idToken);
             });
+            this.setState(user.photoURL);
             fetch("https://stgapi.trademanza.com/users/signin", {
                 "method": "POST",
                 "headers": {
@@ -115,6 +126,9 @@ class NavigationBar extends React.Component{
                 .then(response => response.json())
                 .then(response => {
                 user=response.data;
+                console.log(user);
+                this.setState({displayname:user.name});
+                this.setState({phonenumber:user.phone});
                 if (typeof(Storage) !== "undefined") {
                     localStorage.setItem("userName", user.userName);
                     localStorage.setItem("id",user.id);
@@ -136,7 +150,7 @@ class NavigationBar extends React.Component{
         return(
             // style={{position:"fixed",width:"100%",top:"0",left:"0",background:"#181B1F",zIndex:"1"}}
     <Styles >
-        <Navbar expand="lg" >
+        <Navbar expand="md" fixed="top" style={{borderBottom:"1px solid white"}}>
             <Navbar.Brand href="/">
                 <img src={logo} style={logostyle} alt="logo"></img>
             </Navbar.Brand>
@@ -145,11 +159,11 @@ class NavigationBar extends React.Component{
                 <Nav className="ml-auto" style={{marginRight:"144px"}}>
                 <Nav.Item >
                     <Nav.Link >
-                        <Link exact to="/" style={{color:this.state.colors[0]}} onClick={(e) =>this.change_active(0)} >Home</Link>
+                        <Link  exact to="/" style={{color:this.state.colors[0]}} onClick={(e) =>this.change_active(0)} >Home</Link>
                         </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link>
+                    <Nav.Link >
                         <Link to="/insights" style={{color:this.state.colors[1]}} onClick={(e) =>this.change_active(1)}>Insights</Link>
                         </Nav.Link>
                 </Nav.Item>
@@ -163,16 +177,35 @@ class NavigationBar extends React.Component{
                     <Link to="/trainings" style={{color:this.state.colors[3]}} onClick={(e) => this.change_active(3)}>Trainings</Link>
                     </Nav.Link>
             </Nav.Item>
+
+            {this.state.logstatus ==='Login'?(
                 <Nav.Item>
                 <Nav.Link>
                     <Link to="/loginorsignup" style={{color:this.state.colors[4]}} onClick={(e) => this.change_active(4)}>{this.state.logstatus}</Link>
                     </Nav.Link>
             </Nav.Item>
+            ):(
+                <NavDropdown alignRight
+  title={
+    this.state.photoURL === null ?(<FaRegUserCircle />):
+(<img src={this.state.photoURL} className="useravatar" alt="user" />)}
+  id="collasible-nav-dropdown" >
+        <NavDropdown.Item href="#" className="user-info" ><div className="displayname">{this.state.displayname}</div>
+        <div className="phone">{this.state.phonenumber}</div></NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item  className="logout-info" href="#" onClick={(e) => this.change_active(4)}><IoIosLogOut /> Logout</NavDropdown.Item>
+      </NavDropdown>
+
+            )}
+                
                 
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
         <hr style={hr}></hr>
+        <br></br>
+        <br></br>
+
     </Styles>);
     }
 }

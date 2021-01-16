@@ -11,33 +11,41 @@ class Home extends Component {
     render() {
         return(
             <div className="container">
-                
-                <div class="grid-container">
-                    <div class="item1">
-                    <Carousel showArrows={false} transitionMs={1000} >
+                {/* <div className="grid-container"> */}
+                <div className="row">
+
+                    <div className="col-xl-6 col-md-6">
+                    <Carousel className="slideshow"  showArrows={false} transitionMs={1000} >
                         <Card text = "The fastest way to learn the stock market"/>
                         <Card text = "Play challenges and quizzes to learn & Earn"/>
                         <Card text = "Our users love us. ‎‎‏‏‎ ‎‏‏‎ ‎ here is what they say"/>
                     </Carousel>
 
-                    <h1 className="title2">‏‏‎<a href="https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN"> ‎DOWNLOAD NOW</a></h1>
                     </div>
-                    <div class ="item2">
-                    <div class="grid-container2">
+                    <div className="col-xl-6 col-md-6">
+                    {/* <div className="grid-container2"> */}
                     <div id="growContainer2">
-                    <div class="grow2" ><img src={img1} alt="i2" /></div>
-                    <div class="grow3" ><img src={img2} alt="i1" /> ‎</div>
+                    <div className="grow2" ><img src={img1} alt="i2" /></div>
+                    <div className="grow3" ><img src={img2} alt="i1" /> ‎</div>
+                    {/* </div> */}
                     </div>
-                    </div>
-                    </div>
+
                 </div>
+                <div className="row">
+                <h1 className="title2">‏‏‎<a href="https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN"> ‎DOWNLOAD NOW</a></h1>
+                </div>
+
+                    {/* </div> */}
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+
                 <h1 className="title3">OUR FEATURES</h1>
-                <div class="grid-container2">
                     <div id="growContainer">
-                    <div class="grow" > C </div>
-                    <div class="grow" > L </div>
-                    <div class="grow" > S </div>
-                    </div>
+                    <div className="grow" > C </div>
+                    <div className="grow" > L </div>
+                    <div className="grow" > S </div>
                 </div>
 
                 <h1 className="title3">How to play</h1>
@@ -47,7 +55,7 @@ class Home extends Component {
                 </div>
 
                 <h1 className="title3">About us</h1>
-                <div class="grid-container2">
+                <div className="row">
                     <div className="h2p"><p><strong>Trademanza</strong> aims to bring awareness among people 
                     about financial markets through mock stock games, news feed, learning modules, and quizzes. 
                     We, at Trademanza, believe financial knowledge is one such essential that is often ignored since 
