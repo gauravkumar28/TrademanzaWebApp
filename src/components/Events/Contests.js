@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './css/eventlist.css';
 import { Link } from "react-router-dom";
 import { API2 } from '../../backend';
+
 export default class Contests extends Component {
     constructor(props) {
         super(props)
@@ -32,7 +33,7 @@ export default class Contests extends Component {
                     (this.state.contestslist &&  this.state.contestslist.NiftyFifty.length!==0) ? 
                     this.state.contestslist.NiftyFifty.map((contest,index) => {
                         return (
-                                <Link to={`/events/${eventid}/${contest.id}/createportfolio`}>
+                                <Link to={`/events/${eventid}/${contest.id}/prizebreakup`}>
                             <div key={index} className="eventbox">
                             <div className="event-item">
                             {contest.name}

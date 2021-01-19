@@ -4,6 +4,8 @@ import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
+import { Redirect } from 'react-router-dom';
+
 export default class CreatePortfolio extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +19,8 @@ export default class CreatePortfolio extends Component {
              currentStock:"",
              success:"",
              portfolio:"",
-             currTrump:0
+             currTrump:0,
+             doRedirect:false
         }
         this.fetchStocks=this.fetchStocks.bind(this)
     }   
@@ -36,6 +39,13 @@ export default class CreatePortfolio extends Component {
             // console.log(this.state.stocksList);
         })
     }
+    performRedirect = () => {
+        const eventid=window.location.pathname.split('/')[2];
+        const contestid=window.location.pathname.split('/')[3];
+        if(this.state.doRedirect){
+          return <Redirect to={`/events/${eventid}/${contestid}/viewportfolio`} />
+        }
+      }
     selectTheStock = (stock) =>  {
         if(this.state.selectedStocks.length===4){
             this.setState({
@@ -104,9 +114,14 @@ export default class CreatePortfolio extends Component {
             else{
                 this.setState({
                     success:"Portfolio Successfully Created",
-                    portfolio:data
+                    portfolio:data,
+                    doRedirect:true
+                },() => {
+                    window.location.reload();
                 })
+
             }
+
         })
         .catch(err => console.log(err))
     }
@@ -116,6 +131,7 @@ export default class CreatePortfolio extends Component {
     render() {
         return (
             <div>
+            {this.performRedirect()}
             <div className="portfolio-box">
                 <div className="portfolio-details">
                     <input type="text" onChange={this.handlePortfolioNameChange} value={this.state.portfolioName} placeholder="enter your portfolio name"  className="portfolioNameInput" />
@@ -139,7 +155,7 @@ export default class CreatePortfolio extends Component {
                                         {
                                             stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
-                                            :<ArrowDownward style={{ fontSize: 15 }}  color="secondary" />
+                                            :<ArrowDownward style={{ fontSize: 15 }}  color="primary" />
                                         }
                                             {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
                                         </span>
@@ -193,7 +209,7 @@ export default class CreatePortfolio extends Component {
                                     {
                                         stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="secondary" />
+                                        :<ArrowDownward style={{ fontSize: 15,color:"red"}}  />
                                     }
                                         {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
                                     </span>

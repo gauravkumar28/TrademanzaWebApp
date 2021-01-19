@@ -44,14 +44,14 @@ const EventSidebar = ({history}) => {
                     </Link>
                 </li>
 
-                    {  contest.showEditPortfolioButton && 
+                    { !contest.showCreatePortfolioButton && contest.showEditPortfolioButton && 
                     <li className="sidebar-item" >
                     <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/editportfolio`)}}  to={`/events/${eventid}/${contestid}/editportfolio`} >
                         Edit Portfolio
                     </Link>
                     </li>
                     }
-                    {contest.hasJoined && 
+                    {((!contest.showCreatePortfolioButton && contest.showEditPortfolioButton) || contest.hasJoined ) && 
                         <li className="sidebar-item">
                         <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/viewportfolio`)}}  to={`/events/${eventid}/${contestid}/viewportfolio`} >
                             View Portfolio

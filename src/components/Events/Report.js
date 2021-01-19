@@ -35,7 +35,7 @@ const Report = () => {
                                     {
                                         stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="secondary"/>
+                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
                                     }
                                         {stock.dayTrendPercentage>0? roundToNPlaces(stock.dayTrendPercentage,2) : -roundToNPlaces(stock.dayTrendPercentage,2)}
                                     </span>
@@ -58,7 +58,7 @@ const Report = () => {
                                     {
                                         stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="secondary"/>
+                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
                                     }
                                         {stock.dayTrendPercentage>0? roundToNPlaces(stock.dayTrendPercentage,2) : -roundToNPlaces(stock.dayTrendPercentage,2)}
                                     </span>

@@ -64,8 +64,12 @@ export default class ViewPortfolio extends Component {
                 "userId":localStorage.getItem("id")
             })
          }).then(res => res.json())
-         .then(data => console.log(data))
-         .catch(err => console.log("error ",err))
+         .then(data => {
+             console.log(data)
+             window.location.reload();
+            })
+         
+        .catch(err => console.log("error ",err))
     }
     roundToNPlaces = (num,n) => {
         return +(Math.round(num+"e+"+n)+"e-"+n)
@@ -96,7 +100,7 @@ export default class ViewPortfolio extends Component {
                                     {
                                         stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="secondary"/>
+                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
                                     }
                                         {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
                                     </span>
