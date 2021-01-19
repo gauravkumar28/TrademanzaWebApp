@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './css/portfolio.css';
 import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
-import { Fragment } from 'react';
 import {Link} from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
@@ -10,16 +9,30 @@ import StarIcon from '@material-ui/icons/Star';
 
 export default class ViewPortfolio extends Component {
     constructor(props) {
-        super(props)
-    
+        super(props);
         this.state = {
-             portfolio:''
+             portfolio:'',
+             contest:''
         }
+    }
+    fetchContest = () => {
+        const userId=localStorage.getItem("id");
+        const contestid=window.location.pathname.split('/')[3];
+        fetch(`${API2}/contests/v2/${contestid}?userId=${userId}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.error){
+                return null;
+            }
+            this.setState({
+                contest:data.data
+            })
+            return data.data;
+        })
     }
     fetchPortfolio = () => {
         const contestid=window.location.pathname.split('/')[3];
         const userId=localStorage.getItem("id");
-        
         fetch(`${API2}/portfolios?userId=${userId}&contestId=${contestid}`)
         .then(res => res.json())
         .then(data => {
@@ -27,21 +40,15 @@ export default class ViewPortfolio extends Component {
                 portfolio:data.data
             })
         }) 
-
-    
     }
     componentDidMount() {
         this.fetchPortfolio();
-        this.checkRegistration();
-    }
-    checkRegistration = () => {
-        
+        this.fetchContest();
     }
     participateInContest = () => {
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
         const portfolioId=this.state.portfolio[0].id;
-        
          fetch(`${API2}/participations/`,{
             method:"POST",
             headers:{
@@ -106,17 +113,19 @@ export default class ViewPortfolio extends Component {
                     }
                     
                     </div>
-                    {this.state.portfolio && this.state.portfolio.length>0  && 
-                       <Fragment>
+                    {
+                        this.state.contest.showJoinContestButton &&
                         <button   className="SubmitButton"  onClick={() => {this.participateInContest();}}>
                             Participate
                         </button>
-                        <Link className="EditPortfolioButton" to={`/events/${eventId}/${contestId}/createportfolio`}>
+                    }
+                    {
+
+                    }
+                    {this.state.contest.showEditPortfolioButton  &&   
+                        <Link className="EditPortfolioButton" to={`/events/${eventId}/${contestId}/editportfolio`}>
                             Edit Portfolio
                         </Link>
-                    
-                        </Fragment>
-                    
                     }
                 </div>
                     

@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/eventlist.css';
 import { Link } from "react-router-dom";
-import { API } from '../../backend';
+import { API2 } from '../../backend';
 
 
 export class CompletedEvents extends React.Component{
@@ -13,7 +13,8 @@ export class CompletedEvents extends React.Component{
             this.fetchEvents=this.fetchEvents.bind(this)
         }
         fetchEvents = () =>{
-            fetch(`${API}/events?group=more`)
+            const userId=localStorage.getItem("id");
+            fetch(`${API2}/users/v3/${userId}/events?status=completed`)
             .then(response => response.json())
             .then(data => data.data)
             .then(data =>{ 
@@ -33,7 +34,7 @@ export class CompletedEvents extends React.Component{
                     {
                          events.map((task,index) => {
                              return (
-                                        <Link to={`/events/${task.id}/contests`}>
+                                        <Link to={`/events/${task.id}/completedcontests`}>
                                  <div key={index} className="eventbox">
                                  <div className="event-item">
                                     {task.name}

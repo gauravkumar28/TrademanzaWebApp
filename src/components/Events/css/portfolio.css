@@ -75,7 +75,7 @@
     border:1px solid white;
     background-color:rgba(255,255,255,0.1);
     margin-top: 5px;
-    width: 90%;
+    width: 14vw;
     border-radius: 20px;
     text-align: left;
     display: flex;
@@ -92,7 +92,6 @@
     font-weight: bold;
     font-size: 15px;
     font-family: "Arial";
-    
 
 }
 #stock-val,#Selectedstock-val{
@@ -144,6 +143,7 @@ button:focus{
 }
 .SubmitButton,.EditPortfolioButton{
      background:rgba(89,88,212,1);
+     color: black;
      border-radius: 15px;
      margin: 10px;
      width: 200px;
@@ -151,6 +151,9 @@ button:focus{
      font-size: 20px;
      font-weight: 700;
 
+}
+.EditPortfolioButton:hover{
+    color: black;
 }
 
 .portfolioNameInput{
@@ -219,4 +222,13 @@ iframe{
 .Stock-Search-Box:focus{
     outline:none;
     border: none;   
+}
+
+
+.report-div{
+    display: flex;
+    background: #ffffff;
+    width: 60vw;   
+    justify-content: space-evenly;
+
 }

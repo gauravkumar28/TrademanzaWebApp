@@ -1,9 +1,9 @@
-import React,{Fragment,useEffect,useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 
 import './css/events.css';
 import logo from '../images/favicon.png';
-
+import { API2 } from '../../backend';
 
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
@@ -16,20 +16,21 @@ const currentTab = (history, path) => {
 const EventSidebar = ({history}) => {
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
-        const [portfolio, setPortfolio] = useState([])
-        const checkPortfolio = () => {
-            fetch(`https://stgapi.trademanza.com/portfolios?userId=${localStorage.getItem('id')}&contestId=${contestid}`)
+        const [contest, setContest] = useState([]);
+        const userId=localStorage.getItem("id");
+        const fetchContest = () => {
+            fetch(`${API2}/contests/v2/${contestid}?userId=${userId}`)
             .then(res => res.json())
             .then(data => {
                 if(data.error){
-                    setPortfolio([]);
+                    setContest([]);
                     return null;
                 }
-                    setPortfolio(data.data);
+                setContest(data.data);
                 return data.data;
             })
         }
-        useEffect(checkPortfolio,[]);
+        useEffect(fetchContest,[]);
         return(
             <div id="sidebar" >
                 <li className="sidebar-item">
@@ -42,29 +43,37 @@ const EventSidebar = ({history}) => {
                         Leaderboard
                     </Link>
                 </li>
-                { portfolio.length>0 ? 
-                    <Fragment>
+
+                    {  contest.showEditPortfolioButton && 
                     <li className="sidebar-item" >
                     <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/editportfolio`)}}  to={`/events/${eventid}/${contestid}/editportfolio`} >
-                        {/* the checker will come here  */}
                         Edit Portfolio
                     </Link>
                     </li>
-                    <li className="sidebar-item">
-                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/viewportfolio`)}}  to={`/events/${eventid}/${contestid}/viewportfolio`} >
-                        View Portfolio
-                    </Link>
-                    </li>
+                    }
+                    {contest.hasJoined && 
+                        <li className="sidebar-item">
+                        <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/viewportfolio`)}}  to={`/events/${eventid}/${contestid}/viewportfolio`} >
+                            View Portfolio
+                        </Link>
+                        </li>
+                    }
                     
-                    </Fragment>
-                    :
+
+                    {contest.showCreatePortfolioButton && 
                     <li className="sidebar-item" >
-                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/createportfolio`)}}  to={`/events/${eventid}/${contestid}/createportfolio`} >
-                        {/* the checker will come here  */}
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/createportfolio`)}}  to={`/events/${eventid}/${contestid}/createportfolio`} >  
                         Create Portfolio
                     </Link>
                     </li>
-                }
+                    }
+                    {contest.showReport && 
+                    <li className="sidebar-item" >
+                    <Link   style={{color:currentTab(history,`/events/${eventid}/${contestid}/report`)}}  to={`/events/${eventid}/${contestid}/report`} >
+                        Report 
+                    </Link>
+                    </li>
+                    }
 
 
                 <img src={logo} className="logo-design" alt="logo"></img>

@@ -4,7 +4,6 @@ import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
-// import SearchIcon from '@material-ui/icons/Search';
 export default class CreatePortfolio extends Component {
     constructor(props) {
         super(props)

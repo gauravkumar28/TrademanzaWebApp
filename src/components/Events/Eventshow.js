@@ -14,6 +14,7 @@ import PrivateRoute from './helper/PrivateRoutes';
 import { API2 } from '../../backend';
 import EditPortfolio from './EditPortfolio';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Report from './Report';
 export class Eventshow extends React.Component {
     constructor(props) {
         super(props)
@@ -58,10 +59,9 @@ export class Eventshow extends React.Component {
                         
                         <PrivateRoute exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
                         <PrivateRoute exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
-                        {/* // here also the cheker can be added  */}
                         <PrivateRoute exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
                         <PrivateRoute exact path="/events/:eventid/:contestid/editportfolio"  component={EditPortfolio} />
-                        
+                        <PrivateRoute exact path="/events/:eventid/:contestid/report"  component={Report} />
                         <PrivateRoute exact path="/events/:eventid/:contestid/viewportfolio"   component={ViewPortfolio} />              
                 </Switch>
                 

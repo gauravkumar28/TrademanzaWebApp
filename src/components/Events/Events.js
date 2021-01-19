@@ -15,6 +15,7 @@ import { CompletedEvents } from './CompletedEvents';
 
 import {Eventshow} from './Eventshow';
 import Contests from './Contests';
+import CompletedContests from './CompletedContests';
 
 
  class Events extends React.Component {
@@ -46,9 +47,9 @@ import Contests from './Contests';
                 <Route exact path="/events/upcoming" render={ () => (<Upcomingevent {...this.props} showSidebar={this.showSidebar}/> )} />
                 <Route exact path="/events/more"   render={ () => (<Moreevents {...this.props} showSidebar={this.showSidebar}/> )} />              
                 <Route exact path="/events/completed"   render={ () => (<CompletedEvents {...this.props} showSidebar={this.showSidebar}/> )} />              
-                
                 <Route  exact path="/events" render={ () => (<Allevents {...this.props} showSidebar={this.showSidebar} />) } />
                 <Route exact path="/events/:id/contests"  render={ () => (<Contests {...this.props} hideSidebar={this.hideSidebar} />) } />
+                <Route exact path="/events/:id/completedcontests"  render={ () => (<CompletedContests {...this.props} hideSidebar={this.hideSidebar} />) } />
                 <Route path="/events/:id"  render={ () => (<Eventshow {...this.props} hideSidebar={this.hideSidebar} />) }  />
           </Switch>
       </div>
