@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { Container,Row,Col} from 'react-bootstrap';
 import logo from '../images/favicon.png';
 import swal from 'sweetalert';
+import '../popup.css';
 import './login.css';
 const loginbutton={
     fontFamily: '"Gobold", sans-serif',

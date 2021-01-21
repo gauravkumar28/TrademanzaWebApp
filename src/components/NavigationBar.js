@@ -60,6 +60,7 @@ class NavigationBar extends React.Component{
             if (typeof(Storage) !== "undefined") {
                 localStorage.removeItem("userName");
                 localStorage.removeItem("id");
+                localStorage.removeItem("authToken");
             } else {
                 console.log("Sorry, your browser does not support Web Storage...");
             }
