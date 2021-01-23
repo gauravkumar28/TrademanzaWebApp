@@ -49,7 +49,7 @@ class Home extends Component {
                 </div>
 
                 <h1 className="title3">How to play</h1>
-                <div class="grid-container2">
+                <div className="grid-container2">
                     <div className="video-container"><iframe title="video" src="https://www.youtube.com/embed/_sYg3xa4wB4" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"  frameborder="0">
     </iframe> </div>
                 </div>

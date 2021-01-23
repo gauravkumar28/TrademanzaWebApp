@@ -61,21 +61,30 @@ class  LoginorSignup extends Component{
             otp:""
         }
     }
-    componentDidMount(){
-        this.authListener();
+    
+    validatePhoneNumber=(number)=>{
+        var phonenumber = number;
+        if(phonenumber.length!==10){
+            swal({text:"Phone number must be 10 digits"});
+            return false;
+        }else{
+            return true;
+        }
     }
-    authListener(){
-            
-        fire.auth().onAuthStateChanged((user)=>{
-            if(user){
-            window.location.href="/";   
-
-            }
-        })
+    validateEmail=(email)=>{
+        let regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(!regEmail.test(email)){
+            swal({text:'Invalid Email'});
+            return false;
+        }
+        else{
+            return true;
+        }
     }
-   
     onSignUpSubmit = (event) =>{
         event.preventDefault();
+
+        if(this.state.name&&this.state.userName&&this.state.phone&&this.state.email){
         
         fetch("https://stgapi.trademanza.com/users/validate_input", {
         "method": "POST",
@@ -94,6 +103,7 @@ class  LoginorSignup extends Component{
                 swal({text:response.error.errorMsg});
             }
             else{
+                if(this.validatePhoneNumber(this.state.phone)&&this.validateEmail(this.state.email)){
                 fetch("https://stgapi.trademanza.com/users", {
                     "method": "POST",
                     "headers": {
@@ -104,7 +114,7 @@ class  LoginorSignup extends Component{
                     "body": JSON.stringify({
                         name:this.state.name,
                         userName: this.state.userName,
-                        phone:this.state.phone,
+                        phone:"+91"+this.state.phone,
                         email:this.state.email,
                         referralCode:this.state.referredBy
                     })
@@ -121,28 +131,23 @@ class  LoginorSignup extends Component{
                     .catch(err => {
                         
                     });
+                }
             }
         })
         .catch(err => {
         });
-        
-        
+    }else{
+        if(this.state.name==="")
+            swal({text:'Name is Required'});
+        else if(!this.state.userName)
+            swal({text:'Username is Required'});
+        else if(!this.state.phone)
+            swal({text:'Phone Number is Required'});
+        else if(!this.state.email)
+            swal({text:'Email is Required'});
+
     }
-     getotp=async()=>{
-         var code="";
-        await swal({
-            title:"Enter OTP",
-            content: "input",
-            closeOnClickOutside:false,
-            closeOnEsc: false,
-            buttons: {
-                    confirm: "Submit"
-                }
-            })
-            .then((value) => {
-                code=value;
-            });
-        this.setState({otp:code});
+        
     }
     setUpRecaptcha=()=>{
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
@@ -154,11 +159,14 @@ class  LoginorSignup extends Component{
             }
           });
     };
+    
     onSignInSubmit = (event) =>{
         // event.preventDefault();
+
+        if(this.validatePhoneNumber(this.state.mobileno)){
         document.getElementById('loginbtn').disabled=true;
         this.setUpRecaptcha();
-        var phoneNumber = this.state.mobileno;//getPhoneNumberFromUserInput();
+        var phoneNumber = "+91"+this.state.mobileno;//getPhoneNumberFromUserInput();
         var appVerifier = window.recaptchaVerifier;
         firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
             .then(async function (confirmationResult) {
@@ -170,7 +178,8 @@ class  LoginorSignup extends Component{
             closeOnClickOutside:false,
             closeOnEsc: false,
             buttons: {
-                    confirm: "Submit"
+                closeModal:"Close",
+                confirm: "Submit"
                 }
             })
             .then((value) => {
@@ -180,13 +189,39 @@ class  LoginorSignup extends Component{
             window.confirmationResult = confirmationResult;
             
             // var code = window.prompt("Enter OTP");//getCodeFromUserInput();
-            confirmationResult.confirm(code).then(function (result) {
+            confirmationResult.confirm(code).then(async function (result) {
                 console.log('signed in successfully');
-                var user = firebase.auth().currentUser;
-                
-                console.log(user);
-             window.location.href="/";   
-            
+                await fire.auth().onAuthStateChanged((user)=>{
+                    if(user){
+                        console.log(user);
+                        user.getIdToken().then(function(idToken) {  
+                            localStorage.setItem("authToken",idToken);
+                        });
+                        fetch("https://stgapi.trademanza.com/users/signin", {
+                        "method": "POST",
+                        "headers": {
+                            "x-rapidapi-host": "stgapi.trademanza.com",
+                            "content-type": "application/json",
+                            "accept": "application/json"
+                        },
+                        "body": JSON.stringify({
+                            uid:user.uid,
+                            phone:user.phoneNumber
+                        })
+                        })
+                        .then(response => response.json())
+                        .then(response => {
+                            const user_data=response.data;
+                            localStorage.setItem("userName", user_data.userName);
+                            localStorage.setItem("id",user_data.id);
+                            window.location.href="/";
+
+                        })
+                        .catch(err => {
+                        console.log(err);
+                        });
+                    }
+                });
             }).catch(function (error) {
                 swal({text:'Entered OTP is invalid'})
                 document.getElementById('loginbtn').disabled=false;
@@ -195,6 +230,7 @@ class  LoginorSignup extends Component{
                 swal({text:error.message});
                 document.getElementById('loginbtn').disabled=false;
             });
+        }
     };
    
     loginform=()=>{
@@ -228,7 +264,6 @@ class  LoginorSignup extends Component{
                                     </td>
                                     <td>
                                     <span className="signupbtn" style={signupbutton} onClick={this.signupform} >SIGN UP</span>
-
                                     </td>
                                 </tr>
                             </tbody>
@@ -236,11 +271,12 @@ class  LoginorSignup extends Component{
                         <div >
                         <div style={{display:"none"}} id="recaptcha-container"></div>
                         <input
-                        type="tel"
+                        type="number"
+                        max="9999999999" 
                         id="mobileno"
                         name="mobileno"
                         style={input}
-                        placeholder="+911234567890" 
+                        placeholder="Phone Number" 
                         className="input"
                         onChange={this.handleChange}
                         value={this.state.mobileno} 
@@ -282,7 +318,7 @@ class  LoginorSignup extends Component{
             <br></br>
 
             <input
-            type="text"
+            type=""
             id="userName"
             name="userName"
             style={input}
@@ -298,7 +334,7 @@ class  LoginorSignup extends Component{
             id="phone"
             name="phone"
             style={input}
-            placeholder="+911234567890" 
+            placeholder="Phone Number" 
             className="input"
             onChange={this.handleChange}
             value={this.state.phone} 

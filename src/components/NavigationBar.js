@@ -12,6 +12,7 @@ import fire from '../config/fire';
 
 
 
+
 const Styles = styled.div`
     .navbar{
         background-color:#181B1F;  
@@ -47,15 +48,15 @@ const hr={
 class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { user: {}, 
-        logstatus:'Login' ,
+        this.state = { 
+        logstatus:'Login',
         colors: ["white","white","white","white","white"] ,
         displayname:'',
         phonenumber:'',
         photoURL:null};
     }
-    logout(){
-        firebase.auth().signOut().then(function() {
+    logout=()=>{
+         firebase.auth().signOut().then(function() {
             // Sign-out successful.
             if (typeof(Storage) !== "undefined") {
                 localStorage.removeItem("userName");
@@ -64,8 +65,9 @@ class NavigationBar extends React.Component{
             } else {
                 console.log("Sorry, your browser does not support Web Storage...");
             }
+            
           }).catch(function(error) {
-            // An error happened.
+            console.log(error);
           });
     }
     change_active = (x) => {
@@ -76,41 +78,31 @@ class NavigationBar extends React.Component{
             if(this.state.logstatus ==='Logout' ){
                 this.logout();
                 this.setState({logstatus:'Login'});
-                window.location.href="/loginorsignup";
+            window.location.href="/loginorsignup";
             }
         }
      }
      componentDidMount(){
+         
         if(window.location.pathname==="/")
             this.change_active(0);
-        if(window.location.pathname==="/insights")
+        else if(window.location.pathname==="/insights")
             this.change_active(1);
-        if(window.location.pathname==="/events")
+        else if(window.location.pathname==="/events")
             this.change_active(2);
-        if(window.location.pathname==="/trainings")
+        else if(window.location.pathname==="/trainings")
             this.change_active(3);
-        if(window.location.pathname==="/loginorsignup")
+        else if(window.location.pathname==="/loginorsignup")
             this.change_active(4);
         this.authListener();
-        
       }
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
-    authListener(){
-        if (typeof(Storage) !== "undefined") {
-            // Store
-        console.log(localStorage.getItem("id"));
-            
-            // Retrieve
-        } else {
-            console.log("Sorry, your browser does not support Web Storage...");
-        }
-        fire.auth().onAuthStateChanged((user)=>{
-          if(user){
-            user.getIdToken().then(function(idToken) {  
-                localStorage.setItem("authToken",idToken);
-            });
-            this.setState(user.photoURL);
-            fetch("https://stgapi.trademanza.com/users/signin", {
+    authListener=()=>{
+        
+            fire.auth().onAuthStateChanged((user)=>{
+            if(user){
+                this.setState({logstatus:"Logout",photoURL:user.photoURL});
+                fetch("https://stgapi.trademanza.com/users/signin", {
                 "method": "POST",
                 "headers": {
                     "x-rapidapi-host": "stgapi.trademanza.com",
@@ -124,27 +116,16 @@ class NavigationBar extends React.Component{
                 })
                 .then(response => response.json())
                 .then(response => {
-                user=response.data;
-                console.log(user);
-                this.setState({displayname:user.name});
-                this.setState({phonenumber:user.phone});
-                if (typeof(Storage) !== "undefined") {
-                    localStorage.setItem("userName", user.userName);
-                    localStorage.setItem("id",user.id);
-                } else {
-                    console.log("Sorry, your browser does not support Web Storage...");
-                }
+                    user=response.data;
+                    this.setState({displayname:user.name,phonenumber:user.phone});
                 })
                 .catch(err => {
                 console.log(err);
                 });
-            this.setState({user,logstatus:"Logout"})
-          }
-          else{
-            this.setState({user:null})
-          }
-        });
-      }
+                
+                }
+            });
+    }
     render(){
         return(
             // style={{position:"fixed",width:"100%",top:"0",left:"0",background:"#181B1F",zIndex:"1"}}
@@ -191,7 +172,6 @@ class NavigationBar extends React.Component{
   id="collasible-nav-dropdown" >
         <NavDropdown.Item href="#" className="user-info" ><div className="displayname">{this.state.displayname}</div>
         <div className="phone">{this.state.phonenumber}</div></NavDropdown.Item>
-        <NavDropdown.Divider />
         <NavDropdown.Item  className="logout-info" href="#" onClick={(e) => this.change_active(4)}><IoIosLogOut /> Logout</NavDropdown.Item>
       </NavDropdown>
 
