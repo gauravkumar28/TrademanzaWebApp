@@ -5,6 +5,7 @@ import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import { Redirect } from 'react-router-dom';
+import swal from 'sweetalert';
 
 export default class CreatePortfolio extends Component {
     constructor(props) {
@@ -107,9 +108,7 @@ export default class CreatePortfolio extends Component {
         .then(data => {
             console.log(data)
             if(data.error){
-                this.setState({
-                    error:data.error.errorMsg
-                })
+                swal({text:data.error.errorMsg})
             }
             else{
                 this.setState({
@@ -117,7 +116,10 @@ export default class CreatePortfolio extends Component {
                     portfolio:data,
                     doRedirect:true
                 },() => {
-                    window.location.reload();
+                    swal({text:this.state.success})
+                    .then(() => {
+                        window.location.reload();
+                    })
                 })
 
             }
@@ -180,8 +182,8 @@ export default class CreatePortfolio extends Component {
                     {this.state.selectedStocks.length===4 && <button onClick={this.createAportfolio} className="SubmitButton">Create Portfolio</button>}
                     </div>
                     <div className="stock-option-heading2">
-                        {this.state.error?alert(this.state.error):null}
-                        {this.state.success?alert(this.state.success):null}
+                        {/* {this.state.error? swal({text:this.state.error}):null}
+                        {this.state.success?swal({text:this.state.success}):null} */}
                         {/* <p style={{fontSize:"20px",color:"red",width:"30%"}}>{this.state.error}</p> */}
                         AVAILABLE STOCKS
                     <div >

@@ -73,7 +73,7 @@ class NavigationBar extends React.Component{
           list[x]='#5958D4';
         this.setState({colors:list});
         if(x===4){
-            if(this.state.logstatus ==='Logout'){
+            if(this.state.logstatus ==='Logout' ){
                 this.logout();
                 this.setState({logstatus:'Login'});
                 window.location.href="/loginorsignup";
@@ -104,8 +104,6 @@ class NavigationBar extends React.Component{
         } else {
             console.log("Sorry, your browser does not support Web Storage...");
         }
-        
-          
         fire.auth().onAuthStateChanged((user)=>{
           if(user){
             user.getIdToken().then(function(idToken) {  
