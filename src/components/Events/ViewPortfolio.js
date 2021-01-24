@@ -86,7 +86,7 @@ export default class ViewPortfolio extends Component {
                     {this.state.portfolio && this.state.portfolio.length>0  && <p className="portfolioNameInput" >{this.state.portfolio[0].name}</p> }
                 </div>
                 <div className="stocks-list">
-                    STOCK PICKS
+                    STOCK PICKED
                     <div className="stock-option-heading">
                     {
                         (this.state.portfolio && this.state.portfolio.length>0 && this.state.portfolio[0].selectedStocks)?

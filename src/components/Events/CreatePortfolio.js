@@ -20,7 +20,7 @@ export default class CreatePortfolio extends Component {
              currentStock:"",
              success:"",
              portfolio:"",
-             currTrump:0,
+             currTrump:-1,
              doRedirect:false
         }
         this.fetchStocks=this.fetchStocks.bind(this)
@@ -32,7 +32,6 @@ export default class CreatePortfolio extends Component {
         fetch(`${API2}/stocks?type=NiftyFifty`)
         .then(response => response.json())
         .then(data => {
-            // console.log(data);
             this.setState({
                 stocksList:data.data,
                 mainStocksList:data.data
@@ -47,27 +46,43 @@ export default class CreatePortfolio extends Component {
           return <Redirect to={`/events/${eventid}/${contestid}/viewportfolio`} />
         }
       }
-    selectTheStock = (stock) =>  {
+    selectTheStock = (selectedStock) =>  {
         if(this.state.selectedStocks.length===4){
-            this.setState({
-                error:"your list is full,plz create your portfolio"
-            })
+            swal({text:"your list is full,plz create your portfolio"})
         }
         else{
             this.setState(prevState => ({
-                selectedStocks:[...prevState.selectedStocks,stock]
-
-            }))
+                selectedStocks:[...prevState.selectedStocks,selectedStock]
+            }),() => {
+                // there are 2 stocks list 
+                //  1 for all stocks  (without the search query) mainStocksList
+                // 2 for updated stocks (search query and all) stockslist 
+                let stockslist=this.state.stocksList;
+                let remainingStocksAfterSelectedStocks=stockslist.filter((stock)=> stock.name!==selectedStock.name );
+                let mainStockslist=this.state.mainStocksList;
+                let remainingMainStocks=mainStockslist.filter((stock)=> stock.name!==selectedStock.name );
+                this.setState({
+                    stocksList:remainingStocksAfterSelectedStocks,
+                    mainStocksList:remainingMainStocks
+                })
+            })
         }
     }  
     removeTheStock = (index) => {
-        let selectedStocksAfterRemove=this.state.selectedStocks;
-        let selectedStocksAfterRemove1=selectedStocksAfterRemove.filter((stock,ind) =>  ind!==index );;
+        let currSelectedStocks=this.state.selectedStocks;
+        let stockslist=this.state.stocksList;
+        let mainStocksList=this.state.mainStocksList;
+        stockslist.push(currSelectedStocks[index]);
+        mainStocksList.push(currSelectedStocks[index]);
+        let selectedStocksAfterRemove1=currSelectedStocks.filter((stock,ind) =>  ind!==index );;
         this.setState({
-            selectedStocks:selectedStocksAfterRemove1
+            selectedStocks:selectedStocksAfterRemove1,
+            stocksList:stockslist,
+            mainStocksList:mainStocksList
         });
     } 
     makeItTrump  = (index) => {
+        if(this.selectedStocks.lengt===0) index=-1;
         this.setState({
             currTrump:index
         })
@@ -84,6 +99,9 @@ export default class CreatePortfolio extends Component {
         })
     } 
     createAportfolio = () => {
+        if(this.state.currTrump===-1){
+            return swal({text:"Plz select trump stock"});
+        }
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
         let selectedStocks=this.state.selectedStocks;
@@ -106,7 +124,6 @@ export default class CreatePortfolio extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.error){
                 swal({text:data.error.errorMsg})
             }
@@ -153,13 +170,14 @@ export default class CreatePortfolio extends Component {
                                 <div key={index} id="Selectedstock">
                                     <div >
                                         <span id="Selectedstock-name">{stock.name}</span>
-                                        <span id="Selectedstock-val"> 
+                                        <span id="Selectedstock-val" > 
                                         {
                                             stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
 
                                             :<ArrowDownward style={{ fontSize: 15 }}  color="primary" />
                                         }
                                             {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
+                                            <span>&#37;</span>
                                         </span>
                                     </div>
                                     <div className="removeAndTrump" >
@@ -214,6 +232,7 @@ export default class CreatePortfolio extends Component {
                                         :<ArrowDownward style={{ fontSize: 15,color:"red"}}  />
                                     }
                                         {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
+                                        <span>&#37;</span>
                                     </span>
                                     </div>
                                    </button>

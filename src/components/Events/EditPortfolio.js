@@ -4,6 +4,7 @@ import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
+import swal from 'sweetalert';
 // import SearchIcon from '@material-ui/icons/Search';
 export default class EditPortfolio extends Component {
     constructor(props) {
@@ -59,27 +60,43 @@ export default class EditPortfolio extends Component {
             // console.log(this.state.stocksList);
         })
     }
-    selectTheStock = (stock) =>  {
+    selectTheStock = (selectedStock) =>  {
         if(this.state.selectedStocks.length===4){
-            this.setState({
-                error:"your list is full,plz create your portfolio"
-            })
+            swal({text:"your list is full,plz create your portfolio"})
         }
         else{
             this.setState(prevState => ({
-                selectedStocks:[...prevState.selectedStocks,stock]
-
-            }))
+                selectedStocks:[...prevState.selectedStocks,selectedStock]
+            }),() => {
+                // there are 2 stocks list 
+                //  1 for all stocks  (without the search query) mainStocksList
+                // 2 for updated stocks (search query and all) stockslist 
+                let stockslist=this.state.stocksList;
+                let remainingStocksAfterSelectedStocks=stockslist.filter((stock)=> stock.name!==selectedStock.name );
+                let mainStockslist=this.state.mainStocksList;
+                let remainingMainStocks=mainStockslist.filter((stock)=> stock.name!==selectedStock.name );
+                this.setState({
+                    stocksList:remainingStocksAfterSelectedStocks,
+                    mainStocksList:remainingMainStocks
+                })
+            })
         }
-    }  
+    }
     removeTheStock = (index) => {
-        let selectedStocksAfterRemove=this.state.selectedStocks;
-        let selectedStocksAfterRemove1=selectedStocksAfterRemove.filter((stock,ind) =>  ind!==index );;
+        let currSelectedStocks=this.state.selectedStocks;
+        let stockslist=this.state.stocksList;
+        let mainStocksList=this.state.mainStocksList;
+        stockslist.push(currSelectedStocks[index]);
+        mainStocksList.push(currSelectedStocks[index]);
+        let selectedStocksAfterRemove1=currSelectedStocks.filter((stock,ind) =>  ind!==index );;
         this.setState({
-            selectedStocks:selectedStocksAfterRemove1
+            selectedStocks:selectedStocksAfterRemove1,
+            stocksList:stockslist,
+            mainStocksList:mainStocksList
         });
     } 
     makeItTrump  = (index) => {
+        if( this.state.selectedStocks.length===0) index=-1;
         this.setState({
             currTrump:index
         })
@@ -96,20 +113,15 @@ export default class EditPortfolio extends Component {
         })
     } 
     createAportfolio = () => {
+        if(this.state.currTrump===-1){
+            return swal({text:"Plz select trump stock"});
+        }
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
         let selectedStocks=this.state.selectedStocks;
-        let currTrump=this.state.currTrump;
-        for(let i=0;i<selectedStocks.length;i++){
-            if(i===currTrump) 
-            selectedStocks[i].isTrump=true;
-            else
-            selectedStocks[i].isTrump=false;
-
-        }
-        console.log(this.state.portfolioName);
-        fetch(`${API2}/portfolios/${this.state.portfolioId}`,{
-            method:"PUT",
+        selectedStocks[this.state.currTrump].isTrump=true;
+        fetch(`${API2}/portfolios/`,{
+            method:"POST",
             headers: {
                 Accept:"application/json",
                 "authtoken":localStorage.getItem("authToken"),
@@ -126,18 +138,23 @@ export default class EditPortfolio extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.error){
-                this.setState({
-                    error:data.error.errorMsg
-                })
+                swal({text:data.error.errorMsg})
             }
             else{
                 this.setState({
-                    success:"Portfolio Successfully Updated",
-                    portfolio:data
+                    success:"Portfolio Successfully Created",
+                    portfolio:data,
+                    doRedirect:true
+                },() => {
+                    swal({text:this.state.success})
+                    .then(() => {
+                        window.location.reload();
+                    })
                 })
+
             }
+
         })
         .catch(err => console.log(err))
     }

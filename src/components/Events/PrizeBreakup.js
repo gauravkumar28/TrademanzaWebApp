@@ -51,7 +51,7 @@ export default class PrizeBreakup extends Component {
                                     {
                                         this.state.prizeList && 
                                         this.state.prizeList.map((prize,index)=> {
-                                            return  (<h3 key={index} > {prize.amount}</h3>)
+                                            return  (<h3 key={index} > {prize.amount}<span> &#8377; </span> </h3>)
                                         })
                                     }
                             </div>

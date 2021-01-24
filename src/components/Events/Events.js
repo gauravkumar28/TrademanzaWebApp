@@ -6,7 +6,7 @@ import './css/events.css';
 
 import Sidebar from './Sidebar';
 
-import { Spotlight } from './Spotlight';
+
 import { Upcomingevent } from './Upcomingevent';
 import {Moreevents} from './Moreevents';
 import {Todayevent} from './Todayevent';
@@ -16,6 +16,7 @@ import { CompletedEvents } from './CompletedEvents';
 import {Eventshow} from './Eventshow';
 import Contests from './Contests';
 import CompletedContests from './CompletedContests';
+import { TomorrowEvents } from './TomorrowEvents';
 
 
  class Events extends React.Component {
@@ -36,13 +37,13 @@ import CompletedContests from './CompletedContests';
     })
    }
   render() {
-    const somedata="this is coming from events";
+
     return (
         
         <div className="events-page"  style={{color:'white'}}>
           {this.state.showSidebar && <Sidebar/>}
           <Switch>
-                <Route exact path="/events/spotlight"  render={ () => (<Spotlight somedata={somedata}/>) }/>
+                <Route exact path="/events/tomorrow"  render={ () => (<TomorrowEvents {...this.props} showSidebar={this.showSidebar}/>) }/>
                 <Route exact path="/events/today"  render={ () => (<Todayevent {...this.props} showSidebar={this.showSidebar}/> )} />
                 <Route exact path="/events/upcoming" render={ () => (<Upcomingevent {...this.props} showSidebar={this.showSidebar}/> )} />
                 <Route exact path="/events/more"   render={ () => (<Moreevents {...this.props} showSidebar={this.showSidebar}/> )} />              

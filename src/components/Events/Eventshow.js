@@ -15,41 +15,42 @@ import { API2 } from '../../backend';
 import EditPortfolio from './EditPortfolio';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Report from './Report';
+import { Link } from "react-router-dom";
+
 export class Eventshow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-             currevent:{},
-             eventid:null,
+             contest:{}
         }
-        this.fetchevent=this.fetchevent.bind(this)
     }
    
-    fetchevent = () => {
-        const eventid=window.location.pathname.split('/')[2];
-        this.setState({
-            eventid:eventid,
-        })
-        fetch(`${API2}/events/${eventid}`)
-        .then(response => response.json())
+    fetchContest = () => {
+        const contestid=window.location.pathname.split('/')[3];
+        const userid=localStorage.getItem('id');
+        fetch(`${API2}/contests/v2/${contestid}?userId=${userid}`)
+        .then(res => res.json())
         .then(data => this.setState({
-            currevent:data.data,
-        })
-        )
+            contest:data.data
+        }))
     }
-    
+    // goBackToAllContests = () => {
+
+    // }
     componentWillMount(){
-        this.fetchevent()
+        this.fetchContest()
         this.props.hideSidebar();
     }
     render() {
-        const currevent=this.state.currevent;
+        const eventid=window.location.pathname.split('/')[2];
         return (
             <div>
                 <div className="eventheader">
                     <h1>
-                    <ArrowBackIcon style={{fontSize:30}}/>
-                    {currevent.name} 
+                    <Link to={`/events/${eventid}/contests`}>
+                    <ArrowBackIcon style={{fontSize:40}}/>
+                    </Link>
+                    {this.state.contest.name} 
                     </h1> 
                 </div>
                 <div className='eventshow-flex'>

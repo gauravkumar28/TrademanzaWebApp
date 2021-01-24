@@ -23,7 +23,7 @@ const Report = () => {
     return (
         <div className="report-div">
             <div>
-            <span style={{color:"#000"}}>Top Customer Picked Stocks</span>
+            <h1 style={{color:"#000"}}>Top Customer Picked Stocks</h1>
 
             {report && report.topCustomerPickedStocks && 
                 report.topCustomerPickedStocks.map((stock,index) =>  {
@@ -46,7 +46,7 @@ const Report = () => {
             } 
             </div>
             <div >
-            <span style={{color:"#000"}}>Top Performing Stocks</span>
+            <h1 style={{color:"#000"}}>Top Performing Stocks</h1>
             
             {report && report.topPerformingStocks && 
                 report.topPerformingStocks.map((stock,index) =>  {

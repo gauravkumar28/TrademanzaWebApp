@@ -39,7 +39,7 @@ export default class CompletedContests extends Component {
                             {contest.name}
                             </div>
                             <div className="event-itemlink">
-                                        Play
+                                        View
                             </div> 
                             </div>
                             </Link>
