@@ -33,8 +33,22 @@ export default class Contests extends Component {
                     (this.state.contestslist &&  this.state.contestslist.NiftyFifty.length!==0) ? 
                     this.state.contestslist.NiftyFifty.map((contest,index) => {
                         return (
-                                <Link to={`/events/${eventid}/${contest.id}/prizebreakup`}>
-                            <div key={index} className="eventbox">
+                            <div>
+                            {contest.participationFee>0 ? <a href="https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN" >
+                                <div key={index} className="eventbox">
+                                <div className="event-item">
+                                {contest.name}
+                                </div>
+                                <div className="event-itemlink">
+                                            Play
+                                </div> 
+                                </div>
+
+
+
+                            </a> : 
+                               <Link to={`/events/${eventid}/${contest.id}/prizebreakup`}>
+                               <div key={index} className="eventbox">
                             <div className="event-item">
                             {contest.name}
                             </div>
@@ -43,6 +57,8 @@ export default class Contests extends Component {
                             </div> 
                             </div>
                                 </Link>
+                            }
+                            </div>
                         )
                     }) : <div>no contests </div>     
                 }                  

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import { Nav, Navbar,NavDropdown} from 'react-bootstrap';
 import { IoIosLogOut } from 'react-icons/io';
@@ -53,7 +53,9 @@ class NavigationBar extends React.Component{
         colors: ["white","white","white","white","white"] ,
         displayname:'',
         phonenumber:'',
-        photoURL:null};
+        photoURL:null,
+        wallet:''
+        };
     }
     logout=()=>{
          firebase.auth().signOut().then(function() {
@@ -117,7 +119,8 @@ class NavigationBar extends React.Component{
                 .then(response => response.json())
                 .then(response => {
                     user=response.data;
-                    this.setState({displayname:user.name,phonenumber:user.phone});
+                    console.log(user);
+                    this.setState({displayname:user.name,phonenumber:user.phone,wallet:user.wallet});
                 })
                 .catch(err => {
                 console.log(err);
@@ -171,7 +174,24 @@ class NavigationBar extends React.Component{
 (<img src={this.state.photoURL} className="useravatar" alt="user" />)}
   id="collasible-nav-dropdown" >
         <NavDropdown.Item href="#" className="user-info" ><div className="displayname">{this.state.displayname}</div>
-        <div className="phone">{this.state.phonenumber}</div></NavDropdown.Item>
+        <div className="phone">{this.state.phonenumber}</div>
+                {this.state.wallet ? 
+                    <Fragment>
+                    <div className="displayname">Wallet Details</div>
+                    <div className="phone">Bonus : {this.state.wallet.bonus }</div>
+                    <div className="phone">Balance : {this.state.wallet.balance}</div>
+                    <div className="phone">WithdrawableAmount :{this.state.wallet.withdrawableAmount}</div>
+                    <div className="phone">TmCoins :{this.state.wallet.tmCoin}</div>
+                    <div className="phone">Earnings :{this.state.wallet.earnings}</div>
+        
+                    </Fragment>
+                    :null
+                }        
+        <div>
+
+        </div>
+        </NavDropdown.Item>
+
         <NavDropdown.Item  className="logout-info" href="#" onClick={(e) => this.change_active(4)}><IoIosLogOut /> Logout</NavDropdown.Item>
       </NavDropdown>
 

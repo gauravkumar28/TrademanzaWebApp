@@ -4,7 +4,8 @@ import './css/portfolio.css';
 import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 
 const Report = () => {
-    const [report, setReport] = useState()
+    const [report, setReport] = useState();
+    // const [walletContest ,setWalletContest]=useState(undefined);
     const fetchReport  = () => {
         const contestid=window.location.pathname.split('/')[3];
         fetch(`${API2}/contests/${contestid}/report`)
@@ -16,11 +17,30 @@ const Report = () => {
             setReport(data.data);
         })
     }
-    useEffect(fetchReport, []);
+    // const fetchWallet  = () => {
+    //     const authToken = localStorage.getItem("authToken");
+    //     const userId = localStorage.getItem("id");
+    //     const contestid=window.location.pathname.split('/')[3];
+    //     fetch(`https://stgapi.trademanza.com/users/${userId}/wallet?contestId=${contestid}`,{
+    //             method:"GET",
+    //             headers:{
+    //                 Accept:"application/json",
+    //                 "authtoken":authToken
+    //             }
+    //         }    
+    //     ).then(res => res.json())
+    //     .then(data => setWalletContest(data.data))
+    //     .catch(err => console.log(err))
+    // }
+    useEffect( () => {  
+        fetchReport();
+        // fetchWallet();
+    }, []);
     const roundToNPlaces = (num,n) => {
         return +(Math.round(num+"e+"+n)+"e-"+n)
     }
     return (
+       
         <div className="report-div">
             <div>
             <h1 style={{color:"#000"}}>Top Customer Picked Stocks</h1>

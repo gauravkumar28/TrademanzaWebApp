@@ -5,6 +5,7 @@ import { API2 } from '../../backend';
 import {Link} from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
+import swal from 'sweetalert';
 
 
 export default class ViewPortfolio extends Component {
@@ -24,6 +25,7 @@ export default class ViewPortfolio extends Component {
             if(data.error){
                 return null;
             }
+            console.log(data.data);
             this.setState({
                 contest:data.data
             })
@@ -66,7 +68,11 @@ export default class ViewPortfolio extends Component {
          }).then(res => res.json())
          .then(data => {
              console.log(data)
-             window.location.reload();
+             swal({text:"you have succesfully participated"})
+            .then(() => {
+                window.location.reload();
+            })
+            //  window.location.reload();
             })
          
         .catch(err => console.log("error ",err))

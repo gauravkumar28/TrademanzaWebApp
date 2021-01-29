@@ -230,5 +230,6 @@ iframe{
     background: #ffffff;
     width: 60vw;   
     justify-content: space-evenly;
+    border-radius: 10px;
 
 }

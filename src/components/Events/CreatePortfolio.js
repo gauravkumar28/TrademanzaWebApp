@@ -82,7 +82,7 @@ export default class CreatePortfolio extends Component {
         });
     } 
     makeItTrump  = (index) => {
-        if(this.selectedStocks.lengt===0) index=-1;
+        if(this.state.selectedStocks.length===0) index=-1;
         this.setState({
             currTrump:index
         })

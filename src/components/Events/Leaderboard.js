@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import './css/eventshow.css';
-
+import { Link } from "react-router-dom";
 import leaderBoardSvg from './images/leaderBoard.svg';
 import { API2 } from '../../backend';
 export default class Leaderboard extends Component {
@@ -27,6 +27,9 @@ export default class Leaderboard extends Component {
     }
        
         render() {
+            const contestid=window.location.pathname.split('/')[3];
+            const eventid=window.location.pathname.split('/')[2];
+            const showTextvalue=this.props.showText==="View Portfolio"?"viewportfolio":"createportfolio";
             return (
                 <div className="leaderboard">
                         <div className="leaderboardBox">
@@ -52,7 +55,9 @@ export default class Leaderboard extends Component {
                                 </div>
                             </div>
                             <div className="InsideBox">
-                                Create Portfolio <ArrowForwardIcon  style={{ fontSize: 40 }} />
+                                <Link className="showtextLink" to={`/events/${eventid}/${contestid}/${showTextvalue}`} >
+                                {this.props.showText} <ArrowForwardIcon  style={{ fontSize: 40 }} />
+                                </Link>
                             </div>
                         </div>
                         <div>   

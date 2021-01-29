@@ -21,7 +21,8 @@ export class Eventshow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-             contest:{}
+             contest:{},
+             showText:""
         }
     }
    
@@ -30,9 +31,15 @@ export class Eventshow extends React.Component {
         const userid=localStorage.getItem('id');
         fetch(`${API2}/contests/v2/${contestid}?userId=${userid}`)
         .then(res => res.json())
-        .then(data => this.setState({
-            contest:data.data
-        }))
+        .then(data => {
+            let showtext;
+            if(data.data.showCreatePortfolioButton) showtext="Create Portfolio";
+            else showtext="View Portfolio";
+            this.setState({
+            contest:data.data,
+            showText:showtext
+            })
+        })
     }
     // goBackToAllContests = () => {
 
@@ -47,19 +54,20 @@ export class Eventshow extends React.Component {
             <div>
                 <div className="eventheader">
                     <h1>
-                    <Link to={`/events/${eventid}/contests`}>
+                    <Link className="showtextLink" to={`/events/${eventid}/contests`}>
                     <ArrowBackIcon style={{fontSize:40}}/>
                     </Link>
                     {this.state.contest.name} 
                     </h1> 
+                        {this.state.contest.prizeMsg && <h2>{this.state.contest.prizeMsg}</h2>}
                 </div>
                 <div className='eventshow-flex'>
                    
                 <EventSidebar/>
                 <Switch>
                         
-                        <PrivateRoute exact path="/events/:eventid/:contestid/prizebreakup"  component={PrizeBreakup}/>
-                        <PrivateRoute exact path="/events/:eventid/:contestid/leaderboard"  component={Leaderboard} />
+                        <PrivateRoute exact path="/events/:eventid/:contestid/prizebreakup"  component={() => <PrizeBreakup showText={this.state.showText}/>}/>
+                        <PrivateRoute exact path="/events/:eventid/:contestid/leaderboard"  component={() => <Leaderboard showText={this.state.showText}/>} />
                         <PrivateRoute exact path="/events/:eventid/:contestid/createportfolio"  component={CreatePortfolio} />
                         <PrivateRoute exact path="/events/:eventid/:contestid/editportfolio"  component={EditPortfolio} />
                         <PrivateRoute exact path="/events/:eventid/:contestid/report"  component={Report} />

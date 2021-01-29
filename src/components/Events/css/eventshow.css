@@ -93,8 +93,12 @@
     line-height: 30px;
     font-weight: 700;
     background-color: #5958d4;
+    color:#fff;
 }
 
+.showtextLink{
+    color:#fff;
+}
 
 .rankinglist{
     font-size: 20px;
