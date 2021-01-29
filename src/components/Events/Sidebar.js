@@ -4,7 +4,9 @@ import './css/events.css';
 import { isAuthenticated } from './helper/index';
 
 const currentTab = (history, path) => {
-    if (history.location.pathname === path) {
+    let url=history.location.pathname;
+    if(url[url.length-1]==='/') url=url.slice(0,url.length-1); 
+    if (url === path) {
       return  "#5958D4" ;
     } else {
       return "#FFFFFF" ;

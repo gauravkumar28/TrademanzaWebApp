@@ -3,7 +3,7 @@ import "./css/eventlist.css";
 import { Link,withRouter } from "react-router-dom";
 import { API2 } from "../../backend";
 import swal from "sweetalert";
-// import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
  class Contests extends Component {
@@ -11,6 +11,8 @@ import swal from "sweetalert";
     super(props);
     this.state = {
       contestslist: undefined,
+      group:"",
+        eventName:""
     };
     this.fetchContests = this.fetchContests.bind(this);
   }
@@ -20,11 +22,19 @@ import swal from "sweetalert";
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          contestslist: data.data,
+          contestslist: data.data
+          
         });
       });
   };
   componentDidMount() {
+    let   {group,eventName}=this.props.location.state;
+    if(group==="undefined") group="";
+    console.log(eventName);
+    this.setState({
+      group:group,
+      eventName:eventName
+    })
     this.fetchContests();
     this.props.hideSidebar();
   }
@@ -36,17 +46,17 @@ import swal from "sweetalert";
   render() {
     const eventid = window.location.pathname.split("/")[2];
     return (
-      <div className="eventlist">
-       {/* We will show here 
-        <div className="eventheader">
+      <div>
+        <div className="eventTitleheader" >
                     <h1>
-                    <Link className="showtextLink" to={`/events/${this.props.parentCompo}`}>
+                    <Link className="showtextLink" to={`/events/${this.state.group}`}>
                     <ArrowBackIcon style={{fontSize:40}}/>
                     </Link>
-                    <button onClick={this.props.history.goBack} >
-                    this.state.contest.name 
+                    {/* <button onClick={this.props.history.goBack} > */}
+                    {this.state.eventName}
                     </h1> 
-                </div> */}
+                </div>
+      <div className="eventlist">
         {this.state.contestslist &&
         this.state.contestslist.NiftyFifty.length !== 0 ? (
           this.state.contestslist.NiftyFifty.map((contest, index) => {
@@ -74,6 +84,8 @@ import swal from "sweetalert";
           <div>no contests </div>
         )}
       </div>
+      </div>
+
     );
   }
 }

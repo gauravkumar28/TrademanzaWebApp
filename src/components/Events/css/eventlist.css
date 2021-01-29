@@ -67,3 +67,10 @@
     background: #5958D4;
 } 
 
+.eventTitleheader{
+    color: rgba(89,88,212,1);
+    font-family: Gobold;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+}
