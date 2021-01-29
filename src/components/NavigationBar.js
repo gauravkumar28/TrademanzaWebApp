@@ -119,7 +119,6 @@ class NavigationBar extends React.Component{
                 .then(response => response.json())
                 .then(response => {
                     user=response.data;
-                    console.log(user);
                     this.setState({displayname:user.name,phonenumber:user.phone,wallet:user.wallet});
                 })
                 .catch(err => {

@@ -25,7 +25,6 @@ export default class ViewPortfolio extends Component {
             if(data.error){
                 return null;
             }
-            console.log(data.data);
             this.setState({
                 contest:data.data
             })
@@ -67,7 +66,6 @@ export default class ViewPortfolio extends Component {
             })
          }).then(res => res.json())
          .then(data => {
-             console.log(data)
              swal({text:"you have succesfully participated"})
             .then(() => {
                 window.location.reload();
@@ -87,8 +85,6 @@ export default class ViewPortfolio extends Component {
             <div>
             <div className="portfolio-box">
                 <div className="portfolio-details">
-                
-                    {console.log(this.state.portfolio)}
                     {this.state.portfolio && this.state.portfolio.length>0  && <p className="portfolioNameInput" >{this.state.portfolio[0].name}</p> }
                 </div>
                 <div className="stocks-list">

@@ -13,8 +13,7 @@ export default class Leaderboard extends Component {
     }
     fetchLeaderboard = () => {
         const contestid=window.location.pathname.split('/')[3];
-        console.log(window.location.pathname);
-        fetch(`${API2}/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
+         fetch(`${API2}/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
         .then(res => res.json())
         .then(data => {
             this.setState({
