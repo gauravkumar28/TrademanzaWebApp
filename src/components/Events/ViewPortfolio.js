@@ -13,7 +13,8 @@ export default class ViewPortfolio extends Component {
         super(props);
         this.state = {
              portfolio:'',
-             contest:''
+             contest:'',
+             walletContest:''
         }
     }
     fetchContest = () => {
@@ -42,14 +43,35 @@ export default class ViewPortfolio extends Component {
             })
         }) 
     }
+    fetchWallet  = () => {
+        const authToken = localStorage.getItem("authToken");
+        const userId = localStorage.getItem("id");
+        const contestid=window.location.pathname.split('/')[3];
+        fetch(`https://stgapi.trademanza.com/users/${userId}/wallet?contestId=${contestid}`,{
+                method:"GET",
+                headers:{
+                    Accept:"application/json",
+                    "authtoken":authToken
+                }
+            }    
+        ).then(res => res.json())
+        .then(data => this.setState({
+            walletContest:data.data}))
+        .catch(err => console.log(err))
+    }
     componentDidMount() {
         this.fetchPortfolio();
         this.fetchContest();
+        this.fetchWallet();
     }
     participateInContest = () => {
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
         const portfolioId=this.state.portfolio[0].id;
+        // swal({
+        //     html:``
+        // })
+        // return null;    
          fetch(`${API2}/participations/`,{
             method:"POST",
             headers:{

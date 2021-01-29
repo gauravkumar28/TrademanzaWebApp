@@ -10,11 +10,11 @@ export default class EditPortfolio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stocksList: undefined,
+      stocksList: [],
       selectedStocks: [],
       portfolioName: "portfoliox",
       error: "",
-      mainStocksList: undefined,
+      mainStocksList: [],
       currentStock: "",
       success: "",
       portfolio: "",

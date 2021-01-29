@@ -17,21 +17,7 @@ const Report = () => {
             setReport(data.data);
         })
     }
-    // const fetchWallet  = () => {
-    //     const authToken = localStorage.getItem("authToken");
-    //     const userId = localStorage.getItem("id");
-    //     const contestid=window.location.pathname.split('/')[3];
-    //     fetch(`https://stgapi.trademanza.com/users/${userId}/wallet?contestId=${contestid}`,{
-    //             method:"GET",
-    //             headers:{
-    //                 Accept:"application/json",
-    //                 "authtoken":authToken
-    //             }
-    //         }    
-    //     ).then(res => res.json())
-    //     .then(data => setWalletContest(data.data))
-    //     .catch(err => console.log(err))
-    // }
+    
     useEffect( () => {  
         fetchReport();
         // fetchWallet();

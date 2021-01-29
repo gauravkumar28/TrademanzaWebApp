@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./css/eventlist.css";
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
 import { API2 } from "../../backend";
+import swal from "sweetalert";
+// import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-export default class Contests extends Component {
+
+ class Contests extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,22 +28,37 @@ export default class Contests extends Component {
     this.fetchContests();
     this.props.hideSidebar();
   }
+  showMessage() {
+    const el = document.createElement('div')
+    el.innerHTML = " <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'>Click here to Download</a>"
+    swal({text:"Please Download the app for taking part in Paid contests",icon:"warning",content:el})
+  }
   render() {
     const eventid = window.location.pathname.split("/")[2];
     return (
       <div className="eventlist">
+       {/* We will show here 
+        <div className="eventheader">
+                    <h1>
+                    <Link className="showtextLink" to={`/events/${this.props.parentCompo}`}>
+                    <ArrowBackIcon style={{fontSize:40}}/>
+                    </Link>
+                    <button onClick={this.props.history.goBack} >
+                    this.state.contest.name 
+                    </h1> 
+                </div> */}
         {this.state.contestslist &&
         this.state.contestslist.NiftyFifty.length !== 0 ? (
           this.state.contestslist.NiftyFifty.map((contest, index) => {
             return (
               <div>
                 {contest.participationFee > 0 ? (
-                  <a href="https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN">
+                  <div   onClick={() => this.showMessage()}>
                     <div key={index} className="eventbox">
                       <div className="event-item">{contest.name}</div>
                       <div className="event-itemlink">Play</div>
                     </div>
-                  </a>
+                  </div>
                 ) : (
                   <Link to={`/events/${eventid}/${contest.id}/prizebreakup`}>
                     <div key={index} className="eventbox">
@@ -59,3 +77,5 @@ export default class Contests extends Component {
     );
   }
 }
+
+export default withRouter(Contests);
