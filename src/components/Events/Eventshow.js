@@ -22,7 +22,8 @@ export class Eventshow extends React.Component {
         super(props)
         this.state = {
              contest:{},
-             showText:""
+             showText:"",
+             backbuttonValue:""
         }
     }
    
@@ -35,15 +36,16 @@ export class Eventshow extends React.Component {
             let showtext;
             if(data.data.showCreatePortfolioButton) showtext="Create Portfolio";
             else showtext="View Portfolio";
+            let backbuttonValue;
+            if(data.data.status==="completed" && data.data.hasJoined) backbuttonValue="completedcontests";
+            else backbuttonValue="contests";
             this.setState({
             contest:data.data,
-            showText:showtext
+            showText:showtext,
+            backbuttonValue:backbuttonValue
             })
         })
     }
-    // goBackToAllContests = () => {
-
-    // }
     componentWillMount(){
         this.fetchContest()
         this.props.hideSidebar();
@@ -54,7 +56,7 @@ export class Eventshow extends React.Component {
             <div>
                 <div className="eventheader">
                     <h1>
-                    <Link className="showtextLink" to={`/events/${eventid}/contests`}>
+                    <Link className="showtextLink" to={`/events/${eventid}/${this.state.backbuttonValue}`}>
                     <ArrowBackIcon style={{fontSize:40}}/>
                     </Link>
                     {this.state.contest.name} 
