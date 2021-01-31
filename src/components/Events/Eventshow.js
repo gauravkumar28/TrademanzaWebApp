@@ -51,12 +51,12 @@ export class Eventshow extends React.Component {
         this.props.hideSidebar();
     }
     render() {
-        const eventid=window.location.pathname.split('/')[2];
+        // const eventid=window.location.pathname.split('/')[2];
         return (
             <div>
                 <div className="eventheader">
                     <h1>
-                    <Link className="showtextLink" to={`/events/${eventid}/${this.state.backbuttonValue}`}>
+                    <Link className="showtextLink" to={`/events`}>
                     <ArrowBackIcon style={{fontSize:40}}/>
                     </Link>
                     {this.state.contest.name} 

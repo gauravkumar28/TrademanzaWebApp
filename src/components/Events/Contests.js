@@ -29,7 +29,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
   };
   componentDidMount() {
     let   {group,eventName}=this.props.location.state;
-    if(group==="undefined") group="";
+    if(group==="all") group="";
     console.log(eventName);
     this.setState({
       group:group,

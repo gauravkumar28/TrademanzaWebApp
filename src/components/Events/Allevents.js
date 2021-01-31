@@ -13,7 +13,7 @@ export class Allevents extends React.Component {
   }
   fetchEvents = () => {
     let reqUrl;
-    if (this.props.group) reqUrl = `${API}/events?group=${this.props.group}`;
+    if (this.props.group!=="all") reqUrl = `${API}/events?group=${this.props.group}`;
     else reqUrl = `${API}/events`;
     fetch(reqUrl)
       .then((response) => response.json())
