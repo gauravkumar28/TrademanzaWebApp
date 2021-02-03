@@ -34,14 +34,14 @@ export default class CompletedContests extends Component {
                     this.state.contestslist.map((contest,index) => {
                         return (
                                 <Link to={`/events/${eventid}/${contest.id}/viewportfolio`}>
-                            <div key={index} className="eventbox">
-                            <div className="event-item">
-                            {contest.name}
-                            </div>
-                            <div className="event-itemlink">
-                                        View
-                            </div> 
-                            </div>
+                                <div key={index} className="eventbox">
+                                <div className="event-item">
+                                {contest.name}
+                                </div>
+                                <div className="event-itemlink">
+                                            View
+                                </div> 
+                                </div>
                             </Link>
                         )
                     }) : <div>no contests </div>     

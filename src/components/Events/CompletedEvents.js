@@ -14,7 +14,7 @@ export class CompletedEvents extends React.Component{
         }
         fetchEvents = () =>{
             const userId=localStorage.getItem("id");
-            fetch(`${API2}/users/v3/${userId}/events?status=completed`)
+            fetch(`${API2}/users/v3/${userId}/events?status=${this.props.status}`)
             .then(response => response.json())
             .then(data => data.data)
             .then(data =>{ 
@@ -34,7 +34,7 @@ export class CompletedEvents extends React.Component{
                     {
                          events.map((task,index) => {
                              return (
-                                        <Link to={`/events/${task.id}/completedcontests`}>
+                                        <Link to={`/events/${task.id}/${this.props.status}contests`}>
                                  <div key={index} className="eventbox">
                                  <div className="event-item">
                                     {task.name}

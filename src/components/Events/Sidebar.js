@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fragment } from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import './css/events.css';
 import { isAuthenticated } from './helper/index';
@@ -40,11 +41,18 @@ const  Sidebar = ({history}) => {
                     </Link>
                 </li>
                 { isAuthenticated() && 
-                <li className="sidebar-item" >
-                    <Link   style={{color:currentTab(history,"/events/completed")}}  to="/events/completed" >
-                       Completed
-                    </Link>
-                </li> 
+                <Fragment>
+                    <li className="sidebar-item" >
+                        <Link   style={{color:currentTab(history,"/events/live")}}  to="/events/live" >
+                        Live
+                        </Link>
+                    </li> 
+                    <li className="sidebar-item" >
+                        <Link   style={{color:currentTab(history,"/events/completed")}}  to="/events/completed" >
+                        Completed
+                        </Link>
+                    </li>
+                </Fragment>
                 }
   
             </div >

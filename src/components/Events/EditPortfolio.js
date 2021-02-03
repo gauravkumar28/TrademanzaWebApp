@@ -70,11 +70,11 @@ export default class EditPortfolio extends Component {
           // 2 for updated stocks (search query and all) stockslist
           let stockslist = this.state.stocksList;
           let remainingStocksAfterSelectedStocks = stockslist.filter(
-            (stock) => stock.name !== selectedStock.name
+            (stock) => stock.code !== selectedStock.code
           );
           let mainStockslist = this.state.mainStocksList;
           let remainingMainStocks = mainStockslist.filter(
-            (stock) => stock.name !== selectedStock.name
+            (stock) => stock.code !== selectedStock.code
           );
           this.setState({
             stocksList: remainingStocksAfterSelectedStocks,
@@ -84,6 +84,7 @@ export default class EditPortfolio extends Component {
       );
     }
   };
+
   removeTheStock = (index) => {
     let currSelectedStocks = this.state.selectedStocks;
     let stockslist = this.state.stocksList;
@@ -172,6 +173,7 @@ export default class EditPortfolio extends Component {
   render() {
     return (
       <div>
+      
         <div className="portfolio-box">
           <div className="portfolio-details">
             <input
@@ -266,6 +268,7 @@ export default class EditPortfolio extends Component {
               </div>
               <div className="stock-listing">
                 {this.state.stocksList ? (
+                  
                   this.state.stocksList.map((stock, index) => {
                     return (
                       <div key={index} id="stock">

@@ -23,7 +23,6 @@ export default class CreatePortfolio extends Component {
              currTrump:-1,
              doRedirect:false
         }
-        this.fetchStocks=this.fetchStocks.bind(this)
     }   
     componentDidMount(){
         this.fetchStocks();
@@ -57,29 +56,35 @@ export default class CreatePortfolio extends Component {
                 // there are 2 stocks list 
                 //  1 for all stocks  (without the search query) mainStocksList
                 // 2 for updated stocks (search query and all) stockslist 
-                let stockslist=this.state.stocksList;
-                let remainingStocksAfterSelectedStocks=stockslist.filter((stock)=> stock.name!==selectedStock.name );
-                let mainStockslist=this.state.mainStocksList;
-                let remainingMainStocks=mainStockslist.filter((stock)=> stock.name!==selectedStock.name );
-                this.setState({
-                    stocksList:remainingStocksAfterSelectedStocks,
-                    mainStocksList:remainingMainStocks
-                })
+                let stockslist = this.state.stocksList;
+          let remainingStocksAfterSelectedStocks = stockslist.filter(
+            (stock) => stock.name !== selectedStock.name
+          );
+          let mainStockslist = this.state.mainStocksList;
+          let remainingMainStocks = mainStockslist.filter(
+            (stock) => stock.name !== selectedStock.name
+          );
+          this.setState({
+            stocksList: remainingStocksAfterSelectedStocks,
+            mainStocksList: remainingMainStocks,
+          });
             })
         }
     }  
     removeTheStock = (index) => {
-        let currSelectedStocks=this.state.selectedStocks;
-        let stockslist=this.state.stocksList;
-        let mainStocksList=this.state.mainStocksList;
-        stockslist.push(currSelectedStocks[index]);
-        mainStocksList.push(currSelectedStocks[index]);
-        let selectedStocksAfterRemove1=currSelectedStocks.filter((stock,ind) =>  ind!==index );;
-        this.setState({
-            selectedStocks:selectedStocksAfterRemove1,
-            stocksList:stockslist,
-            mainStocksList:mainStocksList
-        });
+        let currSelectedStocks = this.state.selectedStocks;
+    let stockslist = this.state.stocksList;
+    let mainStocksList = this.state.mainStocksList;
+    stockslist.push(currSelectedStocks[index]);
+    mainStocksList.push(currSelectedStocks[index]);
+    let selectedStocksAfterRemove1 = currSelectedStocks.filter(
+      (stock, ind) => ind !== index
+    );
+    this.setState({
+      selectedStocks: selectedStocksAfterRemove1,
+      stocksList: stockslist,
+      mainStocksList: mainStocksList,
+    });
     } 
     makeItTrump  = (index) => {
         if(this.state.selectedStocks.length===0) index=-1;
@@ -93,10 +98,13 @@ export default class CreatePortfolio extends Component {
         })
     }
     handleSearchQueryChange = (e) => {
-        let currlist=this.state.mainStocksList.filter(stock => stock.name.toLowerCase().indexOf(e.target.value.toLowerCase())!==-1);        
-        this.setState({
-            stocksList:currlist
-        })
+        let currlist = this.state.mainStocksList.filter(
+            (stock) =>
+              stock.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+          );
+          this.setState({
+            stocksList: currlist,
+          });
     } 
     createAportfolio = () => {
         if(this.state.currTrump===-1){
@@ -106,6 +114,8 @@ export default class CreatePortfolio extends Component {
         const contestid=window.location.pathname.split('/')[3];
         let selectedStocks=this.state.selectedStocks;
         selectedStocks[this.state.currTrump].isTrump=true;
+        for(let i=0;i<selectedStocks.length;i++)  selectedStocks[i].isTrump = false;
+        selectedStocks[this.state.currTrump].isTrump = true;
         fetch(`${API2}/portfolios/`,{
             method:"POST",
             headers: {
@@ -189,7 +199,7 @@ export default class CreatePortfolio extends Component {
                                         </span>
                                         <button id="stock-remove" onClick={() => {
                                             this.removeTheStock(index);
-                                            if(index===this.state.currTrump) this.makeItTrump(0);
+                                            if(index===this.state.currTrump) this.makeItTrump(-1);
                                         }}>-</button>
                                     </div>
                                 </div>
