@@ -47,7 +47,7 @@ export default class CreatePortfolio extends Component {
       }
     selectTheStock = (selectedStock) =>  {
         if(this.state.selectedStocks.length===4){
-            swal({text:"your list is full,plz create your portfolio"})
+            swal({text:"You can select maximum 4 stocks "})
         }
         else{
             this.setState(prevState => ({
@@ -108,7 +108,7 @@ export default class CreatePortfolio extends Component {
     } 
     createAportfolio = () => {
         if(this.state.currTrump===-1){
-            return swal({text:"Plz select trump stock"});
+            return swal({text:"Please select 1 among the 4 stocks as trump"});
         }
         const eventid=window.location.pathname.split('/')[2];
         const contestid=window.location.pathname.split('/')[3];
@@ -139,7 +139,7 @@ export default class CreatePortfolio extends Component {
             }
             else{
                 this.setState({
-                    success:"Portfolio Successfully Created",
+                    success:"You have successfully created your portfolio, click on participate to join the contest",
                     portfolio:data,
                     doRedirect:true
                 },() => {
@@ -165,7 +165,7 @@ export default class CreatePortfolio extends Component {
                 <div className="portfolio-details">
                     <input type="text" onChange={this.handlePortfolioNameChange} value={this.state.portfolioName} placeholder="enter your portfolio name"  className="portfolioNameInput" />
                     {this.state.currentStock ? 
-                    <iframe src={this.state.currentStock.referenceUrl+"&output=embed"}  title={ this.state.currentStock.name}  width="95%" height="80%"  >sunpharama</iframe>
+                    <iframe src="https://in.finance.yahoo.com/quote/SUNPHARMA.NS/"  title={this.state.currentStock.name}  width="95%" height="80%"  >sunpharama</iframe>
                     :null
                     }
                 </div>

@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import swal from 'sweetalert';
+import coin from './images/coin.svg';
 
 
 export default class ViewPortfolio extends Component {
@@ -55,8 +56,7 @@ export default class ViewPortfolio extends Component {
                 }
             }    
         ).then(res => res.json())
-        .then(data => this.setState({
-            walletContest:data.data}))
+        .then(data => this.setState({walletContest:data.data}))
         .catch(err => console.log(err))
     }
     componentDidMount() {
@@ -68,10 +68,32 @@ export default class ViewPortfolio extends Component {
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
         const portfolioId=this.state.portfolio[0].id;
-        // swal({
-        //     html:``
-        // })
-        // return null;    
+        const el = document.createElement('div');
+        const wallet=this.state.walletContest;
+        el.innerHTML=`
+            <h3 class="username-showing">Participate</h3>
+            <div class="participate-tab">
+            <p> Entry Fees: <span>&#8377;</span> ${this.state.contest.participationFee} </p>
+            <br/>
+            <p> TM Coins:<img src=${coin} width="20px" height="20px" alt="coin svg"  /> ${wallet.tmCoin} </p>
+            <p> Wallet Balance: <span>&#8377;</span> ${wallet.balance} </p>
+            <p> Wallet Bonus: <span>&#8377;</span> ${wallet.bonus} </p>
+            <p> Wallet earnings: <span>&#8377;</span>${wallet.earnings} </p>
+            <br/>
+            <p> TM Coins Deduction: <img src=${coin} width="20px" height="20px" alt="coin svg"  /> ${wallet.tmCoinDeducted} </p>
+            <p> Wallet Balance Deduction: <span>&#8377;</span> ${wallet.balanceDeducted} </p>
+            <p> Wallet Bonus Deduction: <span>&#8377;</span> ${wallet.bonusDeducted} </p>
+            <p> Wallet earnings Deduction: <span>&#8377;</span> ${wallet.earningsDeducted} </p>
+            <br/>
+            <p> Required Amount: <span>&#8377;</span> ${wallet.requiredAmount} </p>
+            </div>
+            `;
+        swal("", {
+            buttons: {
+                Participate: true,
+            },
+            content:el
+          }).then( clicked => {if(clicked){
          fetch(`${API2}/participations/`,{
             method:"POST",
             headers:{
@@ -88,14 +110,13 @@ export default class ViewPortfolio extends Component {
             })
          }).then(res => res.json())
          .then(data => {
-             swal({text:"you have succesfully participated"})
-            .then(() => {
+
                 window.location.reload();
-            })
             //  window.location.reload();
             })
          
         .catch(err => console.log("error ",err))
+     }})
     }
     roundToNPlaces = (num,n) => {
         return +(Math.round(num+"e+"+n)+"e-"+n)

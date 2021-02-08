@@ -21,6 +21,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
     fetch(`${API2}/contests/v2?eventId=${eventid}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.data);
         this.setState({
           contestslist: data.data
           
@@ -30,7 +31,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
   componentDidMount() {
     let   {group,eventName}=this.props.location.state;
     if(group==="all") group="";
-    console.log(eventName);
+   
     this.setState({
       group:group,
       eventName:eventName
@@ -70,7 +71,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
                     </div>
                   </div>
                 ) : (
-                  <Link to={`/events/${eventid}/${contest.id}/prizebreakup`}>
+                  <Link to={`/events/${eventid}/${contest.id}/prizebreakup`} >
                     <div key={index} className="eventbox">
                       <div className="event-item">{contest.name}</div>
                       <div className="event-itemlink">Play</div>

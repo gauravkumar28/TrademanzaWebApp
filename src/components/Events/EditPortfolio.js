@@ -58,7 +58,7 @@ export default class EditPortfolio extends Component {
   };
   selectTheStock = (selectedStock) => {
     if (this.state.selectedStocks.length === 4) {
-      swal({ text: "your list is full,plz create your portfolio" });
+      swal({ text: "Please try modifying your existing portfolio" });
     } else {
       this.setState(
         (prevState) => ({
@@ -122,7 +122,7 @@ export default class EditPortfolio extends Component {
   };
   createAportfolio = () => {
     if (this.state.currTrump === -1) {
-      return swal({ text: "Plz select trump stock" });
+      return swal({ text: "Please select 1 among the 4 stocks as trump" });
     }
     const eventid = window.location.pathname.split("/")[2];
     const contestid = window.location.pathname.split("/")[3];

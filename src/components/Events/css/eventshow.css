@@ -111,3 +111,14 @@
     height: 50%;
     float: right;
 }
+
+.username-showing{
+    color: #5958d4;
+}
+
+.participate-tab{
+    font-size: 20px;
+    line-height: 20px;
+    font-style:normal;
+    /* font-family: "Gobold", sans-serif; */
+}

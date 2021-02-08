@@ -43,7 +43,7 @@ const PrizeBreakup = (props) => {
                                     {
                                         prizeList && 
                                         prizeList.map((prize,index)=> {
-                                            return  (<h3 key={index} > {prize.amount} {prize.assetType==="coin"?<img src={coin} width="20px" height="20px" alt="coin svg"  />:<span> &#8377; </span> }</h3>)
+                                            return  (<h3 key={index} >  {prize.assetType==="coin"?<img src={coin} width="20px" height="20px" alt="coin svg"  />:null } {prize.amount}</h3>)
                                         })
                                     }
                             </div>
