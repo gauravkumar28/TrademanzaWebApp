@@ -101,8 +101,11 @@
 }
 
 .rankinglist{
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 25px;
+    line-height: 15px;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
 }
 
 
@@ -113,6 +116,7 @@
 }
 
 .username-showing{
+    font-style: normal;
     color: #5958d4;
 }
 

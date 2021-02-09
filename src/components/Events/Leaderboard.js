@@ -4,7 +4,7 @@ import './css/eventshow.css';
 import { Link } from "react-router-dom";
 import leaderBoardSvg from './images/leaderBoard.svg';
 import { API2 } from '../../backend';
-
+import {showRanking} from "./helpers";
 export default class Leaderboard extends Component {
     constructor(props) {
         super(props) 
@@ -35,25 +35,9 @@ export default class Leaderboard extends Component {
                 <div className="leaderboard">
                         <div className="leaderboardBox">
                             <div className="leaderboardData">
-                                <div>
-                                        <h2 >Rank</h2>
-                                        {
-                                            this.state.leaderboard && 
-                                            this.state.leaderboard.map((person,index)=> {
-                                                return  (<p key={index} className="rankinglist" > {person.userName===localStorage.getItem("userName")?<p className="username-showing">{person.rank}</p>:person.rank}</p>)
-                                            })
-                                        }
-    
-                                </div>
-                                <div>
-                                        <h2  >UserName</h2>
-                                        {
-                                            this.state.leaderboard && 
-                                            this.state.leaderboard.map((person,index)=> {
-                                                return  (<p key={index} className="rankinglist" > {person.userName===""?person.name:(person.userName===localStorage.getItem("userName")?<p className="username-showing">{person.userName}</p>:person.userName)}</p>)
-                                            })
-                                        }
-                                </div>
+                                {showRanking("Rank",this.state.leaderboard,"rank")}
+                                {showRanking("UserName",this.state.leaderboard,"userName")}
+                                {showRanking("Score",this.state.leaderboard,"score")}
                             </div>
                             <div className="InsideBox">
                                 <Link className="showtextLink" to={`/events/${eventid}/${contestid}/${showTextvalue}`} >
