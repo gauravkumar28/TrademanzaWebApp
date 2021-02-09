@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './css/portfolio.css';
-import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import { Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
+import {showDayPercentage} from "./helpers";
 
 export default class CreatePortfolio extends Component {
     constructor(props) {
@@ -154,9 +154,6 @@ export default class CreatePortfolio extends Component {
         })
         .catch(err => console.log(err))
     }
-    roundToNPlaces = (num,n) => {
-        return +(Math.round(num+"e+"+n)+"e-"+n)
-    }
     render() {
         return (
             <div>
@@ -180,15 +177,7 @@ export default class CreatePortfolio extends Component {
                                 <div key={index} id="Selectedstock">
                                     <div >
                                         <span id="Selectedstock-name">{stock.name}</span>
-                                        <span id="Selectedstock-val" > 
-                                        {
-                                            stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
-
-                                            :<ArrowDownward style={{ fontSize: 15 }}  color="primary" />
-                                        }
-                                            {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
-                                            <span>&#37;</span>
-                                        </span>
+                                        {showDayPercentage(stock.dayTrendPercentage)}
                                     </div>
                                     <div className="removeAndTrump" >
                                         <span className="TrumpStar">
@@ -235,15 +224,7 @@ export default class CreatePortfolio extends Component {
                                     }}>
                                     <div style={{'alignSelf':"flex-end"}}>
                                     <span id="stock-name">{stock.name}</span>
-                                    <span id="stock-val"> 
-                                    {
-                                        stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
-
-                                        :<ArrowDownward style={{ fontSize: 15,color:"red"}}  />
-                                    }
-                                        {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
-                                        <span>&#37;</span>
-                                    </span>
+                                    {showDayPercentage(stock.dayTrendPercentage)}
                                     </div>
                                    </button>
                                     <div >

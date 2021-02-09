@@ -95,9 +95,9 @@
 
 }
 #stock-val,#Selectedstock-val{
-    font-size: 10px;
-    color: #0bba57;
-    font-weight: bold;
+    font-size: 15px;
+    
+    /* font-weight: bold; */
 }
 #stock-remove,#stock-sub,#Selectedstock-sub{
     height:20px;
@@ -232,4 +232,18 @@ iframe{
     justify-content: space-evenly;
     border-radius: 10px;
 
+}
+
+.mediumfont {
+    font-size: 15px;
+    font-weight: 150;
+}
+.postive{
+    color: rgba(11, 186, 87,1);
+    /* color: #000; */
+}
+.negtive{
+    /* color:red; */
+    color:rgba(255,0,0,1);
+   
 }

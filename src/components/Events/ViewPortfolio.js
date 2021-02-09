@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './css/portfolio.css';
-import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
 import { API2 } from '../../backend';
 import {Link} from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import swal from 'sweetalert';
 import coin from './images/coin.svg';
+import {showDayPercentage} from "./helpers";
 
 
 export default class ViewPortfolio extends Component {
@@ -118,9 +118,6 @@ export default class ViewPortfolio extends Component {
         .catch(err => console.log("error ",err))
      }})
     }
-    roundToNPlaces = (num,n) => {
-        return +(Math.round(num+"e+"+n)+"e-"+n)
-    }
     render() {
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
@@ -140,15 +137,7 @@ export default class ViewPortfolio extends Component {
                                 <div key={index} id="stock">
                                     <div style={{'alignSelf':"flex-end"}}>
                                     <span id="stock-name">{stock.name}</span>
-                                    <span id="stock-val">
-
-                                    {
-                                        stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
-
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
-                                    }
-                                        {stock.dayTrendPercentage>0? this.roundToNPlaces(stock.dayTrendPercentage,2) : -this.roundToNPlaces(stock.dayTrendPercentage,2)}
-                                    </span>
+                                    {showDayPercentage(stock.dayTrendPercentage)}
                                     </div>
                                     <span className="TrumpStar">
                                     
@@ -177,9 +166,7 @@ export default class ViewPortfolio extends Component {
                         </Link>
                     }
                 </div>
-                    
             </div>
-           
             </div>
         )
     }
