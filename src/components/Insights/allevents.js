@@ -36,7 +36,7 @@ export class AllEvents extends Component {
                 
                 <div  className="container3">
                     {
-                         news.filter((item,index) => index%2==0).map((item) => {
+                         news.filter((item,index) => index%2===0).map((item) => {
                              return (
                                 <div>    
                                     <h2>{item.heading}</h2>
@@ -49,7 +49,7 @@ export class AllEvents extends Component {
                 </div>      
                 <div  className="container4">
                     {
-                         news.filter((item,index) => index%2!=0).map((item) => {
+                         news.filter((item,index) => index%2!==0).map((item) => {
                              return (
                                 <div>    
                                     <h2>{item.heading}</h2>
