@@ -30,7 +30,7 @@ export default class EditPortfolio extends Component {
   fetchPortfolio = () => {
     const contestId = window.location.pathname.split("/")[3];
     const userId = localStorage.getItem("id");
-    fetch(`https://stgapi.trademanza.com/portfolios?userId=${userId}&contestId=${contestId}`)
+    fetch(`${API2}/portfolios?userId=${userId}&contestId=${contestId}`)
       .then((res) => res.json())
       .then((data) => {
         let currTrump = 0;

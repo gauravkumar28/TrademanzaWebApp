@@ -14,7 +14,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
       group:"",
         eventName:""
     };
-    this.fetchContests = this.fetchContests.bind(this);
   }
   fetchContests = () => {
     const eventid = window.location.pathname.split("/")[2];
@@ -49,14 +48,14 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
     return (
       <div>
         <div className="eventTitleheader" >
-                    <h1>
-                    <Link className="showtextLink" to={`/events/${this.state.group}`}>
-                    <ArrowBackIcon style={{fontSize:40}}/>
-                    </Link>
-                    {/* <button onClick={this.props.history.goBack} > */}
-                    {this.state.eventName}
-                    </h1> 
-                </div>
+            <span>
+            <Link className="showtextLink" to={`/events/${this.state.group}`}>
+            <ArrowBackIcon style={{fontSize:40}}/>
+            </Link>
+            {/* <button onClick={this.props.history.goBack} > */}
+            {this.state.eventName}
+            </span> 
+        </div>
       <div className="eventlist">
         {this.state.contestslist &&
         this.state.contestslist.NiftyFifty.length !== 0 ? (
@@ -65,14 +64,14 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
               <div>
                 {contest.participationFee > 0 ? (
                   <div   onClick={() => this.showMessage()}>
-                    <div key={index} className="eventbox">
+                    <div key={index} className="eventbox contestsbox">
                       <div className="event-item">{contest.name}</div>
                       <div className="event-itemlink">Play</div>
                     </div>
                   </div>
                 ) : (
                   <Link to={`/events/${eventid}/${contest.id}/prizebreakup`} >
-                    <div key={index} className="eventbox">
+                    <div key={index} className="eventbox contestsbox">
                       <div className="event-item">{contest.name}</div>
                       <div className="event-itemlink">Play</div>
                     </div>

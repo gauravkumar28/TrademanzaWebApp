@@ -48,7 +48,7 @@ export default class ViewPortfolio extends Component {
         const authToken = localStorage.getItem("authToken");
         const userId = localStorage.getItem("id");
         const contestid=window.location.pathname.split('/')[3];
-        fetch(`https://stgapi.trademanza.com/users/${userId}/wallet?contestId=${contestid}`,{
+        fetch(`${API2}/users/${userId}/wallet?contestId=${contestid}`,{
                 method:"GET",
                 headers:{
                     Accept:"application/json",

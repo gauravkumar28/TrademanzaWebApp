@@ -1,11 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import { API2 } from '../../backend';
 import './css/portfolio.css';
-import {ArrowUpward,ArrowDownward} from '@material-ui/icons';
+import {showDayPercentage} from "./helpers";
 
 const Report = () => {
     const [report, setReport] = useState();
-    // const [walletContest ,setWalletContest]=useState(undefined);
     const fetchReport  = () => {
         const contestid=window.location.pathname.split('/')[3];
         fetch(`${API2}/contests/${contestid}/report`)
@@ -20,11 +19,7 @@ const Report = () => {
     
     useEffect( () => {  
         fetchReport();
-        // fetchWallet();
     }, []);
-    const roundToNPlaces = (num,n) => {
-        return +(Math.round(num+"e+"+n)+"e-"+n)
-    }
     return (
        
         <div className="report-div">
@@ -37,14 +32,8 @@ const Report = () => {
                     <div key={index} id="stock" width="30px" >
                                     <div >
                                     <span id="stock-name">{stock.code}</span>
-                                    <span id="stock-val">
-                                    {
-                                        stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
+                                    {showDayPercentage(stock.dayTrendPercentage)}
 
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
-                                    }
-                                        {stock.dayTrendPercentage>0? roundToNPlaces(stock.dayTrendPercentage,2) : -roundToNPlaces(stock.dayTrendPercentage,2)}
-                                    </span>
                                     </div>
                         </div>
                     )
@@ -60,14 +49,7 @@ const Report = () => {
                     <div key={index} id="stock"  >
                                     <div style={{'alignSelf':"flex-end"}}  >
                                     <span id="stock-name">{stock.code}</span>
-                                    <span id="stock-val">
-                                    {
-                                        stock.dayTrendPercentage>0 ? <ArrowUpward style={{ fontSize: 15 }} /> 
-
-                                        :<ArrowDownward style={{ fontSize: 15 }} color="primary"/>
-                                    }
-                                        {stock.dayTrendPercentage>0? roundToNPlaces(stock.dayTrendPercentage,2) : -roundToNPlaces(stock.dayTrendPercentage,2)}
-                                    </span>
+                                    {showDayPercentage(stock.dayTrendPercentage)}
                                     </div>
                         </div>
                     )

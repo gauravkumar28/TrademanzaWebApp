@@ -3,6 +3,7 @@ import {
     Switch
 } from "react-router-dom";
 import './css/eventshow.css'
+import './css/eventlist.css'
 
 
 import CreatePortfolio from './CreatePortfolio';
@@ -54,13 +55,14 @@ export class Eventshow extends React.Component {
         // const eventid=window.location.pathname.split('/')[2];
         return (
             <div>
-                <div className="eventheader">
-                    <h1>
+                <div className="eventTitleheader eventheader">
+                    <span>
                     <Link className="showtextLink" to={`/events`}>
                     <ArrowBackIcon style={{fontSize:40}}/>
                     </Link>
                     {this.state.contest.name} 
-                    </h1> 
+                    </span> 
+         
                         {this.state.contest.prizeMsg && <h2>{this.state.contest.prizeMsg}</h2>}
                 </div>
                 <div className='eventshow-flex'>

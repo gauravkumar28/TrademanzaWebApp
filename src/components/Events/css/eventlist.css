@@ -3,12 +3,14 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items:center;
+        /* justify-content: center; */
 }
 
 .eventbox{
     display: flex;
     margin-top: 10px;
-    margin-left: -5%;
+    /* margin-left: -5%; */
     width: 60vw;
     height:120px;
     font-weight: bold;
@@ -37,28 +39,6 @@
     justify-content: center;
 
 }
-@media (max-width:400px){
-    .eventbox{
-        width:40vw;
-        height:50px;
-        font-weight: 600;
-        font-size: 8px;   
-    }
-    .event-item{
-        border-radius:5px 0px 0px 5px;
-    }
-}
-@media (max-width:700px) and (min-width:400px){
-    .eventbox{
-        width:50vw;
-        height:80px;
-        font-weight: 700;
-        font-size: 13px;   
-    }
-    .event-item{
-        border-radius:10px 0px 0px 10px;
-    }
-}
 
 .eventbox:hover .event-item {
     background-color: #5958D4;
@@ -70,7 +50,64 @@
 .eventTitleheader{
     color: rgba(89,88,212,1);
     font-family: Gobold;
+    font-size: 40px;
     font-style: normal;
     font-weight: bold;
     text-transform: uppercase;
+    
+}
+.no-events-message{
+    font-style: normal;
+    font-size: 25px;
+}
+@media (min-width:700px){
+    .eventbox{
+        
+        margin-left: -5%; 
+    }
+}
+@media (max-width:450px){
+    .eventbox{
+        width:40vw;
+        height:50px;
+        font-weight: 600;
+        font-size: 8px; 
+  
+    }
+    .event-item{
+        padding-left: 5px;
+        line-height: 12px;
+        border-radius:5px 0px 0px 5px;
+    }
+    .no-events-message{
+        width: 100px;
+    }
+    .eventlist{
+        /* background: green; */
+        align-items:center;
+        /* justify-content: center; */
+    }
+    .contestsbox{
+        width:70vw;
+        /* height:80px; */
+    }
+    .eventTitleheader{
+        font-size: 15px;
+        
+    }
+}
+@media (max-width:700px) and (min-width:450px){
+    .eventbox{
+        width:50vw;
+        height:80px;
+        font-weight: 700;
+        font-size: 13px;   
+    }
+    .event-item{
+        border-radius:10px 0px 0px 10px;
+    }
+    .eventTitleheader{
+        font-size:23px;
+        
+    }
 }

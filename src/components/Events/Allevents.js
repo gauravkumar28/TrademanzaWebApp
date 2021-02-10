@@ -31,7 +31,7 @@ export class Allevents extends React.Component {
     const events = this.state.eventslist;
     return (
       <div className="eventlist">
-        {events.map((task, index) => {
+        {events.length>0 ?events.map((task, index) => {
           return (
             <Link
               to={{
@@ -47,7 +47,7 @@ export class Allevents extends React.Component {
               </div>
             </Link>
           );
-        })}
+        }):<p className="no-events-message">No events available for this category</p>}
       </div>
     );
   }
