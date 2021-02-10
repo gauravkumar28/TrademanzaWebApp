@@ -6,6 +6,7 @@ import logo from '../images/favicon.png';
 import swal from 'sweetalert';
 import '../popup.css';
 import './login.css';
+
 const loginbutton={
     fontFamily: '"Gobold", sans-serif',
     fontStyle: 'normal',
@@ -61,11 +62,16 @@ class  LoginorSignup extends Component{
             otp:""
         }
     }
-    
+
     validatePhoneNumber=(number)=>{
         var phonenumber = number;
+        let pn=/[0-9]{10}/;
         if(phonenumber.length!==10){
             swal({text:"Phone number must be 10 digits"});
+            return false;
+        }
+        else if(!pn.test(phonenumber)){
+            swal({text:"Phone number doesn't contain alphabets"});
             return false;
         }else{
             return true;
@@ -81,15 +87,22 @@ class  LoginorSignup extends Component{
             return true;
         }
     }
+    // componentDidMount(){
+    //     fire.auth().onAuthStateChanged((user)=>{
+    //         if(user){
+    //             window.location.href="/";
+    //         }
+    //     });
+    // }
     onSignUpSubmit = (event) =>{
         event.preventDefault();
 
         if(this.state.name&&this.state.userName&&this.state.phone&&this.state.email){
         
-        fetch("https://stgapi.trademanza.com/users/validate_input", {
+        fetch(`${process.env.REACT_APP_API2}/users/validate_input`, {
         "method": "POST",
         "headers": {
-            "x-rapidapi-host": "stgapi.trademanza.com",
+            "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
             "content-type": "application/json",
             "accept": "application/json"
         },
@@ -104,10 +117,10 @@ class  LoginorSignup extends Component{
             }
             else{
                 if(this.validatePhoneNumber(this.state.phone)&&this.validateEmail(this.state.email)){
-                fetch("https://stgapi.trademanza.com/users", {
+                fetch(`${process.env.REACT_APP_API2}/users`, {
                     "method": "POST",
                     "headers": {
-                        "x-rapidapi-host": "stgapi.trademanza.com",
+                        "x-rapidapi-host":`${process.env.REACT_APP_API2}`,
                         "content-type": "application/json",
                         "accept": "application/json"
                     },
@@ -122,8 +135,7 @@ class  LoginorSignup extends Component{
                     .then(response => response.json())
                     .then(response => {
                     if(response.hasOwnProperty('error')){
-                swal({text:response.error.errorMsg});
-                        
+                            swal({text:response.error.errorMsg});
                     }else{
                         this.loginform();
                     }
@@ -174,6 +186,7 @@ class  LoginorSignup extends Component{
         var code="";
         await swal({
             title:"Enter OTP",
+            maxlength:"6",
             content: "input",
             closeOnClickOutside:false,
             closeOnEsc: false,
@@ -193,14 +206,13 @@ class  LoginorSignup extends Component{
                 console.log('signed in successfully');
                 await fire.auth().onAuthStateChanged((user)=>{
                     if(user){
-                        console.log(user);
                         user.getIdToken().then(function(idToken) {  
                             localStorage.setItem("authToken",idToken);
                         });
-                        fetch("https://stgapi.trademanza.com/users/signin", {
+                        fetch(`${process.env.REACT_APP_API2}/users/signin`, {
                         "method": "POST",
                         "headers": {
-                            "x-rapidapi-host": "stgapi.trademanza.com",
+                            "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
                             "content-type": "application/json",
                             "accept": "application/json"
                         },
@@ -214,8 +226,8 @@ class  LoginorSignup extends Component{
                             const user_data=response.data;
                             localStorage.setItem("userName", user_data.userName);
                             localStorage.setItem("id",user_data.id);
-                            window.location.href="/";
-
+            window.location.href="/";
+                            
                         })
                         .catch(err => {
                         console.log(err);
@@ -271,12 +283,12 @@ class  LoginorSignup extends Component{
                         <div >
                         <div style={{display:"none"}} id="recaptcha-container"></div>
                         <input
-                        type="number"
-                        max="9999999999" 
+                        type="text"
+                        maxlength="10"
                         id="mobileno"
                         name="mobileno"
                         style={input}
-                        placeholder="Phone Number" 
+                        placeholder="Please enter 10 digit Mobile Number" 
                         className="input"
                         onChange={this.handleChange}
                         value={this.state.mobileno} 

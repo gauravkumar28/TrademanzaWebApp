@@ -11,8 +11,6 @@ import firebase from 'firebase';
 import fire from '../config/fire';
 
 
-
-
 const Styles = styled.div`
     .navbar{
         background-color:#181B1F;  
@@ -76,16 +74,17 @@ class NavigationBar extends React.Component{
           var  list=["white","white","white","white","white"];
           list[x]='#5958D4';
         this.setState({colors:list});
+
         if(x===4){
             if(this.state.logstatus ==='Logout' ){
                 this.logout();
                 this.setState({logstatus:'Login'});
-            window.location.href="/loginorsignup";
+            window.location.href="/";
             }
         }
      }
      componentDidMount(){
-         
+
         if(window.location.pathname==="/")
             this.change_active(0);
         else if(window.location.pathname==="/insights")
@@ -97,17 +96,19 @@ class NavigationBar extends React.Component{
         else if(window.location.pathname==="/loginorsignup")
             this.change_active(4);
         this.authListener();
+
       }
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
-    authListener=()=>{
+    authListener=async()=>{
         
             fire.auth().onAuthStateChanged((user)=>{
             if(user){
+                console.log(user);
                 this.setState({logstatus:"Logout",photoURL:user.photoURL});
-                fetch("https://stgapi.trademanza.com/users/signin", {
+                fetch(`${process.env.REACT_APP_API2}/users/signin`, {
                 "method": "POST",
                 "headers": {
-                    "x-rapidapi-host": "stgapi.trademanza.com",
+                    "x-rapidapi-host":`${process.env.REACT_APP_API2}`,
                     "content-type": "application/json",
                     "accept": "application/json"
                 },
@@ -118,8 +119,11 @@ class NavigationBar extends React.Component{
                 })
                 .then(response => response.json())
                 .then(response => {
-                    user=response.data;
-                    this.setState({displayname:user.name,phonenumber:user.phone,wallet:user.wallet});
+                    let users=response.data;
+                    const user_data=response.data;
+                    localStorage.setItem("userName", user_data.userName);
+                    localStorage.setItem("id",user_data.id);
+                    this.setState({displayname:users.name,phonenumber:users.phone,wallet:users.wallet});
                 })
                 .catch(err => {
                 console.log(err);

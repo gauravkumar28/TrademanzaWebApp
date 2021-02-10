@@ -10,7 +10,7 @@ export class OilGas extends Component {
         this.fetchNews=this.fetchNews.bind(this)
     }
     fetchNews = () =>{
-        fetch(`https://api.trademanza.com/news?category=automobile`)
+        fetch(`https://api.trademanza.com/news?category=oil%26gas`)
         .then(response => response.json())
         .then(data => data.data)
         .then(data =>{ 
