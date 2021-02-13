@@ -74,8 +74,32 @@ class  LoginorSignup extends Component{
             swal({text:"Phone number doesn't contain alphabets"});
             return false;
         }else{
-            return true;
-        }
+            fetch(`${process.env.REACT_APP_API2}/users/validate_input`, {
+                "method": "POST",
+                "headers": {
+                    "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
+                    "content-type": "application/json",
+                    "accept": "application/json"
+                },
+                "body": JSON.stringify({
+                    phone: "+91"+number,
+                })
+                })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    if(response.hasOwnProperty('error')){
+                        swal({text:response.error.errorMsg});
+                        return false;
+                    }
+                    else{
+                            return true;
+                    }
+        
+        }).catch(err => {
+                        
+        });
+    }
     }
     validateEmail=(email)=>{
         let regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -186,7 +210,6 @@ class  LoginorSignup extends Component{
         var code="";
         await swal({
             title:"Enter OTP",
-            maxlength:"6",
             content: "input",
             closeOnClickOutside:false,
             closeOnEsc: false,
@@ -249,6 +272,7 @@ class  LoginorSignup extends Component{
         this.setState({showlogin:true});
     }
     signupform=()=>{
+
         this.setState({showlogin:false});
     }
     handleChange(e){
@@ -263,8 +287,7 @@ class  LoginorSignup extends Component{
             <Container style={{marginTop:"20px"}}>
                 <Row>
                     <Col xl="5" lg="5" md="5">
-                        {toggle ?
-                        (<div>
+                        <div id="loginblock" className="block" style={{display:toggle?'block':'none'}}>
                             <table>
                             <tbody>
                                 <tr>
@@ -297,8 +320,8 @@ class  LoginorSignup extends Component{
                         <br></br>
             <button id="loginbtn" onClick={this.onSignInSubmit} type="submit" style={submit} className="mybtn" >LOG IN</button>
                         </div>
-                        </div>):(
-                        <div><table>
+                        </div>
+                        <div id="signupblock" className="block" style={{display:!toggle?'block':'none'}}><table>
                             <tbody>
                                 <tr>
                                     <td>
@@ -377,8 +400,7 @@ class  LoginorSignup extends Component{
             <button type="submit" style={submit} className="mybtn" >Sign Up</button>         
             </form>  
 
-                        </div>)
-    }
+                        </div>
                 
             <br></br>
             <br></br>
