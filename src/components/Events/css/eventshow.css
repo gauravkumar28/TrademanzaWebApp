@@ -18,7 +18,6 @@
     width: 25vw;
     height: 400px;
     margin-left: 10px;
-    border-radius:20px 20px 0px 0px;
     text-align: center;
     
 }
@@ -54,19 +53,22 @@
 .prizeBreakupData ,.leaderboardData{
     width: 100%;
     height: 350px;
-    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 15px;
+    /* font-family: "Futura Bk BT", sans-serif; */
     /* background: red; */
 }
 .leaderboardData{
+    /* max-height: 300px; */
     overflow-y: scroll;
 }
 
 .leaderboardData::-webkit-scrollbar {
     width: 10px;
     background-color: rgba(41,45,50,1) ;
+    border-radius: 10px;
     /* border-radius: 16px; */
 }
 
@@ -76,7 +78,7 @@
 
 .leaderboardData::-webkit-scrollbar-thumb {
     background-color:  rgba(89,88,212,1);
-    border-radius: 5px;
+    border-radius: 10px;
     /* outline: 1px solid slategrey; */
   }
 
@@ -92,15 +94,18 @@
     font-weight: 700;
     background-color: #5958d4;
     color:#fff;
+    border-radius:0px 0px 10px 10px;
+
 }
 
 .showtextLink{
     color:#fff;
+  
 }
 
 .rankinglist{
     font-size: 25px;
-    line-height: 15px;
+    line-height: 20px;
     font-weight: 300;
     font-style: normal;
     color: white;

@@ -52,9 +52,9 @@ a:hover{
 
 .logo-design{
     margin-top: 10px;
-    object-fit: cover;
+    /* object-fit: cover; */
     width: 20vw;
-    height: 250px;
-    object-position: 30% 0%;
+    /* height: 250px; */
+    /* object-position: 100% 0%; */
     opacity: .2;
 }

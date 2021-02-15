@@ -14,8 +14,6 @@ const PrizeBreakup = (props) => {
         fetch(`${API2}/contests/v2/${contestid}/prizes`)
         .then(res => res.json())
         .then(data => {
-            console.log(" i am calling ");
-            console.log(data.data.prizeBreakupList)
             setPrizeList(data.data.prizeBreakupList);
         })
     }

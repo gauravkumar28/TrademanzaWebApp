@@ -4,8 +4,6 @@ import {
 } from "react-router-dom";
 import './css/eventshow.css'
 import './css/eventlist.css'
-
-
 import CreatePortfolio from './CreatePortfolio';
 import EventSidebar from './EventSidebar';
 import Leaderboard from './Leaderboard';
@@ -40,6 +38,7 @@ export class Eventshow extends React.Component {
             let backbuttonValue;
             if(data.data.status==="completed" && data.data.hasJoined) backbuttonValue="completedcontests";
             else backbuttonValue="contests";
+            console.log(data.data);
             this.setState({
             contest:data.data,
             showText:showtext,

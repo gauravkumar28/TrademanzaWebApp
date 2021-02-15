@@ -70,7 +70,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
                     </div>
                   </div>
                 ) : (
-                  <Link to={`/events/${eventid}/${contest.id}/prizebreakup`} >
+                  <Link to={`/events/${eventid}/${contest.id}/leaderboard`} >
                     <div key={index} className="eventbox contestsbox">
                       <div className="event-item">{contest.name}</div>
                       <div className="event-itemlink">Play</div>

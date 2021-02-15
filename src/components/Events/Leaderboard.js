@@ -17,7 +17,6 @@ export default class Leaderboard extends Component {
          fetch(`${API2}/contests/${contestid}/leaderboard?userId=${localStorage.getItem("id")}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data.data);
             this.setState({
                 leaderboard:data.data
             })

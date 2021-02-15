@@ -130,6 +130,7 @@ export default class ViewPortfolio extends Component {
                 <div className="stocks-list">
                     STOCK PICKED
                     <div className="stock-option-heading">
+                    SELECTED STOCKS   
                     {
                         (this.state.portfolio && this.state.portfolio.length>0 && this.state.portfolio[0].selectedStocks)?
                         this.state.portfolio[0].selectedStocks.map((stock,index)=>{
@@ -151,19 +152,16 @@ export default class ViewPortfolio extends Component {
                     }
                     
                     </div>
+                    {this.state.contest.showEditPortfolioButton  &&   
+                        <Link className="stock-option-heading" style={{fontSize:"30px"}} to={`/events/${eventId}/${contestId}/editportfolio`}>
+                            Edit Portfolio
+                        </Link>
+                    }
                     {
                         this.state.contest.showJoinContestButton &&
                         <button   className="SubmitButton"  onClick={() => {this.participateInContest();}}>
                             Participate
                         </button>
-                    }
-                    {
-
-                    }
-                    {this.state.contest.showEditPortfolioButton  &&   
-                        <Link className="EditPortfolioButton" to={`/events/${eventId}/${contestId}/editportfolio`}>
-                            Edit Portfolio
-                        </Link>
                     }
                 </div>
             </div>
