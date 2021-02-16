@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./css/eventlist.css";
+import "./css/eventshow.css";
 import { Link } from "react-router-dom";
 import { API2 } from "../../backend";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { HiArrowNarrowLeft } from "react-icons/hi";
 
 export default class CompletedContests extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export default class CompletedContests extends Component {
             <div className="eventTitleheader" >
             <span>
             <Link className="showtextLink" to={`/events/${this.state.status}`}>
-            <ArrowBackIcon style={{fontSize:40}}/>
+            <HiArrowNarrowLeft className="arrow-show"/>
             </Link>
             {/* <button onClick={this.props.history.goBack} > */}
             {this.state.eventName}
@@ -54,7 +55,7 @@ export default class CompletedContests extends Component {
           this.state.contestslist.map((contest, index) => {
             return (
               <Link to={`/events/${eventid}/${contest.id}/leaderboard`}>
-                <div key={index} className="eventbox">
+                <div key={index} className="eventbox contestsbox">
                   <div className="event-item">{contest.name}</div>
                   <div className="event-itemlink">View</div>
                 </div>

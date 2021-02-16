@@ -3,8 +3,7 @@ import "./css/eventlist.css";
 import { Link,withRouter } from "react-router-dom";
 import { API2 } from "../../backend";
 import swal from "sweetalert";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
+import { HiArrowNarrowLeft } from "react-icons/hi";
 
  class Contests extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
         <div className="eventTitleheader" >
             <span>
             <Link className="showtextLink" to={`/events/${this.state.group}`}>
-            <ArrowBackIcon style={{fontSize:40}}/>
+            <HiArrowNarrowLeft className="arrow-show" />
             </Link>
             {/* <button onClick={this.props.history.goBack} > */}
             {this.state.eventName}

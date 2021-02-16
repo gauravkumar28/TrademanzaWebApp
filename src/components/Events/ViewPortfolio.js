@@ -4,6 +4,7 @@ import { API2 } from '../../backend';
 import {Link} from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
+import '../popup.css';
 import swal from 'sweetalert';
 import coin from './images/coin.svg';
 import {showDayPercentage} from "./helpers";
