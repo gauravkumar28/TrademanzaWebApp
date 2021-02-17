@@ -48,6 +48,7 @@
     height: 50%;
     background-color: #292d32;
     border-radius:10px 10px 10px 10px;
+    font-size: 30px;
     float: left;
 }
 .prizeBreakupData ,.leaderboardData{
@@ -89,7 +90,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 30px;
     font-weight: 700;
     background-color: #5958d4;
@@ -140,6 +141,7 @@
         width: 70px;
         height: 70px;
     }   
+
 }
 /* phone screens */
 @media (max-width:450px){
@@ -147,6 +149,22 @@
         width: 20px;
         height: 20px;
     }   
+    .dollarStack,.leaderboardImage{
+        display:none;
+    }
+
+    .PrizeBreakup,.leaderboard{
+        display: initial;  
+    }
+    .PrizeBreakupBox ,.leaderboardBox{
+        width: 60vw;
+        height: 400px;
+        font-size: 20px;
+    }
+    .InsideBox{
+        font-size: 15px;      
+    }
+   
 }
 /* tablet screens  */
 @media (max-width:700px) and (min-width:450px){

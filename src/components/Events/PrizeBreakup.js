@@ -27,21 +27,21 @@ const PrizeBreakup = (props) => {
                         <div className="prizeBreakupData">
                             <div>
 
-                                    <h2>Rank</h2>
+                                    <h3>Rank</h3>
                                     {
                                         prizeList && 
                                         prizeList.map((prize,index)=> {
-                                            return  (<h3 key={index} > {prize.rank}</h3>)
+                                            return  (<div key={index} > {prize.rank}</div>)
                                         })
                                     }
 
                             </div>
                             <div>
-                                    <h2>Prize</h2>
+                                    <h3>Prize</h3>
                                     {
                                         prizeList && 
                                         prizeList.map((prize,index)=> {
-                                            return  (<h3 key={index} >  {prize.assetType==="coin"?<img src={coin} width="20px" height="20px" alt="coin svg"  />:null } {prize.amount}</h3>)
+                                            return  (<div key={index} >  {prize.assetType==="coin"?<img src={coin} width="20px" height="20px" alt="coin svg"  />:null } {prize.amount}</div>)
                                         })
                                     }
                             </div>
@@ -53,7 +53,7 @@ const PrizeBreakup = (props) => {
                             </Link>
                         </div>
                     </div>
-                    <div>   
+                    <div className="dollarStack">   
                         <img src={dollerStack}  alt="dollerStack svg"  className="dollarStackSVG"/>
                     </div>
             </div>

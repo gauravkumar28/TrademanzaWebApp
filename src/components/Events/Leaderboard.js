@@ -44,7 +44,7 @@ export default class Leaderboard extends Component {
                                 </Link>
                             </div>
                         </div>
-                        <div>   
+                        <div className="leaderboardImage">   
                             <img src={leaderBoardSvg}  alt="leaderBoard svg"  className="leaderBoardSvg"/>
                         </div>
                 </div>
