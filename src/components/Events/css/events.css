@@ -8,7 +8,6 @@ $phone : 480px   */
     justify-content: space-around;
 }
 #sidebar{
-
     color: white;
     display: flex;
     margin-left:0;
@@ -16,7 +15,6 @@ $phone : 480px   */
     list-style: none;
     width:10vw;
     flex-shrink: 2;
-   
  }
 
 .sidebar-item{
@@ -25,18 +23,20 @@ $phone : 480px   */
     padding:7px 0px;
     flex-shrink:2;
 }
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+
     .sidebar-item{
         font-size:15px;
         font-weight: 600;
+        
     }
 }
-@media (max-width:700px) and (min-width:400px){
+@media (max-width:750px) and (min-width:480px){
     .sidebar-item{
         font-size:20px;
     }
 }
-@media (min-width: 700px) {
+@media (min-width: 750px) {
     .sidebar-item{
         font-size:25px;
     }

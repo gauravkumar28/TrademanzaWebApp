@@ -136,7 +136,7 @@
 }
 
 /* laptop screens */
-@media (min-width:700px){
+@media (min-width:750px){
     .arrow-show{
         width: 70px;
         height: 70px;
@@ -144,7 +144,7 @@
 
 }
 /* phone screens */
-@media (max-width:450px){
+@media (max-width:480px){
     .arrow-show{
         width: 20px;
         height: 20px;
@@ -167,9 +167,25 @@
    
 }
 /* tablet screens  */
-@media (max-width:700px) and (min-width:450px){
+@media (max-width:750px) and (min-width:480px){
     .arrow-show{
         width: 35px;
         height: 35px;
     }   
+    .dollarStack,.leaderboardImage{
+        display:none;
+    }
+
+    .PrizeBreakup,.leaderboard{
+        display: initial;  
+    }
+    .PrizeBreakupBox ,.leaderboardBox{
+        width: 60vw;
+        height: 400px;
+        font-size: 30px;
+        line-height: 35px;
+    }
+    .InsideBox{
+        font-size: 15px;      
+    }
 }

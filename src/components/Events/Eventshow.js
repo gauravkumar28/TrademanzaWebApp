@@ -92,13 +92,19 @@ export class Eventshow extends React.Component {
             <h2>{this.state.contest.prizeMsg}</h2>
           )}
         </div>
+            
         <div className="eventshow-flex">
-        <div className="sidebar-box">
+        <div className="sidebar-box-mob">
+            
           {this.state.showsidebar && <EventSidebar />}
           <button onClick={this.togglesidebar} className="toggleSidebar-button">
-            <span>show</span>
+            <span>menu</span>
           </button>
           </div>
+        <div className="sidebar-box">
+          <EventSidebar />
+          </div>
+       
           <Switch>
             <PrivateRoute
               exact

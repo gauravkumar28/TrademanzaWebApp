@@ -120,8 +120,11 @@ export default class ViewPortfolio extends Component {
      }})
     }
     render() {
+        let width=window.innerWidth;
         const eventId=window.location.pathname.split('/')[2];
         const contestId=window.location.pathname.split('/')[3];
+        console.log(width);
+        if(width>400){
         return (
             <div>
             <div className="portfolio-box">
@@ -167,6 +170,7 @@ export default class ViewPortfolio extends Component {
                 </div>
             </div>
             </div>
-        )
+        )}
+        else return <span>hello wrold</span>;
     }
 }
