@@ -1,258 +1,300 @@
-.eventlist{
-    /* background: green; */
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+.eventlist {
+  /* background: green; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-
-.portfolio-box{
-    display: flex;
-    margin-top: 10px;
-    margin-left: -5%;
-    width: 70vw;
-    height:500px;
-    font-weight: bold;
-    font-size: 1.2em;   
+.portfolio-box {
+  display: flex;
+  margin-top: 10px;
+  margin-left: -5%;
+  width: 70vw;
+  height: 500px;
+  font-weight: bold;
+  font-size: 1.2em;
 }
-.portfolio-details{
-    height: 100%;
-    width: 70%;
-    background:  rgba(41,45,50,1);
-    border-radius:20px 0px 0px 20px;
+.portfolio-details {
+  height: 100%;
+  width: 70%;
+  background: rgba(41, 45, 50, 1);
+  border-radius: 20px 0px 0px 20px;
 }
 
-
-
-.stocks-list{
-    height: 100%;
-    width: 30%;
-    background: #fff;
-    color: rgba(41,45,50,1);
-    white-space: nowrap;
-    text-align: center;
-    font-family: Segoe UI;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.5em;
-    color: rgba(41,45,50,1);
-    display: flex;
-    flex-direction: column;
-    border-radius:0px 20px 20px 0px;
-
-    
+.stocks-list {
+  height: 100%;
+  width: 30%;
+  background: #fff;
+  color: rgba(41, 45, 50, 1);
+  white-space: nowrap;
+  text-align: center;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: rgba(41, 45, 50, 1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 20px 20px 0px;
 }
-.stock-option-heading2{
-    flex:1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-
+.stock-option-heading2 {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.stock-listing{
-    overflow-y:scroll;
-    overflow-x:scroll;
+.stock-listing {
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 .stock-listing::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .stock-listing::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
 }
-.stock-option-heading,.stock-option-heading2{
-    font-size: 17px;
-    text-align: left;
-    margin-left: 20px;
-    margin-top: 10px;
-    color:rgba(0,0,0,.8);
+.stock-option-heading,
+.stock-option-heading2 {
+  font-size: 17px;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .stock-listing::-webkit-scrollbar-thumb {
-  background-color:  rgba(41,45,50,1);
+  background-color: rgba(41, 45, 50, 1);
   outline: 1px solid slategrey;
 }
 
-#stock,#Selectedstock{
-    height: 40px;
-    border:1px solid white;
-    background-color:rgba(255,255,255,0.1);
-    margin-top: 5px;
-    width: 14vw;
-    border-radius: 20px;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow:4px 4px 3px rgba(0,0,0,.3);
-     /* rgba(255,255,255,0.9); */
-    /* font-size: 10px; */
+#stock,
+#Selectedstock {
+  height: 40px;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 5px;
+  width: 14vw;
+  border-radius: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3);
+  /* rgba(255,255,255,0.9); */
+  /* font-size: 10px; */
 }
-#stock-name,#Selectedstock-name{
-    margin-left: 15px;
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    font-family: "Arial";
-
+#stock-name,
+#Selectedstock-name {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: "Arial";
 }
-#stock-val,#Selectedstock-val{
-    font-size: 15px;
-    
-    /* font-weight: bold; */
+#stock-val,
+#Selectedstock-val {
+  font-size: 15px;
+  /* font-weight: bold; */
 }
-#stock-remove,#stock-sub,#Selectedstock-sub{
-    height:20px;
-    background: white;
-    border: none;
-    width: 2px;
-    margin-right: 20px;
-    font-size: 25px;
-    
+#stock-remove,
+#stock-sub,
+#Selectedstock-sub {
+  height: 20px;
+  background: white;
+  border: none;
+  width: 2px;
+  margin-right: 20px;
+  font-size: 25px;
 }
-#stock-remove{
-    background:rgba(89,88,212,1);
+#stock-remove {
+  background: rgba(89, 88, 212, 1);
 }
-.removeAndTrump{
-    justify-content: center;
-    /* margin-bottom: 2px; */
+.removeAndTrump {
+  justify-content: center;
+  /* margin-bottom: 2px; */
 }
-.TrumpStar{
-    margin-right: 20px;
-    /* background-color: red; */
+.TrumpStar {
+  margin-right: 20px;
+  /* background-color: red; */
 }
-button:focus{
-    outline:none;
-    border: none;
+button:focus {
+  outline: none;
+  border: none;
 }
-.stock-describe{
-    outline:none;
-    border: none;
-    background-color: white;
+.stock-describe {
+  outline: none;
+  border: none;
+  background-color: white;
 }
-#Selectedstock{
-        background:rgba(89,88,212,1);
-       justify-content: space-between;
-
+#Selectedstock {
+  background: rgba(89, 88, 212, 1);
+  justify-content: space-between;
 }
-#Selectedstock-name{
-    color: white;
+#Selectedstock-name {
+  color: white;
 }
-#Selectedstock-sub{
-    font-size: 15px;
-    width: 50px;
-    /* background: red; */
+#Selectedstock-sub {
+  font-size: 15px;
+  width: 50px;
+  /* background: red; */
 }
-.SubmitButton,.EditPortfolioButton{
-     background:rgba(89,88,212,1);
-     color: black;
-     border-radius: 15px;
-     margin: 10px;
-     width: 200px;
-     height: 40px;
-     font-size: 20px;
-     font-weight: 700;
-
+.SubmitButton,
+.EditPortfolioButton {
+  background: rgba(89, 88, 212, 1);
+  color: black;
+  border-radius: 15px;
+  margin: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
 }
-.EditPortfolioButton:hover{
-    color: black;
-}
-
-.portfolioNameInput{
-    height: 50px;
-    width: 70%;
-    margin-left: 20%;
-    margin-top: 20px;
-    background-color:  rgba(41,45,50,1);
-    border: none;
-    line-height: 40px;
-    font-size: 30px;
-    color: #fff;
-    font-weight: 700;
-    box-shadow:4px 4px 3px rgba(0,0,0,.3),-4px -4px 3px rgba(0,0,0,0.3);
-    border-radius: 12px;
-    /* color:; */
+.EditPortfolioButton:hover {
+  color: black;
 }
 
-.logo-design{
-    margin-left: -50%;
+.portfolioNameInput {
+  height: 50px;
+  width: 70%;
+  margin-left: 20%;
+  margin-top: 20px;
+  background-color: rgba(41, 45, 50, 1);
+  border: none;
+  line-height: 40px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3), -4px -4px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  /* color:; */
+}
+
+.logo-design {
+  margin-left: -50%;
+}
+
+iframe {
+  border: 2px solid blue;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.Stock-Search-Icon {
+  /* text-align: left; */
+  /* padding: 10px; */
+}
+.Stock-Search-Box {
+  width: 90%;
+  font-weight: 900;
+  padding: 20px;
+  background: rgba(41, 45, 50, 1);
+  text-align: center;
+  color: #ffffff;
+  border-radius: 20px;
+  height: 35px;
+  font-size: 20px;
+  outline: none;
+  border: none;
 }
 
 
-iframe{
-    border:2px solid blue;
-    border-radius: 5px;
-    margin-top:10px;
-    margin-left: 5px;
-}
-
-.Stock-Search-Icon{
-    /* text-align: left; */
-    /* padding: 10px; */
-}
-.Stock-Search-Box{
-    width: 90%;
-    font-weight: 900;
-    padding: 20px;
-    background: rgba(41,45,50,1);
-    text-align: center;
-    color: #ffffff;
-    border-radius: 20px;
-    height: 35px;
-    font-size: 20px;
-}
-.Stock-Search-Box:focus{
-    outline:none;
-    border: none;   
-}
-
-
-.report-div{
-    display: flex;
-    background: #ffffff;
-    width: 60vw;   
-    justify-content: space-evenly;
-    border-radius: 10px;
-
+.report-div {
+  display: flex;
+  background: #ffffff;
+  width: 60vw;
+  justify-content: space-evenly;
+  border-radius: 10px;
 }
 
 .mediumfont {
-    font-size: 15px;
-    font-weight: 150;
+  font-size: 15px;
+  font-weight: 150;
 }
-.postive{
-    color: rgba(11, 186, 87,1);
-    /* color: #000; */
+.postive {
+  color: rgba(11, 186, 87, 1);
+  /* color: #000; */
 }
-.negtive{
-    /* color:red; */
-    color:rgba(255,0,0,1);
-   
+.negtive {
+  /* color:red; */
+  color: rgba(255, 0, 0, 1);
+}
+.editpicks{
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-size: 30px;
 }
 
-@media (max-width:480px){
-    .portfolio-details{
-        border-radius:5px 0px 0px 5px;
-        display: none;
-    }
-    .portfolio-box{
-        /* display: initial; */
-        margin-left: 20vw;
-    }
-    .stocks-list{
-        width: 60vw;
-        
-    }
+@media (max-width: 480px) {
+  .portfolio-details {
+    /* border-radius: 5px 0px 0px 5px; */
+    display: none;
+  }
+  .portfolio-box {
+    display: initial
+    /* margin-left: 20vw; */
+  }
+  .stocks-list {
+    color: #fff;
+    width: 80vw;
+    background: #181B1F;;
+  }
+  
+  #stock,
+#Selectedstock {
+    height: 35px;
+    background-color: #fff;
+    margin-top: 7px;
+    width: 70vw;
+    text-align: left;
+    border-radius: 25px;
+  }
+  .stock-listing{
+    overflow: visible;
+  }
+  .stock-option-heading,
+  .stock-option-heading2 {
+    font-size: 20px;
+    font-family: 'Segoe UI ', sans-serif;
+    color: #3B3E41;
+  }
+  .stock-option-heading{
+    margin-top: 0px;
+  }
+  .editpicks{
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  #Selectedstock {
+    background: rgba(89, 88, 212, 1);
+    border: none;
+  }
+  #Selectedstock-name {
+    color: white;
+  }
+  .Stock-Search-Box {
+    width: 70vw;
+    font-size: 18px;
+    border-radius: 25px;
+    height: 35px;
+  }
+  .SubmitButton,
+  .EditPortfolioButton {
+    border-radius: 20px;
+    height: 35px;
+  }
+
 }
-@media (max-width:750px) and (min-width:480px){
-    .portfolio-box{
-        width:50vw;
-        font-weight: 700;
-        font-size: 13px;   
-    }
-    .portfolio-details{
-        border-radius:10px 0px 0px 10px;
-    }
- 
+@media (max-width: 750px) and (min-width: 480px) {
+  .portfolio-box {
+    width: 50vw;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .portfolio-details {
+    border-radius: 10px 0px 0px 10px;
+  }
 }

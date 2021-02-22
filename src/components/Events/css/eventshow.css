@@ -1,191 +1,193 @@
-.eventshow-flex{
-    width: 100vw;
-    display:flex;
-    justify-content: space-evenly;
-    
+.eventshow-flex {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.eventheader{
-    /* font-size: 60px; */
-    margin-left: 20%;
-    margin-bottom: 10px;
-    /* justify-content: flex-start; */
+.eventheader {
+  /* font-size: 60px; */
+  margin-left: 20%;
+  margin-bottom: 10px;
+  /* justify-content: flex-start; */
 }
 
-
-.LeaderBoard{
-    background-color: rgba(41,45,50,2);
-    width: 25vw;
-    height: 400px;
-    margin-left: 10px;
-    text-align: center;
-    
+.LeaderBoard {
+  background-color: rgba(41, 45, 50, 2);
+  width: 25vw;
+  height: 400px;
+  margin-left: 10px;
+  text-align: center;
 }
 
-
-.PortfolioView{
-    background:  rgba(89,88,212,1);
-    position: absolute;
-    bottom: 20px;
-    height: 60px;
-    width: 25vw;
-    font-weight: 700;
-    font-size:2.2em;
+.PortfolioView {
+  background: rgba(89, 88, 212, 1);
+  position: absolute;
+  bottom: 20px;
+  height: 60px;
+  width: 25vw;
+  font-weight: 700;
+  font-size: 2.2em;
 }
 
-
-.PrizeBreakup ,.leaderboard{
-    width: 60%;
-    height: 70%;
-    /* background: red; */
-    /* display: flex;
+.PrizeBreakup,
+.leaderboard {
+  width: 60%;
+  height: 70%;
+  /* background: red; */
+  /* display: flex;
     justify-content:space-between;
     align-items: flex-start; */
 }
 
-.PrizeBreakupBox ,.leaderboardBox{
-    width: 40%;
-    height: 50%;
-    background-color: #292d32;
-    border-radius:10px 10px 10px 10px;
-    font-size: 30px;
-    float: left;
+.PrizeBreakupBox,
+.leaderboardBox {
+  width: 40%;
+  height: 50%;
+  background-color: #292d32;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 30px;
+  float: left;
 }
-.prizeBreakupData ,.leaderboardData{
-    width: 100%;
-    height: 350px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 15px;
-    /* font-family: "Futura Bk BT", sans-serif; */
-    /* background: red; */
+.prizeBreakupData,
+.leaderboardData {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 15px;
+  /* font-family: "Futura Bk BT", sans-serif; */
+  /* background: red; */
 }
-.leaderboardData{
-    /* max-height: 300px; */
-    overflow-y: scroll;
+.leaderboardData {
+  /* max-height: 300px; */
+  overflow-y: scroll;
 }
 
 .leaderboardData::-webkit-scrollbar {
-    width: 10px;
-    background-color: rgba(41,45,50,1) ;
-    border-radius: 10px;
-    /* border-radius: 16px; */
+  width: 10px;
+  background-color: rgba(41, 45, 50, 1);
+  border-radius: 10px;
+  /* border-radius: 16px; */
 }
 
 .leaderboardData::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 2px rgba(41,45,50,0.4) ;
+  -webkit-box-shadow: inset 0 0 2px rgba(41, 45, 50, 0.4);
 }
 
 .leaderboardData::-webkit-scrollbar-thumb {
-    background-color:  rgba(89,88,212,1);
-    border-radius: 10px;
-    /* outline: 1px solid slategrey; */
-  }
-
-.InsideBox{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    line-height: 30px;
-    font-weight: 700;
-    background-color: #5958d4;
-    color:#fff;
-    border-radius:0px 0px 10px 10px;
-
+  background-color: rgba(89, 88, 212, 1);
+  border-radius: 10px;
+  /* outline: 1px solid slategrey; */
 }
 
-.showtextLink{
-    color:#fff;
-  
+.InsideBox {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 700;
+  background-color: #5958d4;
+  color: #fff;
+  border-radius: 0px 0px 10px 10px;
 }
 
-.rankinglist{
-    font-size: 25px;
-    line-height: 20px;
-    font-weight: 300;
-    font-style: normal;
-    color: white;
+.showtextLink {
+  color: #fff;
+}
+
+.rankinglist {
+  font-size: 25px;
+  line-height: 20px;
+  font-weight: 300;
+  font-style: normal;
+  color: white;
+}
+
+.dollarStackSVG,
+.leaderBoardSvg {
+  width: 55%;
+  height: 50%;
+  float: right;
+}
+
+.username-showing {
+  font-style: normal;
+  color: #5958d4;
+}
+
+.participate-tab {
+  font-size: 20px;
+  line-height: 20px;
+  font-style: normal;
+  /* font-family: "Gobold", sans-serif; */
 }
 
 
-.dollarStackSVG,  .leaderBoardSvg{
-    width: 55%;
-    height: 50%;
-    float: right;
-}
-
-.username-showing{
-    font-style: normal;
-    color: #5958d4;
-}
-
-.participate-tab{
-    font-size: 20px;
-    line-height: 20px;
-    font-style:normal;
-    /* font-family: "Gobold", sans-serif; */
-}
-
-.arrow-show{
-
-}
 
 /* laptop screens */
-@media (min-width:750px){
-    .arrow-show{
-        width: 70px;
-        height: 70px;
-    }   
-
+@media (min-width: 750px) {
+  .arrow-show {
+    width: 70px;
+    height: 70px;
+  }
 }
 /* phone screens */
-@media (max-width:480px){
-    .arrow-show{
-        width: 20px;
-        height: 20px;
-    }   
-    .dollarStack,.leaderboardImage{
-        display:none;
-    }
+@media (max-width: 480px) {
+  .arrow-show {
+    width: 20px;
+    height: 20px;
+  }
+  .dollarStack,
+  .leaderboardImage {
+    display: none;
+  }
 
-    .PrizeBreakup,.leaderboard{
-        display: initial;  
-    }
-    .PrizeBreakupBox ,.leaderboardBox{
-        width: 60vw;
-        height: 400px;
-        font-size: 20px;
-    }
-    .InsideBox{
-        font-size: 15px;      
-    }
-   
+  .PrizeBreakup,
+  .leaderboard {
+    display: initial;
+  }
+  .PrizeBreakupBox,
+  .leaderboardBox {
+    width: 60vw;
+    height: 400px;
+    font-size: 20px;
+  }
+  .InsideBox {
+    font-size: 15px;
+  }
+  .eventshow-flex {
+    display: flex;
+    justify-content:center;
+  }
 }
 /* tablet screens  */
-@media (max-width:750px) and (min-width:480px){
-    .arrow-show{
-        width: 35px;
-        height: 35px;
-    }   
-    .dollarStack,.leaderboardImage{
-        display:none;
-    }
+@media (max-width: 750px) and (min-width: 480px) {
+  .arrow-show {
+    width: 35px;
+    height: 35px;
+  }
+  .dollarStack,
+  .leaderboardImage {
+    display: none;
+  }
 
-    .PrizeBreakup,.leaderboard{
-        display: initial;  
-    }
-    .PrizeBreakupBox ,.leaderboardBox{
-        width: 60vw;
-        height: 400px;
-        font-size: 30px;
-        line-height: 35px;
-    }
-    .InsideBox{
-        font-size: 15px;      
-    }
+  .PrizeBreakup,
+  .leaderboard {
+    display: initial;
+  }
+  .PrizeBreakupBox,
+  .leaderboardBox {
+    width: 60vw;
+    height: 400px;
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .InsideBox {
+    font-size: 15px;
+  }
 }

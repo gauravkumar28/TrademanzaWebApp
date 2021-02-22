@@ -14,6 +14,7 @@ import Report from "./Report";
 import { Link } from "react-router-dom";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import Countdown from "react-countdown";
+
 export class Eventshow extends React.Component {
   constructor(props) {
     super(props);
@@ -92,19 +93,21 @@ export class Eventshow extends React.Component {
             <h2>{this.state.contest.prizeMsg}</h2>
           )}
         </div>
-            
+
         <div className="eventshow-flex">
-        <div className="sidebar-box-mob">
-            
-          {this.state.showsidebar && <EventSidebar />}
-          <button onClick={this.togglesidebar} className="toggleSidebar-button">
-            <span>menu</span>
-          </button>
+          <div className="sidebar-box-mob">
+            {this.state.showsidebar && <EventSidebar />}
+            <button
+              onClick={this.togglesidebar}
+              className="toggleSidebar-button"
+            >
+              <span>menu</span>
+            </button>
           </div>
-        <div className="sidebar-box">
-          <EventSidebar />
+          <div className="sidebar-box">
+            <EventSidebar />
           </div>
-       
+
           <Switch>
             <PrivateRoute
               exact
