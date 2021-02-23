@@ -127,7 +127,13 @@
   /* font-family: "Gobold", sans-serif; */
 }
 
-
+.PrizeMsg{
+  font-size: 30px;
+  margin-left: 20%;
+}
+.rankingHeader{
+  font-size: 40px;
+}
 
 /* laptop screens */
 @media (min-width: 750px) {
@@ -153,9 +159,16 @@
   }
   .PrizeBreakupBox,
   .leaderboardBox {
-    width: 60vw;
+    width: 75vw;
     height: 400px;
     font-size: 20px;
+  }
+  .rankingHeader{
+    font-size: 20px;
+  }
+  .rankinglist {
+    font-size: 18px;
+    line-height: 18px;
   }
   .InsideBox {
     font-size: 15px;
@@ -163,6 +176,9 @@
   .eventshow-flex {
     display: flex;
     justify-content:center;
+  }
+  .PrizeMsg{
+    font-size: 15px;
   }
 }
 /* tablet screens  */

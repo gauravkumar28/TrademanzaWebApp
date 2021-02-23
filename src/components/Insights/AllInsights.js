@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './insights.css'
 
-export class AllEvents extends Component {
+export class AllInsights extends Component {
     constructor(props) {
         super(props);
         this.state = {  
@@ -10,7 +10,14 @@ export class AllEvents extends Component {
         this.fetchNews=this.fetchNews.bind(this)
     }
     fetchNews = () =>{
-        fetch(`https://api.trademanza.com/news`)
+        let reqUrl;
+        if(this.props.cate){
+            reqUrl=`https://api.trademanza.com/news?category=${this.props.cate}`
+        }
+        else{
+            reqUrl="https://api.trademanza.com/news";
+        }
+        fetch(reqUrl)
         .then(response => response.json())
         .then(data => data.data)
         .then(data =>{ 

@@ -90,7 +90,7 @@ export class Eventshow extends React.Component {
           )}
 
           {this.state.contest.prizeMsg && (
-            <h2>{this.state.contest.prizeMsg}</h2>
+            <div className="PrizeMsg">{this.state.contest.prizeMsg}</div>
           )}
         </div>
 

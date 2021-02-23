@@ -28,7 +28,7 @@ export const showRanking = (title, persons, val) => {
   if (persons.length > 0 && persons[0][val]) {
     return (
       <div>
-        <h2>{title}</h2>
+        <div className="rankingHeader">{title}</div>
         {persons.map((person, index) => {
           return (
             <p key={index} className="rankinglist">

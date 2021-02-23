@@ -8,13 +8,9 @@ import './insights.css';
 import Sidebar from './Sidebar';
 
 
-import {AllEvents} from './allevents';
-import {Tech} from './tech';
-import {Telecom} from './telecom';
+
 import {Latest} from './latest';
-import {Automobile} from './automobile';
-import {OilGas} from './oilgas';
-import {Finance} from './finance';
+import { AllInsights } from './AllInsights';
 
 class Insights extends Component {
    constructor(props) {
@@ -40,14 +36,13 @@ class Insights extends Component {
         <div className="news-page"  style={{color:'white'}}>
           {this.state.showSidebar && <Sidebar/>}
           <Switch>
-                <Route exact path="/insights/"  render={ () => (<AllEvents {...this.props} showSidebar={this.showSidebar}/>) }/>
-                <Route exact path="/insights/latest"  render={ () => (<Latest {...this.props} showSidebar={this.showSidebar}/> )} />
-                <Route exact path="/insights/tech"  render={ () => (<Tech {...this.props} showSidebar={this.showSidebar}/> )} />
-                <Route exact path="/insights/automobile" render={ () => (<Automobile {...this.props} showSidebar={this.showSidebar}/> )} />
-                <Route exact path="/insights/oilgas"   render={ () => (<OilGas {...this.props} showSidebar={this.showSidebar}/> )} />    
-                <Route exact path="/insights/telecom"  render={ () => (<Telecom {...this.props} showSidebar={this.showSidebar}/> )} />         
-                <Route exact path="/insights/finance"   render={ () => (<Finance {...this.props} showSidebar={this.showSidebar}/> )} />               
-
+                <Route exact key="latest" path="/insights/latest"  render={ () => (<Latest {...this.props} showSidebar={this.showSidebar} cate="latest" /> )} />
+                <Route exact key="tech" path="/insights/tech"  render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar} cate="tech" /> )} />
+                <Route exact key="automobile" path="/insights/automobile" render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar} cate="automobile" /> )} />
+                <Route exact key="oilgas" path="/insights/oilgas"   render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar} cate="oil%26gas" /> )} />    
+                <Route exact key="telecom" path="/insights/telecom"  render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar} cate="telecom" /> )} />         
+                <Route exact key="finance" path="/insights/finance"   render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar} cate="finance"/> )} />               
+                <Route exact path="/insights/"  render={ () => (<AllInsights {...this.props} showSidebar={this.showSidebar}/>) }/>
           </Switch>
       </div>
     )
