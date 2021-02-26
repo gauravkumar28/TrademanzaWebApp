@@ -163,7 +163,6 @@ class NavigationBar extends React.Component{
                     <Link to="/trainings" style={{color:this.state.colors[3]}} onClick={(e) => this.change_active(3)}>Trainings</Link>
                     </Nav.Link>
             </Nav.Item>
-
             {this.state.logstatus ==='Login'?(
                 <Nav.Item>
                 <Nav.Link>

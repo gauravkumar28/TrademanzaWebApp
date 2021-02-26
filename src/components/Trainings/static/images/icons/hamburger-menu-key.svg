@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-11345 -1427 26 25">
+    <defs>
+        <style>
+            .a {
+                clip-path: url(#b);
+            }
+
+            .b {
+                fill: #6717cd;
+            }
+        </style>
+        <clipPath id="b">
+            <rect x="-11345" y="-1427" width="26" height="25" />
+        </clipPath>
+    </defs>
+    <g id="a" class="a">
+        <g transform="translate(-11341 -1427.776)">
+            <g transform="translate(0 5.776)">
+                <path class="b"
+                    d="M.989,7.792H16.064a1.008,1.008,0,0,0,0-2.016H.989a1.008,1.008,0,0,0,0,2.016Zm15.075,4.156H.989a1.008,1.008,0,0,0,0,2.016H16.064a1.008,1.008,0,0,0,0-2.016Zm0,6.172H.989a1.008,1.008,0,0,0,0,2.016H16.064a1.008,1.008,0,0,0,0-2.016Z"
+                    transform="translate(0 -5.776)" />
+            </g>
+        </g>
+    </g>
+</svg>

@@ -73,33 +73,8 @@ class  LoginorSignup extends Component{
         else if(!pn.test(phonenumber)){
             swal({text:"Phone number doesn't contain alphabets"});
             return false;
-        }else{
-            fetch(`${process.env.REACT_APP_API2}/users/validate_input`, {
-                "method": "POST",
-                "headers": {
-                    "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
-                    "content-type": "application/json",
-                    "accept": "application/json"
-                },
-                "body": JSON.stringify({
-                    phone: "+91"+number,
-                })
-                })
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response);
-                    if(response.hasOwnProperty('error')){
-                        swal({text:response.error.errorMsg});
-                        return false;
-                    }
-                    else{
-                            return true;
-                    }
-        
-        }).catch(err => {
-                        
-        });
-    }
+        }
+        return true;
     }
     validateEmail=(email)=>{
         let regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -191,7 +166,7 @@ class  LoginorSignup extends Component{
             'callback': function(response) {
               // reCAPTCHA solved, allow signInWithPhoneNumber.
             //   console.log("captch resolved");
-              this.onSignInSubmit();
+            //   this.onSignInSubmit();
             }
           });
     };
