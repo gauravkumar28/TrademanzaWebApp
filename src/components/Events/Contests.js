@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import "./css/eventlist.css";
-import { Link,withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { API2 } from "../../backend";
 import swal from "sweetalert";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 
- class Contests extends Component {
+class Contests extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contestslist: undefined,
-      group:"",
-        eventName:""
+      group: "",
+      eventName: "",
     };
   }
   fetchContests = () => {
@@ -21,70 +21,73 @@ import { HiArrowNarrowLeft } from "react-icons/hi";
       .then((data) => {
         console.log(data.data);
         this.setState({
-          contestslist: data.data
-          
+          contestslist: data.data,
         });
       });
   };
   componentDidMount() {
-    let   {group,eventName}=this.props.location.state;
-    if(group==="all") group="";
-   
+    let { group, eventName } = this.props.location.state;
+    if (group === "all") group = "";
+
     this.setState({
-      group:group,
-      eventName:eventName
-    })
+      group: group,
+      eventName: eventName,
+    });
     this.fetchContests();
     this.props.hideSidebar();
   }
   showMessage() {
-    const el = document.createElement('div')
-    el.innerHTML = " <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'>Click here to Download</a>"
-    swal({text:"Please Download the app for taking part in Paid contests",icon:"warning",content:el})
+    const el = document.createElement("div");
+    el.innerHTML =
+      " <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'>Click here to Download</a>";
+    swal({
+      text: "Please Download the app for taking part in Paid contests",
+      icon: "warning",
+      content: el,
+    });
   }
   render() {
     const eventid = window.location.pathname.split("/")[2];
     return (
       <div>
-        <div className="eventTitleheader" >
-            <span>
+        <div className="eventTitleheader">
+          <span>
             <Link className="showtextLink" to={`/events/${this.state.group}`}>
-            <HiArrowNarrowLeft className="arrow-show" />
+              <HiArrowNarrowLeft className="arrow-show" />
             </Link>
             {/* <button onClick={this.props.history.goBack} > */}
             {this.state.eventName}
-            </span> 
+          </span>
         </div>
-      <div className="eventlist">
-        {this.state.contestslist &&
-        this.state.contestslist.NiftyFifty.length !== 0 ? (
-          this.state.contestslist.NiftyFifty.map((contest, index) => {
-            return (
-              <div>
-                {contest.participationFee > 0 ? (
-                  <div   onClick={() => this.showMessage()}>
-                    <div key={index} className="eventbox contestsbox">
-                      <div className="event-item">{contest.name}</div>
-                      <div className="event-itemlink">Play</div>
+        <div className="eventlist">
+          {this.state.contestslist &&
+          this.state.contestslist.NiftyFifty.length !== 0 ? (
+            this.state.contestslist.NiftyFifty.map((contest, index) => {
+              return (
+                <div>
+                  {contest.participationFee > 0 ? (
+                    <div onClick={() => this.showMessage()}>
+                      <div key={index} className="eventbox contestsbox">
+                        <div className="event-item">{contest.name}</div>
+                        <div className="event-itemlink">Play</div>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <Link to={`/events/${eventid}/${contest.id}/leaderboard`} >
-                    <div key={index} className="eventbox contestsbox">
-                      <div className="event-item">{contest.name}</div>
-                      <div className="event-itemlink">Play</div>
-                    </div>
-                  </Link>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <div>no contests </div>
-        )}
+                  ) : (
+                    <Link to={`/events/${eventid}/${contest.id}/leaderboard`}>
+                      <div key={index} className="eventbox contestsbox">
+                        <div className="event-item">{contest.name}</div>
+                        <div className="event-itemlink">Play</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <div>no contests </div>
+          )}
+        </div>
       </div>
-      </div>
-
     );
   }
 }

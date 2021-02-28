@@ -10,10 +10,9 @@ export default class CompletedContests extends Component {
     super(props);
     this.state = {
       contestslist: undefined,
-      status:"",
-      eventName:""
+      status: "",
+      eventName: "",
     };
-    
   }
   fetchContests = () => {
     const eventid = window.location.pathname.split("/")[2];
@@ -27,45 +26,44 @@ export default class CompletedContests extends Component {
       });
   };
   componentDidMount() {
-    let   {status,eventName}=this.props.location.state;
+    let { status, eventName } = this.props.location.state;
 
-   
     this.setState({
-        status:status,
-      eventName:eventName
-    })
+      status: status,
+      eventName: eventName,
+    });
     this.fetchContests();
     this.props.hideSidebar();
   }
   render() {
     const eventid = window.location.pathname.split("/")[2];
     return (
-        <div>
-            <div className="eventTitleheader" >
-            <span>
+      <div>
+        <div className="eventTitleheader">
+          <span>
             <Link className="showtextLink" to={`/events/${this.state.status}`}>
-            <HiArrowNarrowLeft className="arrow-show"/>
+              <HiArrowNarrowLeft className="arrow-show" />
             </Link>
             {/* <button onClick={this.props.history.goBack} > */}
             {this.state.eventName}
-            </span> 
+          </span>
         </div>
-      <div className="eventlist">
-        {this.state.contestslist && this.state.contestslist.length !== 0 ? (
-          this.state.contestslist.map((contest, index) => {
-            return (
-              <Link to={`/events/${eventid}/${contest.id}/leaderboard`}>
-                <div key={index} className="eventbox contestsbox">
-                  <div className="event-item">{contest.name}</div>
-                  <div className="event-itemlink">View</div>
-                </div>
-              </Link>
-            );
-          })
-        ) : (
-          <div>no contests </div>
-        )}
-      </div>
+        <div className="eventlist">
+          {this.state.contestslist && this.state.contestslist.length !== 0 ? (
+            this.state.contestslist.map((contest, index) => {
+              return (
+                <Link to={`/events/${eventid}/${contest.id}/leaderboard`}>
+                  <div key={index} className="eventbox contestsbox">
+                    <div className="event-item">{contest.name}</div>
+                    <div className="event-itemlink">View</div>
+                  </div>
+                </Link>
+              );
+            })
+          ) : (
+            <div>no contests </div>
+          )}
+        </div>
       </div>
     );
   }

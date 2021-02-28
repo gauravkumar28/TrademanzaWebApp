@@ -18,7 +18,7 @@ const  Sidebar = ({history}) => {
             <div className="sidebar" >
                 <li className="sidebar-item">
                     <Link   style={{color:currentTab(history,"/insights")}}  to='/insights' >
-                         All events
+                         All Insights
                     </Link>
                 </li>
                 <li className="sidebar-item" >

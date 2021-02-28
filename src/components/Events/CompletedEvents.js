@@ -31,11 +31,15 @@ export class CompletedEvents extends React.Component {
       <div className="eventlist">
         {events.map((task, index) => {
           return (
-            <Link to={{pathname:`/events/${task.id}/${this.props.status}contests`,
-                state: { status: `${this.props.status}`,
-                        eventName:`${task.name}`
-                }
-            }}>
+            <Link
+              to={{
+                pathname: `/events/${task.id}/${this.props.status}contests`,
+                state: {
+                  status: `${this.props.status}`,
+                  eventName: `${task.name}`,
+                },
+              }}
+            >
               <div key={index} className="eventbox">
                 <div className="event-item">{task.name}</div>
                 <div className="event-itemlink">View</div>

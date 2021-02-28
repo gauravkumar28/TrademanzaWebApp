@@ -21,132 +21,94 @@
     padding:7px 0px;
     flex-shrink:2;
 }
-@media (max-width: 400px) {
+
+ 
+.containerzzz {
+    width: 75%;
+    margin-right: 5%;
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+}
+
+.containerzzz > div{
+    border-radius: 20px;
+    transition: 500ms;
+    padding: 10px;
+}
+
+.containerzzz > div:nth-child(4n){
+    background-color:  #5958D4;
+} 
+.containerzzz > div:nth-child(4n+1){
+    background-color: #292D32;
+} 
+.containerzzz > div:nth-child(4n+2){
+    background-color:#4AC75A;
+} 
+.containerzzz > div:nth-child(4n+3){
+    background-color: #C830DA;
+} 
+.containerzzz>div:hover {
+    transform: scale(1.06);
+}
+
+.news-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+}
+.news-summary {
+    font-style: italic;
+    font-weight: lighter;
+}
+.date {
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+@media (max-width: 480px) {
+   
+    .sidebar{
+        margin-left:20px;
+     }
     .sidebar-item{
         font-size:15px;
         font-weight: 600;
     }
+    .containerzzz {
+        width: 75%;
+        margin-left: 10%;
+        min-height: 70vh;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 1em;
+    }
+    .news-title {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+    .containerzzz>div:hover {
+        transform: scale(1.04);
+    }   
+
 }
-@media (max-width:700px) and (min-width:400px){
+@media (max-width:750px) and (min-width:480px){
     .sidebar-item{
         font-size:20px;
     }
 }
-@media (min-width: 700px) {
+@media (min-width: 750px) {
     .sidebar-item{
         font-size:25px;
     }
 }
- 
-.containerzzz {
-    margin-left: 10%;
-    margin-top: -2%;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    min-height: 70vh;
-    padding: 0 0.6rem;
-    display: grid;
-    color: white;
-    grid-template-columns: 50% 50%;
-    grid-column-gap: 0em;
-    grid-row-gap: 1em;
-  }
-.containerzzz > div {
-    padding: 1rem;
-}
-.container3 {
-    display: grid;
-    padding: 5px;
-    height: 100%;
-    grid-template-columns: 100% ;
-} 
-.container3 > div{
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color: #4AC75A;
-} 
-.container3 > div:nth-child(2n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color:  #5958D4;
-} 
-.container3 > div:nth-child(3n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color: #292D32;
-} 
-.container3 > div:nth-child(4n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color:#C830DA;
-} 
 
 
-
-.container4 {
-    display: grid;
-    padding: 10px;
-    height: 100%;
-    grid-template-columns: 100% ;
-} 
-.container4 > div{
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color: #C830DA;
-} 
-.container4 > div:nth-child(2n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color:  #292D32;
-} 
-.container4 > div:nth-child(3n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color: #5958D4;
-} 
-.container4 > div:nth-child(4n){
-    border-radius: 20px;
-   
-    margin-top: 5%;
-    padding: 5%;
-    
-    transition: 500ms;
-    background-color:#4AC75A;
-} 
-
-
-
-
-
-.container2 {
+/* .container2 {
     display: grid;
     height: 100%;
 }
@@ -178,18 +140,4 @@ h1 {
 
 .titles1 :hover {
     color:#5958D4;
-}
-h2 {
-    
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.6rem;
-}
-p {
-    font-style: italic;
-    font-weight: lighter;
-}
-.date {
-    font-style: normal;
-    font-weight: bold;
-    margin-bottom: -7px;
-}
+} */

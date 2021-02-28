@@ -13,7 +13,8 @@ export class Allevents extends React.Component {
   }
   fetchEvents = () => {
     let reqUrl;
-    if (this.props.group!=="all") reqUrl = `${API}/events?group=${this.props.group}`;
+    if (this.props.group !== "all")
+      reqUrl = `${API}/events?group=${this.props.group}`;
     else reqUrl = `${API}/events`;
     fetch(reqUrl)
       .then((response) => response.json())
@@ -31,23 +32,30 @@ export class Allevents extends React.Component {
     const events = this.state.eventslist;
     return (
       <div className="eventlist">
-        {events.length>0 ?events.map((task, index) => {
-          return (
-            <Link
-              to={{
-                pathname: `/events/${task.id}/contests`,
-                state: { group: `${this.props.group}`,
-                        eventName:`${task.name}`
-                },
-              }}
-            >
-              <div key={index} className="eventbox">
-                <div className="event-item">{task.name}</div>
-                <div className="event-itemlink">Play</div>
-              </div>
-            </Link>
-          );
-        }):<p className="no-events-message">No events available for this category</p>}
+        {events.length > 0 ? (
+          events.map((task, index) => {
+            return (
+              <Link
+                to={{
+                  pathname: `/events/${task.id}/contests`,
+                  state: {
+                    group: `${this.props.group}`,
+                    eventName: `${task.name}`,
+                  },
+                }}
+              >
+                <div key={index} className="eventbox">
+                  <div className="event-item">{task.name}</div>
+                  <div className="event-itemlink">Play</div>
+                </div>
+              </Link>
+            );
+          })
+        ) : (
+          <p className="no-events-message">
+            No events available for this category
+          </p>
+        )}
       </div>
     );
   }

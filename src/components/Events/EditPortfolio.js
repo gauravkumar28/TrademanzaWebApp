@@ -5,7 +5,7 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarIcon from "@material-ui/icons/Star";
 import swal from "sweetalert";
 // import SearchIcon from '@material-ui/icons/Search';
-import {showDayPercentage} from "./helpers";
+import { showDayPercentage } from "./helpers";
 
 export default class EditPortfolio extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ export default class EditPortfolio extends Component {
           this.selectTheStock(data.data[0].selectedStocks[i]);
         }
         this.setState({
-        //   selectedStocks: data.data[0].selectedStocks,
+          //   selectedStocks: data.data[0].selectedStocks,
           portfolioName: data.data[0].name,
           currTrump: currTrump,
           portfolioId: data.data[0].id,
@@ -129,7 +129,8 @@ export default class EditPortfolio extends Component {
     const contestid = window.location.pathname.split("/")[3];
     let selectedStocks = this.state.selectedStocks;
     let portfolioId = this.state.portfolioId;
-    for(let i=0;i<selectedStocks.length;i++)  selectedStocks[i].isTrump = false;
+    for (let i = 0; i < selectedStocks.length; i++)
+      selectedStocks[i].isTrump = false;
     selectedStocks[this.state.currTrump].isTrump = true;
     fetch(`${API2}/portfolios/${portfolioId}`, {
       method: "PUT",
@@ -171,7 +172,6 @@ export default class EditPortfolio extends Component {
   render() {
     return (
       <div>
-      
         <div className="portfolio-box">
           <div className="portfolio-details">
             <input
@@ -203,7 +203,6 @@ export default class EditPortfolio extends Component {
                       <div>
                         <span id="Selectedstock-name">{stock.name}</span>
                         {showDayPercentage(stock.dayTrendPercentage)}
-
                       </div>
                       <div className="removeAndTrump">
                         <span className="TrumpStar">
@@ -255,11 +254,10 @@ export default class EditPortfolio extends Component {
               </div>
               <div className="stock-listing">
                 {this.state.stocksList ? (
-                  
                   this.state.stocksList.map((stock, index) => {
                     return (
                       <div key={index} id="stock">
-                        <button
+                        {/* <button
                           className="stock-describe"
                           onClick={() => {
                             console.log("hello world");
@@ -267,12 +265,12 @@ export default class EditPortfolio extends Component {
                               currentStock: stock,
                             });
                           }}
-                        >
+                        > */}
                           <div style={{ alignSelf: "flex-end" }}>
                             <span id="stock-name">{stock.name}</span>
                             {showDayPercentage(stock.dayTrendPercentage)}
                           </div>
-                        </button>
+                        {/* </button> */}
                         <div>
                           <button
                             id="stock-sub"

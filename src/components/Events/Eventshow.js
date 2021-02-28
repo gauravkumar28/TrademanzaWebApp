@@ -14,6 +14,7 @@ import Report from "./Report";
 import { Link } from "react-router-dom";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import Countdown from "react-countdown";
+
 export class Eventshow extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ export class Eventshow extends React.Component {
       contest: {},
       showText: "",
       backbuttonValue: "",
+      showsidebar: false,
     };
   }
 
@@ -37,7 +39,7 @@ export class Eventshow extends React.Component {
         if (data.data.status === "completed" && data.data.hasJoined)
           backbuttonValue = "completedcontests";
         else backbuttonValue = "contests";
-        
+
         this.setState({
           contest: data.data,
           showText: showtext,
@@ -49,7 +51,7 @@ export class Eventshow extends React.Component {
     this.fetchContest();
     this.props.hideSidebar();
   }
-  countdownrenderer = ({  days,hours, minutes, seconds, completed }) => {
+  countdownrenderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
       return null;
@@ -57,38 +59,55 @@ export class Eventshow extends React.Component {
       // Render a countdown
       return (
         <span className="timerShow">
-         starts in  {24*days+hours}H {minutes}M {seconds}S
+          starts in {24 * days + hours}H {minutes}M {seconds}S
         </span>
       );
     }
+  };
+  togglesidebar = () => {
+    let preval = this.state.showsidebar;
+    this.setState({
+      showsidebar: !preval,
+    });
   };
   render() {
     // const eventid=window.location.pathname.split('/')[2];
     return (
       <div>
-        <div >
+        <div>
           <span className="eventTitleheader eventheader">
             <Link className="showtextLink" to={`/events`}>
               <HiArrowNarrowLeft className="arrow-show" />
             </Link>
             {this.state.contest.name}
-
           </span>
-      
-            {this.state.contest.startTime && (
-              <Countdown
-                date={this.state.contest.startTime}
-                renderer={this.countdownrenderer}
-              />
-            )}
-          
+
+          {this.state.contest.startTime && (
+            <Countdown
+              date={this.state.contest.startTime}
+              renderer={this.countdownrenderer}
+            />
+          )}
 
           {this.state.contest.prizeMsg && (
-            <h2>{this.state.contest.prizeMsg}</h2>
+            <div className="PrizeMsg">{this.state.contest.prizeMsg}</div>
           )}
         </div>
+
         <div className="eventshow-flex">
-          <EventSidebar />
+          <div className="sidebar-box-mob">
+            {this.state.showsidebar && <EventSidebar />}
+            <button
+              onClick={this.togglesidebar}
+              className="toggleSidebar-button"
+            >
+              <span>menu</span>
+            </button>
+          </div>
+          <div className="sidebar-box">
+            <EventSidebar />
+          </div>
+
           <Switch>
             <PrivateRoute
               exact
