@@ -12,7 +12,8 @@ export class AllInsights extends Component {
   fetchNews = () => {
     let reqUrl;
     if (this.props.cate) {
-      reqUrl = `https://api.trademanza.com/news?category=${this.props.cate}`;
+        if(this.props.cate==="latest") reqUrl = `https://api.trademanza.com/news?Latest=true`;
+        else  reqUrl = `https://api.trademanza.com/news?category=${this.props.cate}`;
     } else {
       reqUrl = "https://api.trademanza.com/news";
     }
@@ -27,7 +28,6 @@ export class AllInsights extends Component {
   };
   componentWillMount() {
     this.fetchNews();
-    this.props.showSidebar();
   }
 
   render() {
@@ -40,14 +40,11 @@ export class AllInsights extends Component {
     };
     return (
       <div className="containerzzz">
-        <div className="container3">
-          {news
-            .filter((item, index) => index % 2 === 0)
-            .map((item) => {
+          {news.map((item) => {
               return (
                 <div>
-                  <h2>{item.heading}</h2>
-                  <p>{item.summary}</p>
+                  <p className="news-title">{item.heading}</p>
+                  <p className="news-summary">{item.summary}</p>
                   <p className="date">
                     {new Date(item.createdAt).toLocaleDateString(
                       "en-US",
@@ -57,26 +54,7 @@ export class AllInsights extends Component {
                 </div>
               );
             })}
-        </div>
-        <div className="container4">
-          {news
-            .filter((item, index) => index % 2 !== 0)
-            .map((item) => {
-              return (
-                <div>
-                  <h2>{item.heading}</h2>
-                  <p>{item.summary}</p>
-                  <p className="date">
-                    {new Date(item.createdAt).toLocaleDateString(
-                      "en-US",
-                      DATE_OPTIONS
-                    )}
-                  </p>
-                </div>
-              );
-            })}
-        </div>
-      </div>
+       </div>
     );
   }
 }
