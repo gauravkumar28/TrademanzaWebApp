@@ -1,19 +1,69 @@
 .loginlogo{
     width:50%;
-    height:500px;
-    right:10px;
-    float:right;
+    height:100%;
 }
 .input{
+    background-color: #181B1F;
+    color:white;
+    border-radius: 8px;
+    font-size: 25px;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom: 10px;
     width:100%;
+    outline:none;
+    border: 1px solid white;
+}
+.mybtn{
+    margin-top:20px;
+    background-color:gray;
+    border:none;
+    color:white;
+    font-weight:bold;
+    padding:15px;
+    border-radius:8px;
+    outline:none;
+    width:100%;
+    font-size:20px;
+}
+.mybtn:hover{
+    opacity: 0.7;
+}
+@media (max-width:768px){
+    .input{
+        font-size: 15px;
+    }
+    .mybtn{
+        font-size: 15px;
+    }
 }
 .loginbtn{
+    font-family: Gobold, sans-serif;
+    font-style: normal;
+    letter-spacing:0px;
+    color:#5958D4;
+    cursor:pointer;
     font-size: 3.9rem;
 }
 .signupbtn{
+    font-family: Gobold, sans-serif;
+    font-style: normal;
+    letter-spacing:0px;
+    color:#FFFFFF;
+    cursor:pointer;
+    opacity: 0.13;
     font-size: 2.5rem;
 }
-.mybtn:hover{
+
+.formbtn{
+    background-color: #5958D4;
+    color:white;
+    padding:10px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+}
+.formbtn:hover{
     opacity: 0.7;
 }
 .block{

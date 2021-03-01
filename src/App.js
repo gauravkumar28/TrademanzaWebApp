@@ -23,7 +23,7 @@ class App extends Component{
             <Route  path="/insights" component={Insights} />
             <Route  path="/events" component={Events} />
             <Route  path="/trainings" component={Trainings} />
-            <Route  path="/loginorsignup" component={LoginorSignup} />
+            <Route  path="/login" component={LoginorSignup} />
           </Switch>
         </Layout>
         </Router>
