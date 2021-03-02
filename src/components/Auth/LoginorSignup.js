@@ -6,7 +6,6 @@ import swal from 'sweetalert';
 import '../popup.css';
 import './login.css';
 
-
 class  LoginorSignup extends Component{
     constructor(props){
         super(props);
@@ -193,6 +192,18 @@ handleChange(e){
 
         }                 
     }
+     handleKeypress = e => {
+        //it triggers by pressing the enter key
+      if (e.keyCode === 13) {
+        document.getElementById('loginbtn').click();
+      }
+    };
+    handleKeypress2 = e => {
+        //it triggers by pressing the enter key
+      if (e.keyCode === 13) {
+        document.getElementById('otpbtn').click();
+      }
+    };
     componentDidMount(){
         window.appVerifier = new firebase.auth.RecaptchaVerifier(
             "recaptcha-container",
@@ -203,9 +214,9 @@ handleChange(e){
     }
     handleSignUp = event => {
         var self=this;
-        self.setState({loadingmsg:"Sending OTP ..."});
-        self.setModalShow(true);
         if(this.validatePhoneNumber(this.state.mobileno)){
+            self.setState({loadingmsg:"Sending OTP ..."});
+            self.setModalShow(true);
         event.preventDefault();
        const appVerifier = window.appVerifier;
        firebase
@@ -261,10 +272,11 @@ onVerifyCodeSubmit = event => {
                             }
                             else{
                                 self.handleClose();
-                                self.setState({loadingmsg:"Redirecting to Home "});
+                                self.setState({loadingmsg:"Redirecting ... "});
                                 self.setModalShow(true);
                                 localStorage.setItem("authToken",idToken);
-                                window.location.href="/";
+                                self.props.history.goBack();
+                                self.setModalShow(false);
                             }
                             
                         })
@@ -310,6 +322,7 @@ onVerifyCodeSubmit = event => {
         placeholder="Please enter 6 digit password" 
         className="input"
         onChange={this.handleChange}
+        onKeyDown={this.handleKeypress2}
         value={this.state.otp} 
         ></input>
         <br></br>
@@ -317,7 +330,7 @@ onVerifyCodeSubmit = event => {
         <button className="formbtn" style={{float:"left"}} onClick={this.handleClose}>
             Close
           </button>
-          <button className="formbtn" onClick={this.onVerifyCodeSubmit} style={{float:"right"}} >Submit</button>
+          <button id="otpbtn" className="formbtn" onClick={this.onVerifyCodeSubmit} style={{float:"right"}} >Submit</button>
           
         </Modal.Body>
 
@@ -352,6 +365,7 @@ onVerifyCodeSubmit = event => {
                         placeholder="Please enter 10 digit Mobile Number" 
                         className="input"
                         onChange={this.handlemobileno}
+                        onKeyDown={this.handleKeypress}
                         value={this.state.mobileno} 
                         ></input>
                         <label style={{color:"white"}}>{this.state.mobilenomsg}</label>

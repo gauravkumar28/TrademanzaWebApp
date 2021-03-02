@@ -18,6 +18,8 @@ import logo5 from './static/images/icons/logo5.svg';
 import logo6 from './static/images/icons/logo6.svg';
 import skand from './uploads/business-communication-skills/signup_page_media/teachers_images/skand_gupta.JPG';
 import karthik from './uploads/business-communication-skills/signup_page_media/teachers_images/karthik.jpg';
+import ScriptTag from 'react-script-tag';
+
 class Trainings extends Component {
   render() {
     return (  
@@ -34,7 +36,8 @@ class Trainings extends Component {
                                                               </h1>
                           </div>
                           <p className="course-brief" >Learn trading and investing principles, market jargon, ways to analyse stocks and have your trading setup. </p>
-                          <div className="certified-tag d-inline-block">Total overhead costs : Rs 420 only</div>
+                          <div className="certified-tag d-inline-block">Total Overhead Training Cost : Rs <del style={{textDecorationThickness:"3px"}}>499</del> 420 only<br></br>
+                          Total Payment : Rs 420 + 18% GST =  Rs 495.6</div>
                           <div className="tags">
                                   <div>
                                       <img src={enrolledstudents} alt="users" />
@@ -52,64 +55,60 @@ class Trainings extends Component {
                       </div>
                   </div>
                   <div className="col-12 col-xl-6">
-                      <div className="form-container mx-auto mx-xl-0 ml-xl-auto border">
+                      <div className="form-container mx-auto mx-xl-0 ml-xl-auto">
                           <div id="signup-form">
-                              <form>
+                              <form id='donateForm'>
                                     <div className="form-group">
                                           <label>Email:</label>
-                                          <input  type="text" className="form-control" placeholder="Email" />
+                                          <input  type="text" name="email" className="input" style={{marginBottom:"1px",marginTop:"1px"}} placeholder="Email" />
                                       </div>
-                                      <div className="form-group">
-                                          <label>Password:</label>
-                                          <input type="text" className="form-control" placeholder="Password" />
-                                      </div>
+
                                       <div className="d-flex flex-row" >
                                           <div className="form-group flex1 mr-1">
                                               <label>First Name:</label>
-                                              <input type="text" className="form-control" placeholder="First Name" />
+                                              <input type="text" className="input" style={{marginBottom:"1px",marginTop:"1px"}} placeholder="First Name" />
                                           </div>
                                           <div className="form-group flex1 ml-1">
                                               <label>Last Name:</label>
-                                              <input type="text" className="form-control" placeholder="Last Name"  />
+                                              <input type="text" className="input" style={{marginBottom:"1px",marginTop:"1px"}} placeholder="Last Name"  />
                                           </div>
                                       </div>
                                       <div className="form-group mb-0">
                                         <label className="control-label">Mobile Number:</label>
                                         <div className="form-row">
                                             <div className="form-group col-2">
-                                                <input  type="text" className="form-control" value="+91" />
+                                                <input  type="text" className="input" style={{marginBottom:"1px",marginTop:"1px"}} value="+91" />
                                             </div>
                                             <div className="form-group col-10">
-                                                <input type="text"  className="form-control" placeholder="Mobile Number" />
+                                                <input type="text"  className="input" style={{marginBottom:"1px",marginTop:"1px"}} placeholder="Mobile Number" />
                                             </div>
                                         </div>
                                       </div>
                                       <br></br>
                                       
-                                    <div className="d-flex flex-row mt-n4">
-                                      <div className="form-group flex1 mr-1">
-                                          <label className="control-label">Batch:</label>
-                                          <select className="custom-select pr-4"  >
-                                          <option value="Batch 1">Batch 1</option>
-                                          </select>
+                                     <div className="form-group">
+                                          <label>Date of Commencement </label>
+                                          <input type="text" className="input" style={{marginBottom:"1px",marginTop:"1px"}}  placeholder="DD/MM/YYYY" />
                                       </div>
-                                      <div className="form-group flex1 ml-1">
-                                          <label className="control-label">Coupon code:</label>
-                                          <input type="text" className="form-control"  />
-                                      </div>
-                                    </div>
+                                  
                                   <div className="form-group">
                                       <label className="control-label"> I am a :</label>
-                                      <select className="custom-select" >
+                                      <select className="input"  style={{marginBottom:"1px",marginTop:"1px"}} >
                                           <option value=" Student "> Student </option>
                                           <option value=" Working Professional "> Working Professional </option>
                                       </select>
                                   </div>
-                                  
-                                  <div className="form-group mb-0">
-                                      <button className="btn  contest_register_now" >SIGN UP</button>
-                                  </div>
+                                  <div className="form-group">
+                                          <label>Name of the Institute/Organization</label>
+                                          <input type="text" className="input" style={{marginBottom:"1px",marginTop:"1px"}} placeholder="Institute/Organization" />
+                                      </div>
+                                  <ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" 
+                                  data-payment_button_id="pl_GgwT2VW2XQhJJb"  
+                                  data-button_text = "Register"
+                                  data-button_theme = "rzp-dark-standard"
+                                  async> </ScriptTag> 
                               </form>
+                              
                           </div>
                       </div>
                   </div>

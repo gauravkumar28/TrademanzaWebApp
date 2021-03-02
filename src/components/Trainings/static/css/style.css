@@ -1,3 +1,4 @@
+@font-face {font-family: "Gobold"; src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot"); src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff") format("woff"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.svg#Gobold") format("svg"); }
 
 
 #info-modal .modal-content {
@@ -449,7 +450,8 @@ p{
 }
 
 .content-container #banner-section .content-container .course-headline {
-    font-family: 'proximanova-extrabold';
+    font-family: "Gobold", sans-serif;
+    text-transform: uppercase;
     color: white;
     font-size: 46px;
     line-height: 52px;
@@ -573,8 +575,8 @@ p{
 }
 
 .content-container #banner-section .form-container {
-    background-color: #181B1F;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    background-color:transparent;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
     border-radius: 3px;
     width: 300px;
     padding: 25px;
@@ -633,6 +635,8 @@ p{
 .content-container #banner-section .form-container form .form-group label {
     margin-bottom: 2px;
     font-family: 'proximanova-semibold';
+    color:#5958D4;
+    font-weight: bold;
     font-size: 12px
 }
 
@@ -900,7 +904,11 @@ p{
     margin-left: 10px;
     padding-top: 10px;
 }
-
+@media(max-width:768px){
+    .content-container #course-highlights-section .container .row .item-container .image-container i {
+        font-size: 30px;
+    }
+}
 @media (min-width: 992px) {
     .content-container #course-highlights-section .container .row .item-container .content-container {
         margin-left: 20px
@@ -1817,7 +1825,7 @@ p{
 .content-container #course-faq-section .faq-container .faq-btn-container .faq-btn {
     border: 1px solid #5958D4;
     outline: none !important;
-    background-color: #4746a9;
+    background-color: #5958D4;
     color: white;
     font-size: 15px;
     padding: 8px 16px;
@@ -1840,9 +1848,6 @@ p{
     content: "\f106"
 }
 
-.content-container #course-faq-section .faq-container .faq-btn-container .faq-btn.collapsed {
-    border-color: #00A5EC
-}
 
 .content-container #course-faq-section .faq-container .faq-btn-container .faq-btn.collapsed .fa-angle-up-down::before {
     content: "\f107"
