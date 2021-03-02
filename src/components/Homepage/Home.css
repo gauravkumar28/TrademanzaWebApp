@@ -1,429 +1,225 @@
-@font-face {font-family: "Gobold"; src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot"); src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff") format("woff"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.svg#Gobold") format("svg"); }
+@font-face {
+  font-family: "Gobold";
+  src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot");
+  src: url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/480ddcdbf6e34bde73dfaed605fafcb3.svg#Gobold")
+      format("svg");
+}
 .rec.rec-arrow {
   visibility: hidden;
 }
 .rec-carousel-item:focus {
   outline-style: solid;
   outline-width: 10px;
-  outline-color: red;
-  box-shadow: inset 0 0 1px 0px violet;
+  outline-color: none;
+  box-shadow: inset 0 0 1px 0px;
 }
-button.rec-dot{
-  height: 20px;
+button.rec-dot {
   width: 20px;
-  background-color: grey;
-  margin-left: 10px;
-  margin-right: 10px;
-  box-shadow: 0 0 1px 3px #181B1F;
+  height: 20px;
+  box-shadow: 0 0 1px 1px #fff;
+}
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+  box-shadow: 0 0 1px 1px #fff;
 }
 
-button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
-  background-color: white;
-  box-shadow: 0 0 1px 3px #181B1F;
+.SlideShowDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
+.text-Crousel{
+  width: 30vw;
+}
+.image-carousel{
+  width: 40vw;
+}
+.img-carousel-div {
+  background-color: none;
+  width: 250px;
+  height: 0px;
+}
+
+.slider-right,
+.slider-left {
+  margin-top: 200px;
+  border: none;
+}
+
 .video-container {
-  border-radius: 20px;
-  border-style: solid;
-  border-color: #181B1F ;
-  border-width: 8px;
-  position: relative; 
-  padding-bottom: 56.25%; 
-  width: 100%;
-  height: 600px;
   overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.video-container::after {
+  padding-top: 56.25%;
+  display: block;
+  content: "";
 }
 
 .video-container iframe {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
 }
 
-.h2p{
-  color:white;
-  border-radius: 20px;
-  background-color: #181B1F;
-  margin: 0px;
-  border-style: solid;
-  border-color: #5958D4 ;
-  border-width: 8px;
+.about {
+  color: white;
+  border-radius: 15px;
+  border: 4px solid #5958d4;
   height: auto;
-  font-style: normal;
-  letter-spacing: 0.5px;
-  justify-content: center ;
-  align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.h2p p{
-  font-style: normal;
+  font-size: x-large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
-  padding-right: 50px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 50px;
-
-}
-.h2p h1{
-  font-size: 10rem;
-}
-#growContainer2{
-  margin-top: 5%;
-  margin-left: 6%;
-  display: flex;
-	width:80%;
-  height:500px;
-  background-color:#181B1F;
-}
-.grow2{
-  
-  border-radius: 10px 0px 0px 10px;
-	display: flex;
-  margin: 0px;
-  border-style: solid;
-  border-color: #181B1F ;
-  border-width: 0px;
-  width: 50%;
-  margin-top: 5%;
-  height: 370px;
-  font-size: 8rem;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  justify-content: center;
-  align-items: left;
-  font-family: "Gobold", sans-serif;
-  overflow: hidden;
-  
-  -webkit-transition: 500ms;
-	-moz-transition: 500ms;
-  transition: 500ms;
-
-  
-}
-.grow2 img{
-  margin-left: 45px;
-  width: 140%; 
-  height: 100%;
-  -webkit-transition: 500ms;
-	-moz-transition: 500ms;
-  transition: 500ms;
-  
-  mask-image: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
-}
-.grow3{
-  border-radius: 10px 10px 10px 10px;
-	display: flex;
-  margin: 0px;
-  border-style: solid;
-  border-color: #181B1F ;
-  border-width: 0px;
-  margin-top: 0px;
-  width: 100%;
-  height: 500px;
-  font-size: 8rem;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  justify-content: center;
-  align-items: center;
-  font-family: "Gobold", sans-serif;
-  
-  overflow: hidden;
-
-  -webkit-transition: 500ms;
-	-moz-transition:  500ms;
-  transition: 500ms;
-  
+  padding: 30px 30px;
 }
 
-.grow3 img{
-  width: 100%; 
-  height: 100%;
-  -webkit-transition: 500ms;
-	-moz-transition: 500ms;
-  transition: 500ms;
-  
-
-}
-#growContainer2:hover .grow2{
-  margin-top: 5%;
-  width: 50%;
-  border-radius: 10px 0px 0px 10px;
-  height: 370px;
-}
-#growContainer2:hover .grow2 img{
- width: 140%;
- mask-image: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
- margin-left: 44px;
-}
-#growContainer2:hover .grow3{
-  margin-top: 5%;
-  width: 50%;
-  border-radius: 0px 10px 10px 0px;
-  height: 370px;
-}
-#growContainer2:hover .grow3 img{
-  margin-right: 5%;
-  width: 148%;
-  mask-image: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
-  height: 370px;
-}
-
-#growContainer2:hover .grow2:hover {
-  width: 100%; 
-  margin-top: 0%;
-  border-radius: 10px 10px 10px 10px;
-  height: 500px;
-}
-
-#growContainer2:hover .grow2:hover img{
-  width: 100%;
-  mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,1));
-  margin-left: 0%;
-  height: 100%;
-}
-#growContainer2:hover .grow3:hover {
-  width: 100%; 
-  margin-top: 0%;
-  mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,1));
-  border-radius: 10px 10px 10px 10px;
-  height: 500px;
-}
-
-#growContainer2:hover .grow3:hover img {
-  width: 100%;
-  mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,1));
-  margin-right: 0%;
-  height: 100%;
-}
-#growContainer{
+#growContainer {
   padding: 0px;
-	display: flex;
-	width:100%;
-	height:400px;
+  display: flex;
+  width: 100%;
+  height: 400px;
 }
-.grow{
-	display: flex;
-  background-color: #FFFFFF;
+.grow {
+  display: flex;
+  background-color: #ffffff;
   margin: 0px;
-  border-style: solid;
-  border-color: #181B1F ;
-  border-width: 8px;
+  border: 2px solid #181b1f;
   width: 100%;
   height: 400px;
   font-size: 10rem;
   font-style: normal;
-  text-transform: uppercase;
   letter-spacing: 2px;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
   font-family: "Gobold", sans-serif;
-	-webkit-transition: width 500ms;
-	-moz-transition: width 500ms;
-	transition: width 500ms;
+  -webkit-transition: width 500ms;
+  -moz-transition: width 500ms;
+  transition: width 500ms;
+  color: #181b1f;
 }
-#growContainer:hover .grow{
+#growContainer:hover .grow {
   width: 20%;
 }
 #growContainer:hover .grow:hover {
   width: 60%;
+  color: #181b1f;
 }
 
 .card {
-  padding-top:10%;
+  padding-top: 10%;
   width: 100%;
-  border-color: #181B1F ;
-  background-color: #181B1F ;
-  color: #FFFFFF;    
+  border-color: #181b1f;
+  background-color: #181b1f;
+  color: #ffffff;
   font-family: "Gobold", sans-serif;
   font-style: normal;
-  font-size:60px;
+  font-size: 60px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  justify-content: center ;
+  justify-content: center;
   display: flex;
-  transition: 500ms;
+  /* transition: 500ms; */
 }
 
-.title a {
-    color: white;
-    padding-top: 5px;
-    font-family: "Gobold", sans-serif;
-    font-size: 3.5rem;
-    font-style: normal;
-    letter-spacing: 2px;
+.HeadingStyle {
+  background-size: 100%;
+  text-transform: uppercase;
+  font-family: "Gobold", sans-serif;
+  font-size: 3rem;
+  padding: 20px;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 2px;
+  color: #5958d4;
 }
-.title a:hover {
-  color: purple;
-}
-
-.titlex {
-    color:#5958D4;
-    padding-top: 5px;
-    text-align: center;
-    font-family: "Gobold", sans-serif;
-    font-size: 12rem;
-    font-style: normal;
-    letter-spacing: 2px;
-}
-.title2 {
-  margin-top: 30px;
-}
-.title2 a {
-    background-size: 100%;
-    text-transform: uppercase;
-    color:#5958D4;
-    font-family: "Gobold", sans-serif;
-    font-size: 3rem;
-    padding: 30px;
-    font-weight: bold;
-    font-style: normal;
-    letter-spacing: 2px;
+.HeadingStyle a {
+  color: #5958d4;
 }
 
-.title3 {
-    background-size: 100%;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    color:#5958D4;
-    font-family: "Gobold", sans-serif;
-    font-size: 4rem;
-    padding-top: 60px;
-    font-style: normal;
-    letter-spacing: 2px;
-}
-nav.indicators{
-	left: 0;
-	width: 100%;
-	top: 50%;
-	height: 20px;
-    margin-top:20px;
-    
-    margin-bottom:20px;
-    padding-right: 150px;
-	text-align: center;
-}
-nav.indicators ul{
-	display: inline-block;
-	position: relative;
-}
-nav.indicators ul li.current{
-    display: inline-block;
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
-	margin: 0 10px;
-	background-color: white;
-	cursor: pointer;
-}
-nav.indicators ul li{
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
-	margin: 0 10px;
-	background-color: rgba(255, 255, 255, 0.5);
-	cursor: pointer;
-}
-
-
-.item1 { grid-area: item1;
-        width: 100%;}
-.item2 { grid-area: item2; }
-.item3 { grid-area: item3; }
-
-
-
-  
 .grid-container2 > div {
-    padding: 20px 0;
-    font-size: 30px;
+  padding: 20px 0;
+  font-size: 30px;
 }
-  
 
-
-.rectangle {
-    top: 150px;
-    left: 950px;
-    border-radius: 5px;
-    align-items: center;
-    width: 230px;
-    height: 440px ;
-    background-color: #CDD4DF;
-    object-fit: cover;  
+@media (max-width: 600px) {
+  .SlideShowDiv {
+    flex-direction: column;
   }
-
-  .rectangle2 {
-    top: 200px;
-    left: 1100px;
-    border-radius: 5px;
-    align-items: center;
-    width: 200px;
-    height: 325px ;
-    opacity: 0.53;
-    background: linear-gradient(90deg, gray 0%, #CDD4DF 100%);
-    object-fit: cover;  
+  .img-carousel-div {
+    background-color: none;
+    width: 250px;
+    height: 0px;
   }
-
-
+  .text-Crousel{
+    width: 80vw;
+    height: 400px;
+    margin-top: -50px;
+    padding-top: 0px;
+  }
+  .image-carousel{
+    width: 80vw;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .SpaceBox{
+    height: 400px;
+  }
+  .card {
+    font-size: 40px;
+    height: 300px;
+  }
+  .about {
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+  }
   
-  @media(max-width:768px){
-    .card{
-      font-size:40px;
-    }
-    .h2p{
-      width:100%;
-      margin:10px;
-      padding:5px;
-    }
-    .grow2{
-      height: 230px;
-    }
-    .grow3{
-      height:300px;
-    }
-    #growContainer2{
-      height:300px;
-    }
-    #growContainer2:hover .grow2{
-      height: 230px;
-    }
-    
-    #growContainer2:hover .grow3{
-      height: 230px;
-    }
-    #growContainer2:hover .grow3 img{
-      height: 230px;
-    }
-    
-    #growContainer2:hover .grow2:hover {
-      height: 300px;
-    }
-    #growContainer2:hover .grow3:hover {
-      height: 300px;
-    }
-    .title2 a{
-      font-size: 30px;
-    }
-    .title3{
-      padding: 10px;
-      font-size: 30px;
-    }
-    .grid-container2 > div {
-      padding: 20px 0;
-      font-size: 20px;
-  }  
-  .grow{
-    height:200px;
+  .HeadingStyle  {
+    font-size: 35px;
+  }
+  
+  .grid-container2 > div {
+    padding: 20px 0;
+    font-size: 20px;
+  }
+  .grow {
+    height: 200px;
     font-size: 40px;
   }
-  #growContainer{
-    height:200px;
+  #growContainer {
+    height: 200px;
   }
-  .video-container{
-    width:100%;
-    height:300px;
+  .video-container {
+    width: 100%;
+    height: 300px;
   }
+  .margintop-2{
+    margin-top: -20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
+}
+@media (max-width:600px)  and (min-width: 420px) {
+  .SpaceBox{
+    height: 500px;  
+  }
+}
+
+@media (max-width: 350px) {
+  .SpaceBox{
+    height: 300px;  }
+}

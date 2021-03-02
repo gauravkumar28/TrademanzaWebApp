@@ -14,15 +14,32 @@ class Insights extends Component {
    constructor(props) {
      super(props)
      this.state = {
-        showSidebar:true,
+      showsidebar: false,
      }
    }
+   togglesidebar = () => {
+    let preval = this.state.showsidebar;
+    this.setState({
+      showsidebar: !preval,
+    });
+  };
   render() {
 
     return (
         
         <div className="news-page"  style={{color:'white'}}>
-          {this.state.showSidebar && <Sidebar/>}
+          <div className="sidebar-box-mob">
+            {this.state.showsidebar && <Sidebar />}
+            <button
+              onClick={this.togglesidebar}
+              className="toggleSidebar-button"
+            >
+              <span>menu</span>
+            </button>
+          </div>
+          <div className="sidebar-box">
+            <Sidebar />
+          </div>
           <Switch>
                 <Route exact key="latest" path="/insights/latest"  render={ () => (<AllInsights {...this.props}  cate="latest" /> )} />
                 <Route exact key="tech" path="/insights/tech"  render={ () => (<AllInsights {...this.props}  cate="tech" /> )} />

@@ -106,6 +106,7 @@
     font-weight: 700;
     font-size: 13px;
   }
+
   .event-item {
     border-radius: 10px 0px 0px 10px;
   }
@@ -140,7 +141,7 @@
     text-transform: uppercase;
   }
   .eventbox {
-    width: 40vw;
+    width: 80vw;
     height: 50px;
     font-weight: 600;
     font-size: 8px;
@@ -158,8 +159,11 @@
     align-items: center;
     /* justify-content: center; */
   }
+  .event-itemlink {
+    border-radius: 0px 10px 10px 0px;
+  }
   .contestsbox {
-    width: 70vw;
+    width: 80vw;
     /* height:80px; */
   }
   .eventTitleheader {

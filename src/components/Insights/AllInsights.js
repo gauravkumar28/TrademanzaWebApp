@@ -15,7 +15,7 @@ export class AllInsights extends Component {
         if(this.props.cate==="latest") reqUrl = `https://api.trademanza.com/news?Latest=true`;
         else  reqUrl = `https://api.trademanza.com/news?category=${this.props.cate}`;
     } else {
-      reqUrl = "https://api.trademanza.com/news";
+      reqUrl = "https://stapi.trademanza.com/news/";
     }
     fetch(reqUrl)
       .then((response) => response.json())
@@ -39,7 +39,7 @@ export class AllInsights extends Component {
       day: "numeric",
     };
     return (
-      <div className="containerzzz">
+      <div className="news-containner">
           {news.map((item) => {
               return (
                 <div>

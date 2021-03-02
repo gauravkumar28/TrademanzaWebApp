@@ -23,7 +23,7 @@
 }
 
  
-.containerzzz {
+.news-containner {
     width: 75%;
     margin-right: 5%;
     min-height: 70vh;
@@ -33,25 +33,25 @@
     grid-row-gap: 2em;
 }
 
-.containerzzz > div{
+.news-containner > div{
     border-radius: 20px;
     transition: 500ms;
     padding: 10px;
 }
 
-.containerzzz > div:nth-child(4n){
+.news-containner > div:nth-child(4n){
     background-color:  #5958D4;
 } 
-.containerzzz > div:nth-child(4n+1){
+.news-containner > div:nth-child(4n+1){
     background-color: #292D32;
 } 
-.containerzzz > div:nth-child(4n+2){
+.news-containner > div:nth-child(4n+2){
     background-color:#4AC75A;
 } 
-.containerzzz > div:nth-child(4n+3){
+.news-containner > div:nth-child(4n+3){
     background-color: #C830DA;
 } 
-.containerzzz>div:hover {
+.news-containner>div:hover {
     transform: scale(1.06);
 }
 
@@ -68,7 +68,12 @@
     font-style: normal;
     font-weight: bold;
 }
-
+.sidebar-box {
+    display: flex;
+  }
+  .sidebar-box-mob {
+    display: none;
+  }
 
 @media (max-width: 480px) {
    
@@ -79,9 +84,9 @@
         font-size:15px;
         font-weight: 600;
     }
-    .containerzzz {
-        width: 75%;
-        margin-left: 10%;
+    .news-containner {
+        width: 80%;
+        margin-left: -1%;
         min-height: 70vh;
         display: grid;
         grid-template-columns: 100%;
@@ -91,9 +96,44 @@
         font-size: 1.3rem;
         line-height: 1.5rem;
     }
-    .containerzzz>div:hover {
+    .news-containner>div:hover {
         transform: scale(1.04);
     }   
+
+    .sidebar{
+
+        position: absolute;
+        left: 0px;
+        line-height: 15px;
+        width:30vw;
+        background:black;
+        padding-left: 5px;
+        border-radius: 0px 20px 20px 10px ;
+     }
+    .toggleSidebar-button {
+        display: initial;
+        position: absolute;
+        height: 200px;
+        left: 0px;
+        width: 20px;
+        /* border-radius: 0px 25px 25px 0px; */
+        background-color: #fff;
+        color: rgb(167, 199, 203);
+        font-weight: 600;
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+      .sidebar-box {
+        display: none;
+      }
+      .sidebar-box-mob {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        height:fit-content;
+        width: max-content;
+  
+      }
 
 }
 @media (max-width:750px) and (min-width:480px){

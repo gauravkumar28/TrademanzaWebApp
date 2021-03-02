@@ -16,22 +16,44 @@ class Events extends React.Component {
     super(props);
     this.state = {
       showSidebar: true,
+      mobSidebar:true
     };
   }
   hideSidebar = () => {
     this.setState({
       showSidebar: false,
+      mobSidebar:false
     });
   };
   showSidebar = () => {
     this.setState({
       showSidebar: true,
+      mobSidebar:true
+    });
+  };
+  togglesidebar = () => {
+    let preval = this.state.showsidebar;
+    this.setState({
+      showsidebar: !preval,
     });
   };
   render() {
     return (
       <div className="events-page" style={{ color: "white" }}>
-        {this.state.showSidebar && <Sidebar />}
+        {this.state.mobSidebar && 
+        <div className="sidebar-box-mob">
+            {this.state.showsidebar && <Sidebar />}
+            <button
+              onClick={this.togglesidebar}
+              className="toggleSidebar-button"
+            >
+              <span>menu</span>
+            </button>
+          </div>
+        }
+          <div className="sidebar-box">
+            <Sidebar />
+          </div>
         <Switch>
           <Route
             exact

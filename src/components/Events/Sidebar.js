@@ -16,7 +16,7 @@ const currentTab = (history, path) => {
 
 const Sidebar = ({ history }) => {
   return (
-    <div id="sidebar">
+    <div className="sidebar">
       <li className="sidebar-item">
         <Link style={{ color: currentTab(history, "/events") }} to="/events">
           All events
