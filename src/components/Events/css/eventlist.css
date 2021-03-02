@@ -16,6 +16,7 @@
   font-weight: bold;
   font-size: 1.2em;
   color: white;
+ 
 }
 .event-item {
   height: 100%;
@@ -41,10 +42,12 @@
 .eventbox:hover .event-item {
   background-color: #5958d4;
   width: 55%;
+  transition:1s;
 }
 .eventbox:hover .event-itemlink {
   /* background: #5958D4; */
   width: 45%;
+  transition:1s;
 }
 
 .eventTitleheader {
@@ -105,6 +108,7 @@
     height: 80px;
     font-weight: 700;
     font-size: 13px;
+    
   }
 
   .event-item {

@@ -117,9 +117,8 @@ export class Carousel extends React.Component {
             });
             if (document.getElementsByClassName("slider-single active").length > 0) {
                 setTimeout(() => {
-                    let height = document.getElementsByClassName("slider-single active")[0].clientHeight;
                     this.setState((prevState, props) => {
-                        return { height: height + "px" }
+                        return { height: "auto" }
                     })
                 }, 500);
             }

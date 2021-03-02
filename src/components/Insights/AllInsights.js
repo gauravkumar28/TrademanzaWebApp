@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./insights.css";
-
+import {API} from "../../backend";
 export class AllInsights extends Component {
   constructor(props) {
     super(props);
@@ -12,10 +12,10 @@ export class AllInsights extends Component {
   fetchNews = () => {
     let reqUrl;
     if (this.props.cate) {
-        if(this.props.cate==="latest") reqUrl = `https://api.trademanza.com/news?Latest=true`;
-        else  reqUrl = `https://api.trademanza.com/news?category=${this.props.cate}`;
+        if(this.props.cate==="latest") reqUrl = `${API}/news?Latest=true`;
+        else  reqUrl = `${API}/news?category=${this.props.cate}`;
     } else {
-      reqUrl = "https://stapi.trademanza.com/news/";
+      reqUrl = `${API}/news/`;
     }
     fetch(reqUrl)
       .then((response) => response.json())
