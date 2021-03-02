@@ -1,54 +1,18 @@
 import React, { Component } from 'react'
-import fire from '../../config/fire';
 import firebase from 'firebase';
-import { Container,Row,Col} from 'react-bootstrap';
+import { Container,Row,Col,Modal, Spinner} from 'react-bootstrap';
 import logo from '../images/favicon.png';
 import swal from 'sweetalert';
 import '../popup.css';
 import './login.css';
 
-const loginbutton={
-    fontFamily: '"Gobold", sans-serif',
-    fontStyle: 'normal',
-    letterSpacing:'0px',
-    color:'#5958D4',
-    cursor:'pointer'
-};
-const signupbutton={
-    fontFamily: '"Gobold", sans-serif',
-    fontStyle: 'normal',
-    letterSpacing:'0px',
-    color:'#FFFFFF',
-    cursor:'pointer',
-    opacity: "0.13",
-};
-const input={
-    backgroundColor:"transparent",
-    color:"white",
-    padding:"15px",
-    marginTop:"20px",
-    border:"2px solid white",
-    borderRadius:"10px",
-    outline:"none",
-    fontSize:"1.5rem",  
-};
-
-const submit={
-    marginTop:"20px",
-    backgroundColor:"#FFFFFF59",
-    border:"none",
-    color:"white",
-    fontWeight:"bold",
-    padding:"15px",
-    borderRadius:"8px",
-    outline:"none",
-    width:"100%",
-    fontSize:"20px",
-};
 class  LoginorSignup extends Component{
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.handlemobileno=this.handlemobileno.bind(this);
+        this.handlephone=this.handlephone.bind(this);
+        this.handleemail=this.handleemail.bind(this);
         this.state={
             name:"",
             userName:"",
@@ -59,10 +23,85 @@ class  LoginorSignup extends Component{
             mobileno:"",
             emailid:"",
             showlogin:true,
-            otp:""
+            mobilenomsg:'',
+            phonemsg:'',
+            emailmsg:'',
+            modalShow:false,
+            otp:"",
+            show:false,
+            loadingmsg:''
+
         }
     }
+     handleClose = () => {
+        this.setState({show:false});
+    }
+   handleShow = () => {
+       this.setState({show:true});
+   }
+   loginform=()=>{
+    this.setState({showlogin:true});
+}
+signupform=()=>{
 
+    this.setState({showlogin:false});
+}
+setModalShow=(flag)=>{
+    this.setState({modalShow:flag});
+}
+handleChange(e){
+    this.setState({
+        [e.target.name] : e.target.value
+    })
+
+    
+}
+   handlemobileno=(e)=>{
+    this.setState({
+        [e.target.name] : e.target.value
+    })
+    var phonenumber = e.target.value;
+    let pn=/^\d+$/;
+    if(phonenumber!==''){
+        if(!pn.test(phonenumber)){
+            this.setState({mobilenomsg:"Phone number doesn't contain alphabets"});
+        }
+        else{
+            this.setState({mobilenomsg:" "});
+        }
+    }
+   }
+   handlephone=(e)=>{
+    this.setState({
+        [e.target.name] : e.target.value
+    })
+    var phonenumber = e.target.value;
+    let pn=/^\d+$/;
+    if(phonenumber!==''){
+        if(!pn.test(phonenumber)){
+            this.setState({phonemsg:"Phone number doesn't contain alphabets"});
+        }
+        else{
+            this.setState({phonemsg:" "});
+        }
+    }
+   }
+   handleemail=(e)=>{
+    this.setState({
+        [e.target.name] : e.target.value
+    })
+    var email =e.target.value;
+    if(email!==""){
+        let regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(!regEmail.test(email)){
+            this.setState({emailmsg:'Invalid Email'});
+        }
+        else{
+            this.setState({emailmsg:''});
+        }
+    }
+   }
     validatePhoneNumber=(number)=>{
         var phonenumber = number;
         let pn=/[0-9]{10}/;
@@ -86,128 +125,132 @@ class  LoginorSignup extends Component{
             return true;
         }
     }
-    // componentDidMount(){
-    //     fire.auth().onAuthStateChanged((user)=>{
-    //         if(user){
-    //             window.location.href="/";
-    //         }
-    //     });
-    // }
+    
     onSignUpSubmit = (event) =>{
         event.preventDefault();
 
         if(this.state.name&&this.state.userName&&this.state.phone&&this.state.email){
-        
-        fetch(`${process.env.REACT_APP_API2}/users/validate_input`, {
-        "method": "POST",
-        "headers": {
-            "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
-            "content-type": "application/json",
-            "accept": "application/json"
-        },
-        "body": JSON.stringify({
-            userName: this.state.userName,
-        })
-        })
-        .then(response => response.json())
-        .then(response => {
-            if(response.hasOwnProperty('error')){
-                swal({text:response.error.errorMsg});
-            }
-            else{
-                if(this.validatePhoneNumber(this.state.phone)&&this.validateEmail(this.state.email)){
-                fetch(`${process.env.REACT_APP_API2}/users`, {
-                    "method": "POST",
-                    "headers": {
-                        "x-rapidapi-host":`${process.env.REACT_APP_API2}`,
-                        "content-type": "application/json",
-                        "accept": "application/json"
-                    },
-                    "body": JSON.stringify({
-                        name:this.state.name,
-                        userName: this.state.userName,
-                        phone:"+91"+this.state.phone,
-                        email:this.state.email,
-                        referralCode:this.state.referredBy
-                    })
-                    })
-                    .then(response => response.json())
-                    .then(response => {
+                fetch(`${process.env.REACT_APP_API2}/users/validate_input`, {
+                "method": "POST",
+                "headers": {
+                    "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
+                    "content-type": "application/json",
+                    "accept": "application/json"
+                },
+                "body": JSON.stringify({
+                    userName: this.state.userName,
+                })
+                })
+                .then(response => response.json())
+                .then(response => {
                     if(response.hasOwnProperty('error')){
-                            swal({text:response.error.errorMsg});
-                    }else{
-                        this.loginform();
+                        swal({text:response.error.errorMsg});
                     }
-                    })
-                    .catch(err => {
-                        
-                    });
-                }
-            }
-        })
-        .catch(err => {
-        });
-    }else{
-        if(this.state.name==="")
-            swal({text:'Name is Required'});
-        else if(!this.state.userName)
-            swal({text:'Username is Required'});
-        else if(!this.state.phone)
-            swal({text:'Phone Number is Required'});
-        else if(!this.state.email)
-            swal({text:'Email is Required'});
+                    else{
+                        if(this.validatePhoneNumber(this.state.phone)&&this.validateEmail(this.state.email)){
+                        fetch(`${process.env.REACT_APP_API2}/users`, {
+                            "method": "POST",
+                            "headers": {
+                                "x-rapidapi-host":`${process.env.REACT_APP_API2}`,
+                                "content-type": "application/json",
+                                "accept": "application/json"
+                            },
+                            "body": JSON.stringify({
+                                name:this.state.name,
+                                userName: this.state.userName,
+                                phone:"+91"+this.state.phone,
+                                email:this.state.email,
+                                referralCode:this.state.referredBy
+                            })
+                            })
+                            .then(response => response.json())
+                            .then(response => {
+                            if(response.hasOwnProperty('error')){
+                                    swal({text:response.error.errorMsg});
+                            }else{
+                                this.loginform();
+                            }
+                            })
+                            .catch(err => {
+                                
+                            });
+                        }
+                    }
+                })
+                .catch(err => {
+                });
+        }
+        else{
+            if(this.state.name==="")
+                swal({text:'Name is Required'});
+            else if(!this.state.userName)
+                swal({text:'Username is Required'});
+            else if(!this.state.phone)
+                swal({text:'Phone Number is Required'});
+            else if(!this.state.email)
+                swal({text:'Email is Required'});
 
+        }                 
     }
-        
-    }
-    setUpRecaptcha=()=>{
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-            'size': 'invisible',
-            'callback': function(response) {
-              // reCAPTCHA solved, allow signInWithPhoneNumber.
-            //   console.log("captch resolved");
-            //   this.onSignInSubmit();
-            }
-          });
+     handleKeypress = e => {
+        //it triggers by pressing the enter key
+      if (e.keyCode === 13) {
+        document.getElementById('loginbtn').click();
+      }
     };
-    
-    onSignInSubmit = (event) =>{
-        // event.preventDefault();
-
+    handleKeypress2 = e => {
+        //it triggers by pressing the enter key
+      if (e.keyCode === 13) {
+        document.getElementById('otpbtn').click();
+      }
+    };
+    componentDidMount(){
+        window.appVerifier = new firebase.auth.RecaptchaVerifier(
+            "recaptcha-container",
+            {
+              size: "invisible"
+             }
+          );
+    }
+    handleSignUp = event => {
+        var self=this;
         if(this.validatePhoneNumber(this.state.mobileno)){
-        document.getElementById('loginbtn').disabled=true;
-        this.setUpRecaptcha();
-        var phoneNumber = "+91"+this.state.mobileno;//getPhoneNumberFromUserInput();
-        var appVerifier = window.recaptchaVerifier;
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then(async function (confirmationResult) {
-
-        var code="";
-        await swal({
-            title:"Enter OTP",
-            content: "input",
-            closeOnClickOutside:false,
-            closeOnEsc: false,
-            buttons: {
-                closeModal:"Close",
-                confirm: "Submit"
-                }
-            })
-            .then((value) => {
-                code=value;
-            });
-            console.log(code);
-            window.confirmationResult = confirmationResult;
-            
-            // var code = window.prompt("Enter OTP");//getCodeFromUserInput();
-            confirmationResult.confirm(code).then(async function (result) {
-                console.log('signed in successfully');
-                await fire.auth().onAuthStateChanged((user)=>{
-                    if(user){
-                        user.getIdToken().then(function(idToken) {  
-                            localStorage.setItem("authToken",idToken);
-                        });
-                        fetch(`${process.env.REACT_APP_API2}/users/signin`, {
+            self.setState({loadingmsg:"Sending OTP ..."});
+            self.setModalShow(true);
+        event.preventDefault();
+       const appVerifier = window.appVerifier;
+       firebase
+         .auth()
+         .signInWithPhoneNumber("+91"+this.state.mobileno, appVerifier)
+         .then(function(confirmationResult) {
+           console.log("Success");
+           // SMS sent. Prompt user to type the code from the message, then sign the
+           // user in with confirmationResult.confirm(code).
+           window.confirmationResult = confirmationResult;
+           self.setModalShow(false);
+           self.setState({loadingmsg:""});
+           self.handleShow();
+         })
+         .catch(function(error) {
+           console.log(error);
+           self.setModalShow(false);
+           self.setState({loadingmsg:""});
+           swal({text:error.code});
+         });
+    }
+};
+onVerifyCodeSubmit = event => {
+    var self = this;
+       event.preventDefault();
+       const verificationId = this.state.otp;
+       window.confirmationResult
+         .confirm(verificationId)
+         .then(function(result) {
+           // User signed in successfully.
+           var user = result.user;
+           
+           user.getIdToken().then(idToken => {
+                fetch(`${process.env.REACT_APP_API2}/users/signin`, {
                         "method": "POST",
                         "headers": {
                             "x-rapidapi-host": `${process.env.REACT_APP_API2}`,
@@ -221,95 +264,127 @@ class  LoginorSignup extends Component{
                         })
                         .then(response => response.json())
                         .then(response => {
-                            const user_data=response.data;
-                            localStorage.setItem("userName", user_data.userName);
-                            localStorage.setItem("id",user_data.id);
-            window.location.href="/";
+                            if(response.msg && response.msg ==="New User"){
+                                firebase.auth().signOut().then(function() {
+                                });
+                                self.handleClose();
+                                self.signupform();
+                            }
+                            else{
+                                self.handleClose();
+                                self.setState({loadingmsg:"Redirecting ... "});
+                                self.setModalShow(true);
+                                localStorage.setItem("authToken",idToken);
+                                self.props.history.goBack();
+                                self.setModalShow(false);
+                            }
                             
                         })
                         .catch(err => {
                         console.log(err);
                         });
-                    }
-                });
-            }).catch(function (error) {
-                swal({text:'Entered OTP is invalid'})
-                document.getElementById('loginbtn').disabled=false;
-            });
-            }).catch(function (error) {
-                swal({text:error.message});
-                document.getElementById('loginbtn').disabled=false;
-            });
-        }
-    };
-   
-    loginform=()=>{
-        this.setState({showlogin:true});
-    }
-    signupform=()=>{
+                        
+             });
 
-        this.setState({showlogin:false});
-    }
-    handleChange(e){
-        this.setState({
-            [e.target.name] : e.target.value
-        })
-    }
+         })
+         .catch(function(error) {
+           // User couldn't sign in (bad verification code?)
+           console.error("Error while checking the verification code", error);
+           self.handleClose();
+           swal({text:error.code});
+           
+         });
+
+       };
+    
     render(){
         const toggle=this.state.showlogin;
 
         return(
+            <>
+      <Modal
+        show={this.state.show}
+        onHide={this.handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+
+        <Modal.Body
+        style={{background:"#181B1F",margin:"-2px",padding:"30px"}}
+        >
+        <h2 style={{color:"white"}}>Enter OTP</h2>
+        <input
+        type="text"
+        maxlength="6"
+        id="otp"
+        name="otp"
+        placeholder="Please enter 6 digit password" 
+        className="input"
+        onChange={this.handleChange}
+        onKeyDown={this.handleKeypress2}
+        value={this.state.otp} 
+        ></input>
+        <br></br>
+        <br></br>
+        <button className="formbtn" style={{float:"left"}} onClick={this.handleClose}>
+            Close
+          </button>
+          <button id="otpbtn" className="formbtn" onClick={this.onVerifyCodeSubmit} style={{float:"right"}} >Submit</button>
+          
+        </Modal.Body>
+
+      </Modal>
             <Container style={{marginTop:"20px"}}>
                 <Row>
-                    <Col xl="5" lg="5" md="5">
+                    <Col xl="6" lg="6" md="6">
                         <div id="loginblock" className="block" style={{display:toggle?'block':'none'}}>
                             <table>
                             <tbody>
                                 <tr>
                                     <td>
-                                    <span className="loginbtn" style={loginbutton} onClick={this.loginform} >LOGIN</span>
+                                    <span className="loginbtn" onClick={this.loginform} >LOGIN</span>
                                     </td>
                                     <td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                     <td>
-                                    <span className="signupbtn" style={signupbutton} onClick={this.signupform} >SIGN UP</span>
+                                    <span className="signupbtn" onClick={this.signupform} >SIGN UP</span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div >
+
                         <div style={{display:"none"}} id="recaptcha-container"></div>
                         <input
                         type="text"
                         maxlength="10"
                         id="mobileno"
                         name="mobileno"
-                        style={input}
                         placeholder="Please enter 10 digit Mobile Number" 
                         className="input"
-                        onChange={this.handleChange}
+                        onChange={this.handlemobileno}
+                        onKeyDown={this.handleKeypress}
                         value={this.state.mobileno} 
                         ></input>
-
+                        <label style={{color:"white"}}>{this.state.mobilenomsg}</label>
                         <br></br>
-            <button id="loginbtn" onClick={this.onSignInSubmit} type="submit" style={submit} className="mybtn" >LOG IN</button>
+            <button id="loginbtn"  type="submit" onClick={this.handleSignUp} className="mybtn" >LOG IN</button>
                         </div>
                         </div>
                         <div id="signupblock" className="block" style={{display:!toggle?'block':'none'}}><table>
                             <tbody>
                                 <tr>
                                     <td>
-                                    <span className="loginbtn"  style={loginbutton} onClick={this.signupform} >SIGN UP</span>
+                                    <span className="loginbtn"   onClick={this.signupform} >SIGN UP</span>
 
                                     </td>
                                     <td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                     <td>
-                                       <span className="signupbtn"  style={signupbutton} onClick={this.loginform} >LOGIN</span>
-
-
+                                       <span className="signupbtn"  onClick={this.loginform} >LOGIN</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -319,7 +394,6 @@ class  LoginorSignup extends Component{
             type="text"
             id="name"
             name="name"
-            style={input}
             placeholder="Name" 
             className="input"
             onChange={this.handleChange}
@@ -331,40 +405,38 @@ class  LoginorSignup extends Component{
             type=""
             id="userName"
             name="userName"
-            style={input}
             placeholder="Username" 
             className="input"
             onChange={this.handleChange}
             value={this.state.userName} 
             ></input>
             <br></br>
-
             <input
-            type="tel"
+            type="text"
+            maxlength="10"
             id="phone"
             name="phone"
-            style={input}
             placeholder="Phone Number" 
             className="input"
-            onChange={this.handleChange}
+            onChange={this.handlephone}
             value={this.state.phone} 
             ></input>
+            <label style={{color:"white"}}>{this.state.phonemsg}</label>
             <br></br>
             <input
             type="email"
             id="email"
             name="email"
-            style={input}
             placeholder="Email" 
             className="input"
-            onChange={this.handleChange}
+            onChange={this.handleemail}
             value={this.state.email} 
             ></input>
+            <label style={{color:"white"}}>{this.state.emailmsg}</label>
             <input
             type="text"
             id="referralCode"
             name="referralCode"
-            style={input}
             placeholder="Referral Code" 
             className="input"
             onChange={this.handleChange}
@@ -372,7 +444,7 @@ class  LoginorSignup extends Component{
             ></input>
             <br></br>
 
-            <button type="submit" style={submit} className="mybtn" >Sign Up</button>         
+            <button type="submit" className="mybtn" >Sign Up</button>         
             </form>  
 
                         </div>
@@ -381,13 +453,53 @@ class  LoginorSignup extends Component{
             <br></br>
        
                     </Col>
-                    <Col xl="7" lg="7" md="7">
-                <img src={logo} alt="logo" className="loginlogo" ></img>
+                    <Col xl="6" lg="6" md="6">
+                        <center>
+                        <img src={logo} alt="logo" className="loginlogo" />
+
+                        </center>
             </Col>
                 </Row>
             </Container>
+      <MyVerticallyCenteredModal
+        show={this.state.modalShow}
+        onHide={() => this.setModalShow(false)
+        }
+        loadingmsg={this.state.loadingmsg}
+/>
+            </>
         )
     }
     
 }
+function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        
+        <Modal.Body
+        style={{background:"#181B1F",margin:"-2px",padding:"30px"}}
+        >
+            <center>
+            <Spinner animation="border"
+            size="xl"
+            style={{borderBlockStartColor:"white",width:"100px",height:"100px"}}
+             />
+             <br></br>
+             <br></br>
+            <h6 style={{color:"white"}}>{props.loadingmsg}</h6>
+            </center>
+        </Modal.Body>
+        
+      </Modal>
+    );
+  }
+  
+  
 export default LoginorSignup;

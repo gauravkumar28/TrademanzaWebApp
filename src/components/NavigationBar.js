@@ -56,19 +56,7 @@ class NavigationBar extends React.Component{
         };
     }
     logout=()=>{
-         firebase.auth().signOut().then(function() {
-            // Sign-out successful.
-            if (typeof(Storage) !== "undefined") {
-                localStorage.removeItem("userName");
-                localStorage.removeItem("id");
-                localStorage.removeItem("authToken");
-            } else {
-                console.log("Sorry, your browser does not support Web Storage...");
-            }
-            
-          }).catch(function(error) {
-            console.log(error);
-          });
+         
     }
     change_active = (x) => {
           var  list=["white","white","white","white","white"];
@@ -77,9 +65,21 @@ class NavigationBar extends React.Component{
 
         if(x===4){
             if(this.state.logstatus ==='Logout' ){
-                this.logout();
+                firebase.auth().signOut().then(function() {
+                    // Sign-out successful.
+                    if (typeof(Storage) !== "undefined") {
+                        localStorage.removeItem("userName");
+                        localStorage.removeItem("id");
+                        localStorage.removeItem("authToken");
+                    } else {
+                        console.log("Sorry, your browser does not support Web Storage...");
+                    }
+                window.location.href="/login";
+                    
+                  }).catch(function(error) {
+                    console.log(error);
+                  });
                 this.setState({logstatus:'Login'});
-            window.location.href="/";
             }
         }
      }
@@ -93,7 +93,7 @@ class NavigationBar extends React.Component{
             this.change_active(2);
         else if(window.location.pathname==="/trainings")
             this.change_active(3);
-        else if(window.location.pathname==="/loginorsignup")
+        else if(window.location.pathname==="/login")
             this.change_active(4);
         this.authListener();
 
@@ -101,9 +101,8 @@ class NavigationBar extends React.Component{
     // handleOnClick = useCallback(() => useHistory().push('/'), [useHistory()]);
     authListener=async()=>{
         
-            fire.auth().onAuthStateChanged((user)=>{
+            await fire.auth().onAuthStateChanged((user)=>{
             if(user){
-                console.log(user);
                 this.setState({logstatus:"Logout",photoURL:user.photoURL});
                 fetch(`${process.env.REACT_APP_API2}/users/signin`, {
                 "method": "POST",
@@ -166,7 +165,7 @@ class NavigationBar extends React.Component{
             {this.state.logstatus ==='Login'?(
                 <Nav.Item>
                 <Nav.Link>
-                    <Link to="/loginorsignup" style={{color:this.state.colors[4]}} onClick={(e) => this.change_active(4)}>{this.state.logstatus}</Link>
+                    <Link to="/login" style={{color:this.state.colors[4]}} onClick={(e) => this.change_active(4)}>{this.state.logstatus}</Link>
                     </Nav.Link>
             </Nav.Item>
             ):(
