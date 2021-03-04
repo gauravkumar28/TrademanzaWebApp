@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API2 } from "../../backend";
 import "./css/portfolio.css";
-import { showDayPercentage } from "./helpers";
+import { SampleStock } from "./Stock";
 
 const Report = () => {
   const [report, setReport] = useState();
@@ -36,12 +36,7 @@ const Report = () => {
           report.topCustomerPickedStocks &&
           report.topCustomerPickedStocks.map((stock, index) => {
             return (
-              <div key={index} className="report-stock" width="30px">
-                <div>
-                  <span id="stock-name">{stock.code}</span>
-                  {showDayPercentage(stock.dayTrendPercentage)}
-                </div>
-              </div>
+              <SampleStock key={index} stock={stock} /> 
             );
           })}
       </div>
@@ -52,12 +47,7 @@ const Report = () => {
           report.topPerformingStocks &&
           report.topPerformingStocks.map((stock, index) => {
             return (
-              <div key={index} className="report-stock">
-                <div style={{ alignSelf: "flex-end" }}>
-                  <span id="stock-name">{stock.code}</span>
-                  {showDayPercentage(stock.dayTrendPercentage)}
-                </div>
-              </div>
+              <SampleStock key={index} stock={stock} /> 
             );
           })}
       </div>

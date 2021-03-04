@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import "./css/portfolio.css";
 import { API2 } from "../../backend";
 import { Link } from "react-router-dom";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import StarIcon from "@material-ui/icons/Star";
 import "../popup.css";
 import swal from "sweetalert";
 import coin from "./images/coin.svg";
-import { showDayPercentage } from "./helpers";
+import { ViewStock } from "./Stock";
 
 export default class ViewPortfolio extends Component {
   constructor(props) {
@@ -143,19 +141,7 @@ export default class ViewPortfolio extends Component {
                 this.state.portfolio[0].selectedStocks ? (
                   this.state.portfolio[0].selectedStocks.map((stock, index) => {
                     return (
-                      <div key={index} id="stock">
-                        <div style={{ alignSelf: "flex-end" }}>
-                          <span id="stock-name">{stock.name}</span>
-                          {showDayPercentage(stock.dayTrendPercentage)}
-                        </div>
-                        <span className="TrumpStar">
-                          {stock.isTrump ? (
-                            <StarIcon style={{ color: "#EDBD46" }} />
-                          ) : (
-                            <StarBorderIcon style={{ color: "#EDBD46" }} />
-                          )}
-                        </span>
-                      </div>
+                      <ViewStock key={index} stock={stock} /> 
                     );
                   })
                 ) : (

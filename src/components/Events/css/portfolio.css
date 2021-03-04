@@ -68,78 +68,6 @@
   outline: 1px solid slategrey;
 }
 
-#stock,
-#Selectedstock {
-  height: 40px;
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.1);
-  margin-top: 5px;
-  width: 14vw;
-  border-radius: 20px;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3);
-  /* rgba(255,255,255,0.9); */
-  /* font-size: 10px; */
-}
-#stock-name,
-#Selectedstock-name {
-  margin-left: 15px;
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-  font-family: "Arial";
-}
-#stock-val,
-#Selectedstock-val {
-  font-size: 15px;
-  /* font-weight: bold; */
-}
-#stock-remove,
-#stock-sub,
-#Selectedstock-sub {
-  height: 20px;
-  background: white;
-  border: none;
-  width: 2px;
-  margin-right: 20px;
-  font-size: 25px;
-}
-#stock-remove {
-  background: rgba(89, 88, 212, 1);
-}
-.removeAndTrump {
-  justify-content: center;
-  /* margin-bottom: 2px; */
-}
-.TrumpStar {
-  margin-right: 20px;
-  /* background-color: red; */
-}
-button:focus {
-  outline: none;
-  border: none;
-}
-.stock-describe {
-  outline: none;
-  border: none;
-  background-color: white;
-}
-#Selectedstock {
-  background: rgba(89, 88, 212, 1);
-  justify-content: space-between;
-}
-#Selectedstock-name {
-  color: white;
-}
-#Selectedstock-sub {
-  font-size: 15px;
-  width: 50px;
-  /* background: red; */
-}
 .SubmitButton,
 .EditPortfolioButton {
   background: rgba(89, 88, 212, 1);
@@ -202,60 +130,37 @@ iframe {
 }
 
 
-
-
-.mediumfont {
-  font-size: 15px;
-  font-weight: 150;
-}
-.postive {
-  color: rgba(11, 186, 87, 1);
-  /* color: #000; */
-}
-.negtive {
-  /* color:red; */
-  color: rgba(255, 0, 0, 1);
-}
-.editpicks{
+.editpicks {
   margin-top: 15px;
   text-transform: uppercase;
   font-size: 30px;
 }
-.report{
+.report {
   width: 60vw;
-  height:auto;
+  height: auto;
   border-radius: 10px;
   padding: 10px;
-  background: #292D32;
-  font-family: 'Segoe UI', sans-serif;
+  background: #292d32;
+  font-family: "Segoe UI", sans-serif;
 }
-.report-main-heading{
+.report-main-heading {
   font-size: 40px;
   font-weight: 600;
   padding-left: 5vw;
   /* text-align: left; */
   margin-left: 20px;
-  color: #FFFFFF4D;
+  color: #ffffff4d;
 }
 .report-div {
   display: flex;
-  
+
   justify-content: space-evenly;
- 
 }
-.report-stock{
-  height: 35px;
-    background-color: #fff;
-    margin-top: 7px;
-    width: 15vw;
-    text-align: left;
-    border-radius: 25px;
-}
-.report-heading{
-  color:#fff;
+
+.report-heading {
+  color: #fff;
   font-size: 45px;
   font-weight: 600;
-  
 }
 
 @media (max-width: 480px) {
@@ -264,47 +169,32 @@ iframe {
     display: none;
   }
   .portfolio-box {
-    display: initial
+    display: initial;
     /* margin-left: 20vw; */
   }
   .stocks-list {
     color: #fff;
     width: 80vw;
-    background: #181B1F;;
+    background: #181b1f;
   }
-  
-  #stock,
-#Selectedstock {
-    height: 35px;
-    background-color: #fff;
-    margin-top: 7px;
-    width: 70vw;
-    text-align: left;
-    border-radius: 25px;
-  }
-  .stock-listing{
+
+  .stock-listing {
     overflow: visible;
   }
   .stock-option-heading,
   .stock-option-heading2 {
     font-size: 20px;
-    font-family: 'Segoe UI ', sans-serif;
-    color: #3B3E41;
+    font-family: "Segoe UI ", sans-serif;
+    color: #3b3e41;
   }
-  .stock-option-heading{
+  .stock-option-heading {
     margin-top: 0px;
   }
-  .editpicks{
+  .editpicks {
     margin-top: 10px;
     font-size: 20px;
   }
-  #Selectedstock {
-    background: rgba(89, 88, 212, 1);
-    border: none;
-  }
-  #Selectedstock-name {
-    color: white;
-  }
+
   .Stock-Search-Box {
     width: 70vw;
     font-size: 18px;
@@ -316,24 +206,22 @@ iframe {
     border-radius: 20px;
     height: 35px;
   }
-  .report{
+  .report {
     width: 70vw;
     padding: 0px;
-    background-color: #181B1F;
+    background-color: #181b1f;
   }
-  .report-main-heading{
+  .report-main-heading {
     font-size: 40px;
     font-weight: 600;
-    color:rgba(89, 88, 212, 1) ;
+    color: rgba(89, 88, 212, 1);
     margin-left: 0px;
   }
   .report-div {
     flex-direction: column;
   }
-  .report-stock{
-    width: 70vw;
-  }
-  .report-heading{
+
+  .report-heading {
     font-size: 20px;
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./insights.css";
 import {API} from "../../backend";
+// const API="https://api.trademanza.com";
 export class AllInsights extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,7 @@ export class AllInsights extends Component {
           {news.map((item) => {
               return (
                 <div>
+                {console.log(item)}
                   <p className="news-title">{item.heading}</p>
                   <p className="news-summary">{item.summary}</p>
                   <p className="date">
@@ -51,6 +53,9 @@ export class AllInsights extends Component {
                       DATE_OPTIONS
                     )}
                   </p>
+                  { item.url ? <a className="news-url" href={item.url}> 
+                    Click here to Read more 
+                  </a>: null}
                 </div>
               );
             })}
