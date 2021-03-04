@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import "./css/portfolio.css";
 import { API2 } from "../../backend";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import StarIcon from "@material-ui/icons/Star";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
-import { showDayPercentage } from "./helpers";
+import {SelectedStock, Stock} from "./Stock";
 
 export default class CreatePortfolio extends Component {
   constructor(props) {
@@ -188,34 +186,15 @@ export default class CreatePortfolio extends Component {
               {this.state.selectedStocks ? (
                 this.state.selectedStocks.map((stock, index) => {
                   return (
-                    <div key={index} id="Selectedstock">
-                      <div>
-                        <span id="Selectedstock-name">{stock.name}</span>
-                        {showDayPercentage(stock.dayTrendPercentage)}
-                      </div>
-                      <div className="removeAndTrump">
-                        <span className="TrumpStar">
-                          {this.state.currTrump === index ? (
-                            <StarIcon style={{ color: "#EDBD46" }} />
-                          ) : (
-                            <StarBorderIcon
-                              style={{ color: "#EDBD46" }}
-                              onClick={() => this.makeItTrump(index)}
-                            />
-                          )}
-                        </span>
-                        <button
-                          id="stock-remove"
-                          onClick={() => {
-                            this.removeTheStock(index);
-                            if (index === this.state.currTrump)
-                              this.makeItTrump(-1);
-                          }}
-                        >
-                          -
-                        </button>
-                      </div>
-                    </div>
+                    <SelectedStock  
+                        key={index}
+                        index={index}
+                        stock={stock}
+                        currTrump={this.state.currTrump}
+                        makeItTrump={this.makeItTrump}
+                        removeTheStock={this.removeTheStock}
+                    /> 
+                    
                   );
                 })
               ) : (
@@ -245,33 +224,9 @@ export default class CreatePortfolio extends Component {
               </div>
               <div className="stock-listing">
                 {this.state.stocksList ? (
-                  this.state.stocksList.map((stock, index) => {
+                  this.state.stocksList.sort(function(a,b){return a.name.localeCompare(b.name)}).map((stock, index) => {
                     return (
-                      <div key={index} id="stock">
-                        {/* <button
-                          className="stock-describe"
-                          onClick={() => {
-                            this.setState({
-                              currentStock: stock,
-                            });
-                          }}
-                        > */}
-                          <div style={{ alignSelf: "flex-end" }}>
-                            <span id="stock-name">{stock.name}</span>
-                            {showDayPercentage(stock.dayTrendPercentage)}
-                          </div>
-                        {/* </button> */}
-                        <div>
-                          <button
-                            id="stock-sub"
-                            onClick={() => {
-                              this.selectTheStock(stock);
-                            }}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
+                      <Stock key={index} stock={stock} selectTheStock={this.selectTheStock} />    
                     );
                   })
                 ) : (

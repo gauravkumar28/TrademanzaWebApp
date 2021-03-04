@@ -17,7 +17,7 @@ export const showDayPercentage = (dayTrendPercentage) => {
     return (
       <span className="mediumfont negtive">
         <ArrowDownward style={{ fontSize: 15 }} color="secondary" />
-        {-roundToNPlaces(dayTrendPercentage, 2)}
+        -{-roundToNPlaces(dayTrendPercentage, 2)}
         <span>&#37;</span>
       </span>
     );
