@@ -35,8 +35,8 @@ $phone : 480px   */
     position: absolute;
     left: 0px;
     line-height: 20px;
-    width: 30vw;
-    padding-left: 5px;
+    width: 25vw;
+    padding-left: 10px;
     border-radius: 0px 20px 20px 0px;
   }
   .toggleSidebar-button {
@@ -60,7 +60,7 @@ $phone : 480px   */
     flex-direction: row;
     align-items: flex-start;
     height: fit-content;
-    width: max-content;
+    width: fit-content;
   }
   .sidebar-item {
     font-size: 15px;

@@ -32,9 +32,9 @@ class Events extends React.Component {
     });
   };
   togglesidebar = () => {
-    let preval = this.state.showsidebar;
+    let preval = this.state.showSidebar;
     this.setState({
-      showsidebar: !preval,
+      showSidebar: !preval,
     });
   };
   render() {
@@ -42,7 +42,7 @@ class Events extends React.Component {
       <div className="events-page" style={{ color: "white" }}>
         {this.state.mobSidebar && 
         <div className="sidebar-box-mob">
-            {this.state.showsidebar && <Sidebar />}
+            {this.state.showSidebar && <Sidebar />}
             <button
               onClick={this.togglesidebar}
               className="toggleSidebar-button"
@@ -51,9 +51,9 @@ class Events extends React.Component {
             </button>
           </div>
         }
-          <div className="sidebar-box">
+         {this.state.showSidebar && <div className="sidebar-box">
             <Sidebar />
-          </div>
+          </div>}
         <Switch>
           <Route
             exact
