@@ -26,6 +26,7 @@ export const showDayPercentage = (dayTrendPercentage) => {
 
 export const showRanking = (title, persons, val) => {
   if (persons.length > 0 && persons[0][val]) {
+    
     return (
       <div>
         <div className="rankingHeader">{title}</div>

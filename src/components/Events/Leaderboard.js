@@ -10,24 +10,29 @@ export default class Leaderboard extends Component {
     super(props);
     this.state = {
       leaderboard: [],
+      currPage:1,
+      totalPage:0,
     };
   }
-  fetchLeaderboard = () => {
+  fetchLeaderboard = (chk) => {
+    let page=this.state.currPage+chk;
     const contestid = window.location.pathname.split("/")[3];
     fetch(
-      `${API2}/contests/${contestid}/leaderboard?userId=${localStorage.getItem(
+      `${API2}/contests/v2/${contestid}/leaderboard?userId=${localStorage.getItem(
         "id"
-      )}`
+      )}&size=50&page=${page}`
     )
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          leaderboard: data.data,
+          leaderboard: data.data.playerList,
+          currPage:page,
+          totalPage:Math.ceil(data.data.total/50)
         });
       });
   };
   componentDidMount() {
-    this.fetchLeaderboard();
+    this.fetchLeaderboard(0);
   }
 
   render() {
@@ -40,10 +45,24 @@ export default class Leaderboard extends Component {
     return (
       <div className="leaderboard">
         <div className="leaderboardBox">
-          <div className="leaderboardData">
+          <div>
+                    <div className="leaderboardData">
+            
             {showRanking("Rank", this.state.leaderboard, "rank")}
             {showRanking("UserName", this.state.leaderboard, "userName")}
             {showRanking("Score", this.state.leaderboard, "score")}
+          </div>
+
+          { this.state.totalPage>1 && 
+          <div className="leaderboard-navigator">
+            {this.state.currPage===1 ? <button className="leaderboardButton" disabled >Prev</button> :<button className="leaderboardButton" onClick={()=>this.fetchLeaderboard(-1)}>Prev</button>} 
+            {this.state.currPage===this.state.totalPage ? 
+              <button className="leaderboardButton" disabled>Next</button>
+            :
+            <button className="leaderboardButton" onClick={ () =>  this.fetchLeaderboard(1)}>Next</button>
+            }
+            </div>
+          }
           </div>
           <div className="InsideBox">
             <Link

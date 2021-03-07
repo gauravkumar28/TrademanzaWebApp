@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './images/favicon.png';
 import './footer.css';
-import { FaPinterestP,FaFacebookF,FaLinkedinIn,FaTwitter } from 'react-icons/fa';
+import { FaInstagram,FaFacebookF,FaLinkedinIn,FaTwitter } from 'react-icons/fa';
 
 const image={
     marginLeft:"147px",
@@ -25,7 +25,7 @@ const linkedin={
     background:"#2867B2",
     borderRadius:"50%",
 };
-const pininterest={
+const instagram={
     background:"#BD081C",
     borderRadius:"50%",
 };
@@ -81,7 +81,7 @@ class Footer extends React.Component{
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th style={pininterest}><a href="/" style={sociallink}><FaPinterestP style={icon}></FaPinterestP></a></th>
+                                    <th style={instagram}><a href="/" style={sociallink}><FaInstagram style={icon}></FaInstagram></a></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
