@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './images/favicon.png';
 import './footer.css';
-import { FaInstagram,FaFacebookF,FaLinkedinIn,FaTwitter } from 'react-icons/fa';
+import { FaInstagram,FaFacebookF,FaLinkedinIn,FaTwitter ,FaTelegram} from 'react-icons/fa';
 
 const image={
     marginLeft:"147px",
@@ -74,28 +74,36 @@ class Footer extends React.Component{
                         <table className="table-borderless" style={table}>
                             <tbody>
                                 <tr>
-                                    <th  style={linkedin}><a href="/" style={sociallink}><FaLinkedinIn style={icon}></FaLinkedinIn></a></th>
+                                    <th  style={linkedin}><a href="https://www.linkedin.com/company/trademanza"  style={sociallink}><FaLinkedinIn style={icon}></FaLinkedinIn></a></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th style={instagram}><a href="/" style={sociallink}><FaInstagram style={icon}></FaInstagram></a></th>
+                                    <th style={instagram}><a href="https://www.instagram.com/trademanza" style={sociallink}><FaInstagram style={icon}></FaInstagram></a></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th style={twitter}><a href="/" style={sociallink}><FaTwitter style={icon}></FaTwitter></a></th>
+                                    <th style={twitter}><a href="https://twitter.com/trademanza" style={sociallink}><FaTwitter style={icon}></FaTwitter></a></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th style={facebook}><a href="/" style={sociallink}><FaFacebookF style={icon}></FaFacebookF></a></th>
+                                    <th style={facebook}><a href="https://www.facebook.com/trademanza" style={sociallink}><FaFacebookF style={icon}></FaFacebookF></a></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style={twitter}><a href="https://t.me/trademanza" style={sociallink}><FaTelegram style={icon}></FaTelegram></a></th>
+                                
                                 </tr>
                                 </tbody>
                         </table>
