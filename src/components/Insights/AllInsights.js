@@ -14,9 +14,9 @@ export class AllInsights extends Component {
     let reqUrl;
     if (this.props.cate) {
         if(this.props.cate==="latest") reqUrl = `${API2}/news?Latest=true`;
-        else  reqUrl = `${API}/news?category=${this.props.cate}`;
+        else  reqUrl = `${API2}/news?category=${this.props.cate}`;
     } else {
-      reqUrl = `${API}/news/`;
+      reqUrl = `${API2}/news/`;
     }
     fetch(reqUrl)
       .then((response) => response.json())
