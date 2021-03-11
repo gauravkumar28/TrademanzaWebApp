@@ -41,10 +41,12 @@ export class AllInsights extends Component {
     };
     return (
       <div className="news-containner">
+      p1 p2 
           {news.map((item) => {
               return (
                 <div>
                 {console.log(item)}
+
                   <p className="news-title">{item.heading}</p>
                   <p className="news-summary">{item.summary}</p>
                   <p className="date">
