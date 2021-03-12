@@ -44,7 +44,6 @@ export class AllInsights extends Component {
 	    {news.map((item) => {
               return (
                 <div>
-                {console.log(item)}
 
                   <p className="news-title">{item.heading}</p>
                   <p className="news-summary">{item.summary}</p>

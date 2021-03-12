@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { API2 } from "../../backend";
 import swal from "sweetalert";
 import { HiArrowNarrowLeft } from "react-icons/hi";
-
+import playstoreImg from "./images/playstore.png";
 class Contests extends Component {
   constructor(props) {
     super(props);
@@ -39,11 +39,11 @@ class Contests extends Component {
   showMessage() {
     const el = document.createElement("div");
     el.innerHTML =
-      " <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'>Click here to Download</a>";
+      `
+      <h3>Please Download the app for taking part in Paid contests</h3>
+      <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'> <img src=${playstoreImg} width="200px" alt="playstore link" /></a>`;
     swal({
-      text: "Please Download the app for taking part in Paid contests",
-      icon: "warning",
-      content: el,
+      content: el
     });
   }
   render() {
