@@ -41,8 +41,7 @@ export class AllInsights extends Component {
     };
     return (
       <div className="news-containner">
-      p1 p2 
-          {news.map((item) => {
+	    {news.map((item) => {
               return (
                 <div>
                 {console.log(item)}
