@@ -10,7 +10,7 @@ export default class EditPortfolio extends Component {
     this.state = {
       stocksList: [],
       selectedStocks: [],
-      portfolioName: "portfoliox",
+      portfolioName: "",
       error: "",
       mainStocksList: [],
       currentStock: "",
@@ -175,7 +175,7 @@ export default class EditPortfolio extends Component {
               type="text"
               onChange={this.handlePortfolioNameChange}
               value={this.state.portfolioName}
-              placeholder="enter your portfolio name"
+              placeholder=""
               className="portfolioNameInput"
             />
             {this.state.currentStock ? (

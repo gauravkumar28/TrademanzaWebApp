@@ -16,7 +16,7 @@ class Contests extends Component {
   }
   fetchContests = () => {
     const eventid = window.location.pathname.split("/")[2];
-    fetch(`${API2}/contests/v2?eventId=${eventid}`)
+    fetch(`${API2}/contests/v2?eventId=${eventid}&source=app`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
