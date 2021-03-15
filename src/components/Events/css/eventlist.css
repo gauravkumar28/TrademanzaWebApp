@@ -4,7 +4,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .eventbox {
@@ -84,53 +83,14 @@
 .sidebar-box-mob {
   display: none;
 }
-@media (min-width: 750px) {
+@media (min-width: 1000px) {
   .eventbox {
     margin-left: -5%;
   }
 }
-@media (max-width: 750px) and (min-width: 480px) {
-  .toggleSidebar-button {
-    display: initial;
-    position: absolute;
-    height: 150px;
-    left: 0px;
-    width: 20px;
-    border-radius: 0px 25px 25px 0px;
-    background-color: #fff;
-    color: rgb(167, 199, 203);
-    font-weight: 600;
-    font-size: 15px;
-    text-transform: uppercase;
-  }
-  .eventbox {
-    width: 50vw;
-    height: 80px;
-    font-weight: 700;
-    font-size: 13px;
-    
-  }
 
-  .event-item {
-    border-radius: 10px 0px 0px 10px;
-  }
-  .eventTitleheader {
-    font-size: 23px;
-  }
-  .timerShow {
-    font-size: 10px;
-  }
-  .sidebar-box {
-    display: none;
-  }
-  .sidebar-box-mob {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .toggleSidebar-button {
     display: initial;
     position: absolute;
@@ -185,21 +145,19 @@
     align-items: flex-start;
   }
 }
-@media (max-width: 750px) and (min-width: 480px) {
-  .eventbox {
-    width: 50vw;
-    height: 80px;
-    font-weight: 700;
-    font-size: 13px;
-  }
-  .event-item {
-    border-radius: 10px 0px 0px 10px;
-  }
-  .eventTitleheader {
-    font-size: 23px;
-  }
-  .timerShow {
-    font-size: 10px;
+@media (max-width: 1000px) and (min-width: 650px) {
+  .toggleSidebar-button {
+    display: initial;
+    position: absolute;
+    height: 200px;
+    left: 0px;
+    width: 20px;
+    /* border-radius: 0px 25px 25px 0px; */
+    background-color: #fff;
+    color: rgb(167, 199, 203);
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
   }
   .sidebar-box {
     display: none;
@@ -209,4 +167,22 @@
     flex-direction: row;
     align-items: flex-start;
   }
+  .eventbox {
+    width: 50vw;
+    height: 80px;
+    font-weight: 700;
+    font-size: 13px;
+    
+  }
+
+  .event-item {
+    border-radius: 10px 0px 0px 10px;
+  }
+  .eventTitleheader {
+    font-size: 23px;
+  }
+  .timerShow {
+    font-size: 10px;
+  }
+
 }

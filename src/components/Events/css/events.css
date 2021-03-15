@@ -8,6 +8,13 @@ $phone : 480px   */
   display: flex;
   justify-content: space-around;
 }
+.sidebar {
+  position: absolute;
+  left: 0px;
+  width: 25vw;
+  padding-left: 10px;
+  border-radius: 0px 20px 20px 0px;
+}
 #sidebar {
   color: white;
   display: flex;
@@ -30,7 +37,7 @@ $phone : 480px   */
 .sidebar-box-mob {
   display: none;
 }
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .sidebar {
     position: absolute;
     left: 0px;
@@ -76,12 +83,25 @@ $phone : 480px   */
     padding-left: 3px;
   }
 }
-@media (max-width: 750px) and (min-width: 480px) {
-  .sidebar-item {
-    font-size: 20px;
+@media (max-width: 1000px) and (min-width: 650px) {
+  .sidebar-box {
+    display: flex;
+
+  }
+#eventsidebar {
+    position: absolute;
+    background-color: black;
+    border-radius: 0px 20px 20px 0px;
+    left: 20px;
+    width: 100px;
+    height: 200px;
+    padding-left: 3px;
+  }
+  .toggleSidebar-button {
+    display: none;
   }
 }
-@media (min-width: 750px) {
+@media (min-width: 1000px) {
   .sidebar-item {
     font-size: 25px;
   }
@@ -97,9 +117,6 @@ a:hover {
 
 .logo-design {
   margin-top: 10px;
-  /* object-fit: cover; */
   width: 20vw;
-  /* height: 250px; */
-  /* object-position: 100% 0%; */
   opacity: 0.2;
 }

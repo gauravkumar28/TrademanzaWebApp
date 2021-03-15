@@ -161,14 +161,14 @@
   background-color: rgba(89, 88, 212,0.3);
 }
 /* laptop screens */
-@media (min-width: 750px) {
+@media (min-width: 900px) {
   .arrow-show {
     width: 70px;
     height: 70px;
   }
 }
 /* phone screens */
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .arrow-show {
     width: 20px;
     height: 20px;
@@ -207,7 +207,7 @@
   }
 }
 /* tablet screens  */
-@media (max-width: 750px) and (min-width: 480px) {
+@media (max-width: 1000px) and (min-width: 650px) {
   .arrow-show {
     width: 35px;
     height: 35px;

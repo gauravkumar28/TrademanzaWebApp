@@ -16,14 +16,14 @@
 }
 .portfolio-details {
   height: 100%;
-  width: 70%;
+  width: 65%;
   background: rgba(41, 45, 50, 1);
   border-radius: 20px 0px 0px 20px;
 }
 
 .stocks-list {
   height: 100%;
-  width: 30%;
+  width: 35%;
   background: #fff;
   color: rgba(41, 45, 50, 1);
   white-space: nowrap;
@@ -163,7 +163,7 @@ iframe {
   font-weight: 600;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .portfolio-details {
     /* border-radius: 5px 0px 0px 5px; */
     display: none;
@@ -220,18 +220,66 @@ iframe {
   .report-div {
     flex-direction: column;
   }
-
   .report-heading {
     font-size: 20px;
   }
 }
-@media (max-width: 750px) and (min-width: 480px) {
-  .portfolio-box {
-    width: 50vw;
-    font-weight: 700;
-    font-size: 13px;
-  }
+@media (max-width: 1000px) and (min-width: 650px) {
   .portfolio-details {
-    border-radius: 10px 0px 0px 10px;
+       display: none;
+  }
+  .portfolio-box {
+    display: initial;
+  }
+  .stocks-list {
+    color: #fff;
+    width: 80vw;
+    background: #181b1f;
+  }
+
+  .stock-listing {
+    overflow: visible;
+  }
+  .stock-option-heading,
+  .stock-option-heading2 {
+    font-size: 20px;
+    font-family: "Segoe UI ", sans-serif;
+    color: #3b3e41;
+  }
+  .stock-option-heading {
+    margin-top: 0px;
+  }
+  .editpicks {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .Stock-Search-Box {
+    width: 50vw;
+    font-size: 18px;
+    border-radius: 25px;
+    height: 35px;
+  }
+  .SubmitButton,
+  .EditPortfolioButton {
+    border-radius: 20px;
+    height: 35px;
+  }
+  .report {
+    width: 70vw;
+    padding: 0px;
+    background-color: #181b1f;
+  }
+  .report-main-heading {
+    font-size: 40px;
+    font-weight: 600;
+    color: rgba(89, 88, 212, 1);
+    margin-left: 0px;
+  }
+  .report-div {
+    flex-direction: column;
+  }
+  .report-heading {
+    font-size: 20px;
   }
 }

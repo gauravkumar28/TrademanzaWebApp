@@ -14,7 +14,6 @@ const currentTab = (history, path) => {
 const  Sidebar = ({history}) => {
     
         return(
-
             <div className="sidebar" >
                 <li className="sidebar-item">
                     <Link   style={{color:currentTab(history,"/insights")}}  to='/insights' >
