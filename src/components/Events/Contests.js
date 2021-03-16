@@ -40,7 +40,7 @@ class Contests extends Component {
     const el = document.createElement("div");
     el.innerHTML =
       `
-      <h3>Please Download the app for taking part in Paid contests</h3>
+      <h3>Please Download the app for taking part in this Contest</h3>
       <a href='https://play.google.com/store/apps/details?id=com.trademanza&hl=en_IN'> <img src=${playstoreImg} width="200px" alt="playstore link" /></a>`;
     swal({
       content: el
@@ -64,8 +64,8 @@ class Contests extends Component {
           this.state.contestslist.NiftyFifty.length !== 0 ? (
             this.state.contestslist.NiftyFifty.map((contest, index) => {
               return (
-                <div>
-                  {contest.participationFee > 0 ? (
+                <div className="ContestlistItem">
+                  {(contest.participationFee > 0  || contest.type==="Quiz") ? (
                     <div onClick={() => this.showMessage()}>
                       <div key={index} className="eventbox contestsbox">
                         <div className="event-item">{contest.name}</div>

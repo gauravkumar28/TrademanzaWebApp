@@ -1,16 +1,29 @@
+.eventTitleheader {
+  color: rgba(89, 88, 212, 1);
+  font-family: Gobold;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  /* margin-left: 10px; */
+}
 .eventlist {
-  /* background: green; */
+
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-}
 
+  /* justify-content: flex-end; */
+}
+.ContestlistItem{
+  width: 60vw;
+  /* margin-left: 60px; */
+  /* background-color: red; */
+}
 .eventbox {
   display: flex;
   margin-top: 10px;
-  /* margin-left: -5%; */
-  width: 60vw;
+  width:60vw;
   height: 120px;
   font-weight: bold;
   font-size: 1.2em;
@@ -49,14 +62,7 @@
   transition:1s;
 }
 
-.eventTitleheader {
-  color: rgba(89, 88, 212, 1);
-  font-family: Gobold;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+
 .no-events-message {
   font-style: normal;
   font-size: 25px;
@@ -84,9 +90,9 @@
   display: none;
 }
 @media (min-width: 1000px) {
-  .eventbox {
+  /* .eventbox {
     margin-left: -5%;
-  }
+  } */
 }
 
 
@@ -109,6 +115,11 @@
     height: 50px;
     font-weight: 600;
     font-size: 8px;
+    margin-left: -5%;
+  }
+  .contestsbox {
+    width: 80vw;
+    /* height:80px; */
   }
   .event-item {
     padding-left: 5px;
@@ -126,10 +137,7 @@
   .event-itemlink {
     border-radius: 0px 10px 10px 0px;
   }
-  .contestsbox {
-    width: 80vw;
-    /* height:80px; */
-  }
+  
   .eventTitleheader {
     font-size: 15px;
   }

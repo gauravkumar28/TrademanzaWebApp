@@ -43,7 +43,7 @@ class Home extends Component {
             </TextCrousel>
           </div>
             <div className="image-carousel" >
-            <Carousel slides={slides} autoplay={true}   interval={2000}/>
+            <Carousel slides={slides} autoplay={true}   interval={3000}/>
           </div> 
         </div>
         <div className="SpaceBox"></div>
