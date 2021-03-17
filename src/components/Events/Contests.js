@@ -16,12 +16,12 @@ class Contests extends Component {
   }
   fetchContests = () => {
     const eventid = window.location.pathname.split("/")[2];
-    fetch(`${API2}/contests/v2?eventId=${eventid}&source=app`)
+    fetch(`${API2}/v3/events/${eventid}?source=app`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
         this.setState({
-          contestslist: data.data,
+          contestslist: data.data.contests,
         });
       });
   };
@@ -61,8 +61,8 @@ class Contests extends Component {
         </div>
         <div className="eventlist">
           {this.state.contestslist &&
-          this.state.contestslist.NiftyFifty.length !== 0 ? (
-            this.state.contestslist.NiftyFifty.map((contest, index) => {
+          this.state.contestslist.length !== 0 ? (
+            this.state.contestslist.map((contest, index) => {
               return (
                 <div className="ContestlistItem">
                   {(contest.participationFee > 0  || contest.type==="Quiz") ? (
